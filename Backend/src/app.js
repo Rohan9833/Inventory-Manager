@@ -9,6 +9,7 @@ const customerRoutes = require("./routes/customer.routes");
 const paymentRoutes = require("./routes/payment.routes");
 const saleRoutes = require("./routes/sale.routes");
 const dashboardRoutes = require("./routes/dashboard.routes")
+const reportRoutes = require("./routes/report.routes")
 
 
 
@@ -26,6 +27,8 @@ app.use("/api/customers", customerRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/sale", saleRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/reports", reportRoutes);
+
 
 
 module.exports = app; 
