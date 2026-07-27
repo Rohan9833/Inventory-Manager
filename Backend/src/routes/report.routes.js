@@ -12,5 +12,6 @@ router.get("/sales/export", verifyToken, reportcontroller.exportSalesReport);
 router.get("/inventory", verifyToken, reportcontroller.getInventoryReport);
 router.get("/customers", verifyToken, reportcontroller.getCustomerReport);
 router.get("/payment", verifyToken, reportcontroller.getPaymentReport);
+router.get("/product", verifyToken, reportcontroller.getProductReport);
 
 module.exports = router;

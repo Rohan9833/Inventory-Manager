@@ -3,6 +3,7 @@ const Inventory = require("../models/inventory.model");
 const Customer = require("../models/customer.model");
 const Product = require("../models/product.model");
 const Payment = require("../models/payment.model");
+const mongoose = require("mongoose")
 const PDFDocument = require("pdfkit");
 
 exports.exportSalesReportService = async (userId, query, res) => {
@@ -483,9 +484,6 @@ exports.getCustomerReportService = async (userId, query) => {
     },
   };
 };
-
-
-
 exports.getPaymentReportService = async (userId, query) => {
   // ===========================
   // Pagination
@@ -677,5 +675,252 @@ exports.getPaymentReportService = async (userId, query) => {
       totalPages: Math.ceil(totalRecords / limit),
     },
     payments,
+  };
+};
+
+exports.getProductReportService = async (userId, query) => {
+  // ===========================
+  // Pagination
+  // ===========================
+  const page = parseInt(query.page) || 1;
+  const limit = parseInt(query.limit) || 10;
+  const skip = (page - 1) * limit;
+  // ===========================
+  // Filters
+  // ===========================
+
+  const filter = {
+    isDeleted: false,
+  };
+
+  // Category Filter
+  if (query.category) {
+    filter.category = new mongoose.Types.ObjectId(query.category);
+  }
+
+  // Date Filter
+  if (query.startDate || query.endDate) {
+    filter.createdAt = {};
+
+    if (query.startDate) {
+      filter.createdAt.$gte = new Date(query.startDate);
+    }
+
+    if (query.endDate) {
+      const endDate = new Date(query.endDate);
+      endDate.setHours(23, 59, 59, 999);
+      filter.createdAt.$lte = endDate;
+    }
+  }
+
+  // Stock Status Filter
+  if (query.stockStatus) {
+    switch (query.stockStatus.toUpperCase()) {
+      case "OUT":
+        filter.quantity = 0;
+        break;
+
+      case "LOW":
+        filter.quantity = {
+          $gt: 0,
+          $lte: 10,
+        };
+        break;
+
+      case "AVAILABLE":
+        filter.quantity = {
+          $gt: 10,
+        };
+        break;
+    }
+  }
+
+  // ===========================
+  // Search
+  // ===========================
+  const search = query.search?.trim();
+  // ===========================
+  // Aggregation Pipeline
+  // ===========================
+  const pipeline = [
+    {
+      $match: filter,
+    },
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $unwind: "$category",
+    },
+  ];
+
+  // Product Name Search
+  if (search) {
+    pipeline.push({
+      $match: {
+        name: {
+          $regex: search,
+          $options: "i",
+        },
+      },
+    });
+  }
+  // ===========================
+  // Sorting
+  // ===========================
+  const sort = query.sort === "oldest" ? 1 : -1;
+
+  pipeline.push({
+    $sort: {
+      createdAt: sort,
+    },
+  });
+  // ===========================
+  // Total Records
+  // ===========================
+
+  const countPipeline = JSON.parse(JSON.stringify(pipeline));
+
+  countPipeline.push({
+    $count: "totalRecords",
+  });
+
+  const countResult = await Product.aggregate(countPipeline);
+
+  const totalRecords = countResult[0]?.totalRecords || 0;
+  // ===========================
+  // Pagination
+  // ===========================
+  pipeline.push(
+    {
+      $skip: skip,
+    },
+    {
+      $limit: limit,
+    },
+  );
+  // ===========================
+  // Project
+  // ===========================
+  pipeline.push({
+    $project: {
+      _id: 1,
+      name: 1,
+      costPrice: 1,
+      sellingPrice: 1,
+      quantity: 1,
+      createdAt: 1,
+
+      category: {
+        _id: "$category._id",
+        name: "$category.name",
+      },
+    },
+  });
+  // ===========================
+  // Summary
+  // ===========================
+
+
+  const summaryPipeline = [
+    {
+      $match: filter,
+    },
+  ];
+
+  // Product Name Search
+  if (search) {
+    summaryPipeline.push({
+      $match: {
+        name: {
+          $regex: search,
+          $options: "i",
+        },
+      },
+    });
+  }
+
+  summaryPipeline.push({
+    $group: {
+      _id: null,
+
+      totalProducts: {
+        $sum: 1,
+      },
+
+      totalStock: {
+        $sum: "$quantity",
+      },
+
+      totalCostValue: {
+        $sum: {
+          $multiply: ["$costPrice", "$quantity"],
+        },
+      },
+
+      totalSellingValue: {
+        $sum: {
+          $multiply: ["$sellingPrice", "$quantity"],
+        },
+      },
+
+      lowStockProducts: {
+        $sum: {
+          $cond: [
+            {
+              $and: [{ $gt: ["$quantity", 0] }, { $lte: ["$quantity", 10] }],
+            },
+            1,
+            0,
+          ],
+        },
+      },
+
+      outOfStockProducts: {
+        $sum: {
+          $cond: [
+            {
+              $eq: ["$quantity", 0],
+            },
+            1,
+            0,
+          ],
+        },
+      },
+    },
+  });
+
+  const summaryResult = await Product.aggregate(summaryPipeline);
+
+  const summary = summaryResult[0] || {
+    totalProducts: 0,
+    totalStock: 0,
+    totalCostValue: 0,
+    totalSellingValue: 0,
+    lowStockProducts: 0,
+    outOfStockProducts: 0,
+  };
+  // ===========================
+  // Get Products
+  // ===========================
+  const products = await Product.aggregate(pipeline);
+  // ===========================
+  // Return Response
+  // ===========================
+
+  return {
+    summary,
+    pagination: {
+      page,
+      limit,
+      totalRecords,
+      totalPages: Math.ceil(totalRecords / limit),
+    },
+    products,
   };
 };

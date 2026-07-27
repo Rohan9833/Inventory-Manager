@@ -54,31 +54,7 @@ const getSaleById = async (req, res) => {
   }
 };
 
-// const getAllSalesService = async (userId) => {
-//   return await Sale.find({
-//     createdBy: userId,
-//   })
-//     .populate("customer", "name phone")
-//     .populate("items.product", "name")
-//     .sort({ createdAt: -1 });
-// };
 
-// const getSaleByIdService = async (saleId, userId) => {
-//   const sale = await Sale.findOne({
-//     _id: saleId,
-//     createdBy: userId,
-//   })
-//     .populate("customer", "name phone")
-//     .populate("items.product", "name");
-
-//   if (!sale) {
-//     const error = new Error("Sale not found");
-//     error.statusCode = 404;
-//     throw error;
-//   }
-
-//   return sale;
-// };
 
 module.exports = {
   createSale,

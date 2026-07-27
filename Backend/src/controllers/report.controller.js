@@ -67,5 +67,25 @@ exports.getPaymentReport = async (req, res) => {
     });
   }
 };
+exports.getProductReport = async (req, res) => {
+  try {
+    const data = await reportservice.getProductReportService(
+      req.user._id,
+      req.query
+    );
+
+    return res.status(200).json({
+      success: true,
+      ...data,
+    });
+  } catch (error) {
+    console.error("Get Product Report Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Internal Server Error",
+    });
+  }
+};
 
 
