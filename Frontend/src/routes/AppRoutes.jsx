@@ -8,6 +8,7 @@ import Product from "../pages/Product";
 import Inventory from "../pages/Inventory";
 import Customer from "../pages/Customer";
 import Sale from "../pages/Sale";
+import Payment from "../pages/Payment";
 
 function AppRoutes() {
   return (
@@ -21,6 +22,8 @@ function AppRoutes() {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/customer" element={<Customer />} />
         <Route path="/sale" element={<Sale />} />
+        <Route path="/payment" element={<Payment />} />
+
 
 
 

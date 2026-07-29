@@ -68,6 +68,7 @@ const updatePaymentService = async (paymentId, userId, paymentData) => {
     error.statusCode = 404;
     throw error;
   }
+  const availableBalance = customer.balance + payment.amount;
 
   const customer = await Customer.findById(payment.customer);
   if (paymentData.amount > availableBalance) {

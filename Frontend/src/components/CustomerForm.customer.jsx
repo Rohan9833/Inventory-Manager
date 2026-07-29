@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 
-function CustomerForm({
-  editingCustomer,
-  onCreate,
-  onUpdate,
-}) {
+function CustomerForm({ editingCustomer, onCreate, onUpdate }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -81,11 +77,7 @@ function CustomerForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>
-        {editingCustomer
-          ? "Update Customer"
-          : "Create Customer"}
-      </h2>
+      <h2>{editingCustomer ? "Update Customer" : "Create Customer"}</h2>
 
       {/* Name */}
 
@@ -144,9 +136,7 @@ function CustomerForm({
       </div>
 
       <button type="submit">
-        {editingCustomer
-          ? "Update Customer"
-          : "Create Customer"}
+        {editingCustomer ? "Update Customer" : "Create Customer"}
       </button>
     </form>
   );
