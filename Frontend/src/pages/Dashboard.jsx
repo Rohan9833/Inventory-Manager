@@ -1,6 +1,8 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import StatCard from "../components/StatCard.dashboard";
 import { getDashboard } from "../api/dashboard.api";
+import RecentCustomers from "../components/RecentCustomers.dashboard";
+import CustomerBalance from "../components/CustomerBalance.dashboard";
 
 function Dashboard() {
   const dashboardCards = [
@@ -43,7 +45,7 @@ function Dashboard() {
       const data = await getDashboard();
       console.log(data);
       setDashboard(data.data);
-    } catch (error) { 
+    } catch (error) {
       setError(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
@@ -63,6 +65,8 @@ function Dashboard() {
           value={dashboard[card.key]}
         />
       ))}
+      <RecentCustomers recentCustomers={dashboard.recentCustomers || []} />
+      <CustomerBalance customerBalances={dashboard.customerBalances || []} />
     </>
   );
 }
