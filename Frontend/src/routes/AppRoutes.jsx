@@ -6,6 +6,7 @@ import Category from "../pages/Category";
 import ProctedRoute from "../routes/ProtectedRoute";
 import Product from "../pages/Product";
 import Inventory from "../pages/Inventory";
+import Customer from "../pages/Customer";
 
 function AppRoutes() {
   return (
@@ -17,6 +18,8 @@ function AppRoutes() {
         <Route path="/category" element={<Category />} />
         <Route path="/product" element={<Product />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/customer" element={<Customer />} />
+
 
 
 
