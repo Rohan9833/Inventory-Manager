@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import Category from "../pages/Category";
 import ProctedRoute from "../routes/ProtectedRoute";
 import Product from "../pages/Product";
+import Inventory from "../pages/Inventory";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,8 @@ function AppRoutes() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/category" element={<Category />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/inventory" element={<Inventory />} />
+
 
 
       </Route>
