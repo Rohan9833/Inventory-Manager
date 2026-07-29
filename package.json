@@ -4,6 +4,7 @@
     "frontend": "cd frontend && npm run dev"
   },
   "dependencies": {
-    "cors": "^2.8.6"
+    "cors": "^2.8.6",
+    "react-hot-toast": "^2.6.0"
   }
 }
