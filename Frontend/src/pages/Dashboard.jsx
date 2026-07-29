@@ -1,39 +1,68 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import StatCard from "../components/StatCard.dashboard";
+import { getDashboard } from "../api/dashboard.api";
 
 function Dashboard() {
-  const [dashboard, setDashboard] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const dashboardCards = [
+    {
+      title: "Total Products",
+      key: "totalProducts",
+    },
+    {
+      title: "Total Customers",
+      key: "totalCustomers",
+    },
+    {
+      title: "Today's Revenue",
+      key: "todayRevenue",
+    },
+    {
+      title: "Monthly Revenue",
+      key: "monthlyRevenue",
+    },
+    {
+      title: "Pending Amount",
+      key: "pendingAmount",
+    },
+    {
+      title: "Low Stock Products",
+      key: "lowStockProducts",
+    },
+    {
+      title: "Today's Orders",
+      key: "todayOrders",
+    },
+  ];
+  const [dashboard, setDashboard] = useState({});
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const fetchDashboard = async () => {
+    setLoading(true);
     try {
       const data = await getDashboard();
-      setDashboard(data);
+      console.log(data);
+      setDashboard(data.data);
     } catch (error) {
       setError(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
   };
-
+  useEffect(() => {
+    fetchDashboard();
+  }, []);
 
   return (
     <>
       <h1>Dashboard</h1>
-
-      <StatCard title="Total Products" value={dashboard.totalProducts} />
-
-      <StatCard title="Total Customers" value={dashboard.totalCustomers} />
-
-      <StatCard title="Today's Sales" value={dashboard.todaySales} />
-
-      <StatCard title="Revenue" value={dashboard.revenue} />
-
-      <StatCard title="Pending Amount" value={dashboard.pendingAmount} />
-
-      <StatCard title="Inventory Value" value={dashboard.inventoryValue} />
-      <button onClick={fetchDashboard}>click me</button>
+      {dashboardCards.map((card) => (
+        <StatCard
+          key={card.key}
+          title={card.title}
+          value={dashboard[card.key]}
+        />
+      ))}
     </>
   );
 }

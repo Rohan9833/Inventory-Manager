@@ -30,9 +30,11 @@ const getDashboardService = async (userId) => {
     todayRevenue,
     monthlyRevenue,
     pendingAmount,
+    recentCustomers,
+    customerBalances,
   ] = await Promise.all([
     Product.countDocuments({
-    //   createdBy: userId,
+      //   createdBy: userId,
       isDeleted: false,
     }),
 
@@ -118,23 +120,50 @@ const getDashboardService = async (userId) => {
         },
       },
     ]),
+
+    // ===========================
+    // recentCustomers
+    // ===========================
+
+    Customer.find({
+      createdBy: userId,
+      status: true,
+    })
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .select("name phone balance createdAt"),
+    // ===========================
+    // customerBalances
+    // ===========================
+
+    Customer.find({
+      createdBy: userId,
+      status: true,
+      balance: { $gt: 0 },
+    })
+      .sort({ balance: -1 })
+      .limit(5)
+      .select("name phone balance"),
   ]);
   const revenue = todayRevenue[0]?.totalRevenue || 0;
   const monthly = monthlyRevenue[0]?.totalRevenue || 0;
   const pending = pendingAmount[0]?.pendingAmount || 0;
+
   // ===========================
   // Response
   // ===========================
 
   return {
-  totalProducts,
-  totalCustomers,
-  todayOrders,
-  todayRevenue: revenue,
-  monthlyRevenue: monthly,
-  pendingAmount: pending,
-  lowStockProducts,
-};
+    totalProducts,
+    totalCustomers,
+    todayOrders,
+    todayRevenue: revenue,
+    monthlyRevenue: monthly,
+    pendingAmount: pending,
+    lowStockProducts,
+    recentCustomers,
+    customerBalances,
+  };
 };
 
 module.exports = {
