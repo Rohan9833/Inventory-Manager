@@ -148,15 +148,21 @@ const createSaleService = async (saleData, userId) => {
     // Step 6 - Create Inventory OUT
     // ===========================
 
-    const inventoryLogs = saleItems.map((item) => ({
-      product: item.product,
-      type: "OUT",
-      quantity: item.quantity,
-      note: "Product sold",
-      createdBy: userId,
-    }));
+    // ===========================
+    // Step 6 - Create Inventory OUT
+    // ===========================
 
-    await Inventory.create(inventoryLogs, { session });
+    for (const item of saleItems) {
+      const inventory = new Inventory({
+        product: item.product,
+        type: "OUT",
+        quantity: item.quantity,
+        note: "Product sold",
+        createdBy: userId,
+      });
+
+      await inventory.save({ session });
+    }
     // ===========================
     // Step 7 - Update Customer Balance
     // ===========================

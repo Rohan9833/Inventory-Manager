@@ -9,7 +9,7 @@ export const getSalesReport = async (params = {}) => {
     params,
   });
 
-  return response.data;
+  return response.data.data;
 };
 
 export const exportSalesReport = async (params = {}) => {
@@ -21,7 +21,7 @@ export const exportSalesReport = async (params = {}) => {
     }
   );
 
-  return response.data;
+  return response.data.data;
 };
 
 // ==========================
@@ -45,7 +45,7 @@ export const getInventoryReport = async (params = {}) => {
     params,
   });
 
-  return response.data;
+  return response.data.data;
 };
 
 // ==========================
@@ -57,7 +57,7 @@ export const getCustomerReport = async (params = {}) => {
     params,
   });
 
-  return response.data;
+  return response.data.data;
 };
 
 // ==========================
