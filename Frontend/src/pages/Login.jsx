@@ -27,9 +27,10 @@ function Login() {
 
       login(response.data);
 
-      navigate("/dashboard");
+      navigate("/home");
     } catch (error) {
       console.log(error.response?.data);
+      return(<><h1>{error.response?.data}</h1></>)
     }
   };
 

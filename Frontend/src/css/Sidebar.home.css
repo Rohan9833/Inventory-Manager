@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= HEADER ================= */
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1.5rem 2rem;
+}
+
+.home-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.home-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  flex-shrink: 0;
+}
+
+.home-header-content {
+  min-width: 0;
+}
+
+.home-header-content h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.home-header-content p {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* ================= BUTTONS ================= */
+
+.home-menu-btn,
+.home-notification-btn {
+  width: 3.25rem;
+  height: 3.25rem;
+  border: none;
+  /* outline: none; */
+  background: #fff;
+  /* border-radius: 1rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* flex-shrink: 0; */
+  /* box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .08); */
+  transition: 0.25s;
+}
+
+.home-menu-btn:hover,
+.home-notification-btn:hover,
+.home-profile-avatar:hover {
+  transform: translateY(-2px);
+}
+
+/* ================= PROFILE ================= */
+
+.home-profile-avatar {
+  width: 3.25rem;
+  height: 3.25rem;
+
+  border-radius: 50%;
+
+  background: #3968ff;
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+/* ================= OVERLAY ================= */
+
+.home-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  z-index: 998;
+}
+
+/* ================= SIDEBAR ================= */
+
+.home-sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 17rem;
+  height: 100vh;
+
+  background: linear-gradient(180deg, #153b82, #081b48);
+
+  color: #fff;
+
+  transform: translateX(-100%);
+  transition: 0.3s;
+
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.home-sidebar-open {
+  transform: translateX(0);
+}
+
+/* ================= LOGO ================= */
+
+.home-sidebar-logo {
+  padding: 2rem;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.home-sidebar-logo h2 {
+  font-size: 1.4rem;
+}
+
+.home-sidebar-logo p {
+  margin-top: 0.3rem;
+
+  font-size: 0.75rem;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  letter-spacing: 0.1rem;
+}
+
+/* ================= NAV ================= */
+
+.home-sidebar-nav {
+  flex: 1;
+
+  padding: 1rem;
+}
+
+.home-sidebar-list {
+  list-style: none;
+}
+
+.home-sidebar-item {
+  padding: 1rem 1.2rem;
+
+  border-radius: 0.8rem;
+
+  margin-bottom: 0.5rem;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+
+  font-size: 0.95rem;
+}
+
+.home-sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.home-sidebar-item-active {
+  background: #2f6dff;
+}
+
+/* ================= FOOTER ================= */
+
+.home-sidebar-footer {
+  padding: 1.2rem;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.home-sidebar-user {
+  display: flex;
+  align-items: center;
+
+  gap: 0.8rem;
+}
+
+.home-sidebar-avatar {
+  width: 2.8rem;
+  height: 2.8rem;
+
+  border-radius: 50%;
+
+  background: #3968ff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+}
+
+.home-sidebar-user-info h4 {
+  font-size: 0.95rem;
+}
+
+.home-sidebar-user-info p {
+  margin-top: 0.2rem;
+
+  font-size: 0.75rem;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
+  .home-header {
+    padding: 1.25rem;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .home-header {
+    padding: 1rem;
+  }
+
+  .home-header-content h2 {
+    font-size: 1rem;
+  }
+
+  .home-header-content p {
+    font-size: 0.8rem;
+  }
+
+  .home-menu-btn,
+  .home-notification-btn,
+  .home-profile-avatar {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .home-sidebar {
+    width: 16rem;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+  .home-header {
+    gap: 0.8rem;
+  }
+
+  .home-header-content h2 {
+    font-size: 0.9rem;
+  }
+
+  .home-header-content p {
+    font-size: 0.72rem;
+  }
+
+  .home-sidebar {
+    width: 85%;
+  }
+}

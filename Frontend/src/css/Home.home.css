@@ -1,0 +1,10 @@
+header{
+    display: flex;
+    justify-content: center;
+}
+.Home-Greetings{
+    font-size: 1.2rem;
+}
+.Home-intro{
+    display: inline-block;
+}

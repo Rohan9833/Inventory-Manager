@@ -1,0 +1,184 @@
+/* ===========================
+   STATS
+=========================== */
+
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  padding: 1rem;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.home-stat-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+
+  min-height: 8.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-shadow: 0 .35rem 1rem rgba(0,0,0,.06);
+}
+
+/* ===========================
+   TOP
+=========================== */
+
+.home-stat-top{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
+}
+
+.home-stat-icon{
+    width:2.8rem;
+    height:2.8rem;
+
+    border-radius:.8rem;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-shrink:0;
+}
+
+.home-stat-icon svg{
+    width:1.35rem;
+    height:1.35rem;
+}
+
+.home-stat-info h4{
+    font-size:.78rem;
+    color:#6b7280;
+    font-weight:500;
+}
+
+.home-stat-info h2{
+    margin-top:.2rem;
+
+    font-size:1.25rem;
+    font-weight:700;
+}
+
+/* ===========================
+   BOTTOM
+=========================== */
+
+.home-stat-bottom{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-top:.8rem;
+}
+
+.home-stat-change{
+
+    display:flex;
+    align-items:center;
+    gap:.2rem;
+
+    font-size:.72rem;
+    font-weight:600;
+}
+
+.home-stat-growth small{
+
+    display:block;
+
+    margin-top:.15rem;
+
+    font-size:.68rem;
+
+    color:#9ca3af;
+}
+
+.home-stat-chart{
+
+    width:3.5rem;
+    height:1.8rem;
+
+    border-radius:.3rem;
+
+    background:#f4f4f4;
+}
+
+/* ===========================
+   COLORS
+=========================== */
+
+.home-icon-green{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+.home-icon-blue{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.home-icon-purple{
+    background:#f3e8ff;
+    color:#9333ea;
+}
+
+.home-icon-orange{
+    background:#ffedd5;
+    color:#ea580c;
+}
+
+.home-icon-red{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.home-stat-green .home-stat-change{
+    color:#16a34a;
+}
+
+.home-stat-blue .home-stat-change{
+    color:#2563eb;
+}
+
+.home-stat-purple .home-stat-change{
+    color:#9333ea;
+}
+
+.home-stat-orange .home-stat-change{
+    color:#ea580c;
+}
+
+.home-stat-red .home-stat-change{
+    color:#dc2626;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (min-width:768px){
+
+    .home-stats{
+
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media (min-width:1200px){
+
+    .home-stats{
+
+        grid-template-columns:repeat(5,1fr);
+    }
+
+}

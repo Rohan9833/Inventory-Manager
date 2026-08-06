@@ -10,6 +10,8 @@ import Customer from "../pages/Customer";
 import Sale from "../pages/Sale";
 import Payment from "../pages/Payment";
 import Reports from "../pages/Reports"
+import Home from "../pages/Home"
+
 
 function AppRoutes() {
   return (
@@ -25,6 +27,8 @@ function AppRoutes() {
         <Route path="/sale" element={<Sale />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/home" element={<Home />} />
+
 
 
 
