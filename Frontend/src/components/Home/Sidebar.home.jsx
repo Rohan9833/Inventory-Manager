@@ -27,11 +27,11 @@ function Sidebar() {
           </div>
         </div>
 
-        <div className="home-header-right">
+        {/* <div className="home-header-right">
           <button className="home-notification-btn">🔔</button>
 
           <div className="home-profile-avatar">R</div>
-        </div>
+        </div> */}
       </header>
 
       {/* Sidebar */}

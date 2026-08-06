@@ -1,58 +1,76 @@
-/* ==========================
+/* ===========================
    QUICK ACTIONS
-========================== */
+=========================== */
 
 .home-actions {
-  margin: 1.5rem 1rem;
+  margin: 1rem;
+  padding: 1rem;
 
-  background: #fff;
+  background: #ffffff;
 
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
 
-  padding: 1.2rem;
-
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.06);
 }
 
 .home-actions-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
+
+  color: #111827;
 
   margin-bottom: 1rem;
 }
 
+/* ===========================
+   GRID
+=========================== */
+
 .home-actions-grid {
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
 }
 
+/* ===========================
+   CARD
+=========================== */
+
 .home-action-card {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 4.5rem;
+
   border: none;
+  border-radius: 0.9rem;
 
-  border-radius: 1rem;
-
-  color: white;
-
-  cursor: pointer;
-
-  padding: 1.2rem 0.5rem;
+  color: #ffffff;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  gap: 0.8rem;
+  gap: 0.4rem;
 
-  transition: 0.25s;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
 }
 
 .home-action-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-0.15rem);
 }
+
+.home-action-card:active {
+  transform: scale(0.97);
+}
+
+/* ===========================
+   ICON
+=========================== */
 
 .home-action-icon {
   display: flex;
@@ -60,47 +78,41 @@
   align-items: center;
 }
 
-.home-action-card p {
-  font-size: 0.95rem;
-  font-weight: 500;
+.home-action-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+
+  stroke-width: 2.2;
 }
 
-/* COLORS */
+/* ===========================
+   TEXT
+=========================== */
+
+.home-action-card p {
+  font-size: 0.72rem;
+  font-weight: 500;
+
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* ===========================
+   COLORS
+=========================== */
 
 .home-action-blue {
-  background: linear-gradient(135deg, #3b82f6, #4f46e5);
+  background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
 }
 
 .home-action-green {
-  background: linear-gradient(135deg, #34d399, #65a30d);
+  background: linear-gradient(135deg, #4ade80 0%, #65a30d 100%);
 }
 
 .home-action-orange {
-  background: linear-gradient(135deg, #fb923c, #f97316);
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
 }
 
 .home-action-purple {
-  background: linear-gradient(135deg, #a855f7, #7e22ce);
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 768px) {
-  .home-actions-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .home-actions {
-    margin: 1rem;
-  }
-
-  .home-action-card {
-    padding: 1rem;
-  }
-
-  .home-action-card p {
-    font-size: 0.85rem;
-  }
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
 }

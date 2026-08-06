@@ -1,0 +1,192 @@
+/* ==========================================
+   HOME BOTTOM SECTION
+========================================== */
+
+.home-bottom-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0.75rem;
+
+  margin: 1rem;
+}
+
+.home-bottom-card {
+  min-width: 0;
+
+  background: #ffffff;
+
+  border-radius: 1rem;
+
+  padding: 0.9rem;
+
+  box-shadow: 0 0.5rem 1.2rem rgba(15, 23, 42, 0.06);
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.home-bottom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 0.9rem;
+}
+
+.home-bottom-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.home-bottom-header button {
+  border: none;
+  background: transparent;
+
+  color: #2563eb;
+
+  cursor: pointer;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+/* ==========================================
+   LIST
+========================================== */
+
+.home-bottom-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-bottom-item {
+  display: flex;
+  align-items: center;
+
+  padding: 0.65rem 0;
+
+  border-bottom: 0.063rem solid #f1f5f9;
+}
+
+.home-bottom-item:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================
+   AVATAR
+========================================== */
+
+.home-bottom-avatar {
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 50%;
+
+  background: #e0e7ff;
+  color: #4f46e5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  margin-right: 0.55rem;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+/* ==========================================
+   INFO
+========================================== */
+
+.home-bottom-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.home-bottom-info h4 {
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  color: #111827;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-bottom-info p {
+  margin-top: 0.12rem;
+
+  font-size: 0.58rem;
+
+  color: #6b7280;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================
+   RIGHT
+========================================== */
+
+.home-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  flex-shrink: 0;
+}
+
+.home-bottom-right h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.home-badge-paid,
+.home-badge-pending,
+.home-badge-due,
+.home-badge-overdue {
+  margin-top: 0.22rem;
+
+  padding: 0.16rem 0.4rem;
+
+  border-radius: 0.35rem;
+
+  font-size: 0.5rem;
+  font-weight: 600;
+}
+
+.home-badge-paid {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.home-badge-pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.home-badge-due {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.home-badge-overdue {
+  background: #fee2e2;
+  color: #dc2626;
+}

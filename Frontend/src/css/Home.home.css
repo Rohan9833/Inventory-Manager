@@ -1,10 +1,18 @@
-header{
-    display: flex;
-    justify-content: center;
+.Home {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url("../assets/ACC.jpeg");
+
+  background-size: cover;
+  background-position: center;
 }
-.Home-Greetings{
-    font-size: 1.2rem;
+header {
+  display: flex;
+  justify-content: center;
 }
-.Home-intro{
-    display: inline-block;
+.Home-Greetings {
+  font-size: 1.2rem;
+}
+.Home-intro {
+  display: inline-block;
 }
