@@ -12,6 +12,6 @@ function Home() {
       <QuickActions/>
     </>
   );
-}
+}  
 
 export default Home;
