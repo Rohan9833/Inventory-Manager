@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../css/SaleForm.css";
+import { Trash2 } from "lucide-react";
 
 function SaleForm({ customers, products, onCreate }) {
   const [formData, setFormData] = useState({
@@ -149,7 +150,7 @@ function SaleForm({ customers, products, onCreate }) {
   };
   return (
     <>
-      <form className="sale-form">
+      <form onSubmit={handleSubmit} className="sale-form">
         <div className="sale-customer-card">
           <div className="sale-card-title">
             <h3>Customer</h3>
@@ -197,51 +198,38 @@ function SaleForm({ customers, products, onCreate }) {
               : 0;
 
             return (
-              <div key={index} className="sale-product-item-card">
+              <div className="sale-product-item-card" key={index}>
                 <div className="sale-product-top">
                   <div className="sale-product-select-wrapper">
-                    <label>Product {index + 1}</label>
+                    <label className="sale-product-label">
+                      Product {index + 1}
+                    </label>
 
-                    <select
-                      className="sale-product-select"
-                      value={item.product}
-                      onChange={(e) =>
-                        handleItemChange(index, "product", e.target.value)
-                      }
-                    >
-                      <option value="">Select Product</option>
+                    <div className="sale-product-select-row">
+                      <select
+                        className="sale-product-select"
+                        value={item.product}
+                        onChange={(e) =>
+                          handleItemChange(index, "product", e.target.value)
+                        }
+                      >
+                        <option value="">Select Product</option>
 
-                      {products.map((product) => (
-                        <option key={product._id} value={product.name}>
-                          {product.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                        {products.map((product) => (
+                          <option key={product._id} value={product.name}>
+                            {product.name}
+                          </option>
+                        ))}
+                      </select>
 
-                  <button
-                    type="button"
-                    className="sale-remove-product-btn"
-                    onClick={() => removeProduct(index)}
-                  >
-                    Remove
-                    {/* <Trash2 size={18}/> */}
-                  </button>
-                </div>
-
-                <div className="sale-product-middle">
-                  <div className="sale-quantity-wrapper">
-                    <label>Quantity</label>
-
-                    <input
-                      className="sale-product-quantity-input"
-                      type="number"
-                      min="1"
-                      value={item.quantity}
-                      onChange={(e) =>
-                        handleItemChange(index, "quantity", e.target.value)
-                      }
-                    />
+                      <button
+                        type="button"
+                        className="sale-remove-product-btn"
+                        onClick={() => removeProduct(index)}
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -254,6 +242,20 @@ function SaleForm({ customers, products, onCreate }) {
                     </div>
 
                     <div className="sale-product-info-box">
+                      <small>Qty</small>
+
+                      <input
+                        className="sale-product-quantity-input"
+                        type="number"
+                        min="1"
+                        value={item.quantity}
+                        onChange={(e) =>
+                          handleItemChange(index, "quantity", e.target.value)
+                        }
+                      />
+                    </div>
+
+                    <div className="sale-product-info-box">
                       <small>Total</small>
 
                       <h4>₹{itemTotal}</h4>
@@ -262,7 +264,9 @@ function SaleForm({ customers, products, onCreate }) {
                     <div className="sale-product-info-box">
                       <small>Stock</small>
 
-                      <h4>{selectedProduct.quantity}</h4>
+                      <h4 className="sale-stock-value">
+                        {selectedProduct.quantity}
+                      </h4>
                     </div>
                   </div>
                 )}
@@ -321,46 +325,65 @@ function SaleForm({ customers, products, onCreate }) {
         </div>
 
         {/* =========================
-        Summary
-========================= */}
+          Summary
+          ========================= */}
 
         <div className="sale-summary-card">
           <div className="sale-card-title">
-            <h3>Order Summary</h3>
+            <h3>Sale Summary</h3>
           </div>
 
           <div className="sale-summary-list">
+            {/* Row 1 */}
+
             <div className="sale-summary-item">
               <span>Subtotal</span>
-
               <strong>₹{subtotal}</strong>
             </div>
 
             <div className="sale-summary-item">
               <span>Discount</span>
-
-              <strong>₹{formData.discount}</strong>
+              <strong className="sale-summary-discount">
+                - ₹{formData.discount}
+              </strong>
             </div>
 
             <div className="sale-summary-item">
-              <span>Paid</span>
+              <span>Total</span>
+              <strong className="sale-summary-total">₹{totalAmount}</strong>
+            </div>
+
+            {/* Divider */}
+
+            {/* <div className="sale-summary-divider"></div> */}
+
+            {/* Row 2 */}
+
+            <div className="sale-summary-item">
+              <span>Paid Amount</span>
 
               <strong className="sale-paid-value">
                 ₹{formData.paidAmount}
               </strong>
             </div>
 
-            <div className="sale-summary-item sale-due-row">
+            <div className="sale-summary-item">
               <span>Due Amount</span>
 
               <strong className="sale-due-value">₹{dueAmount}</strong>
             </div>
-          </div>
 
-          <div className="sale-total-box">
-            <span>Total Amount</span>
+            <div className="sale-summary-item">
+              <span>Payment Status</span>
 
-            <h2>₹{totalAmount}</h2>
+              <strong
+                className={
+                  dueAmount > 0 ? "sale-payment-unpaid" : "sale-payment-paid"
+                }
+              >
+                {dueAmount > 0 ? "UNPAID" : "PAID"}
+              </strong>
+            </div>
           </div>
 
           <button className="sale-create-btn" type="submit">
@@ -370,195 +393,6 @@ function SaleForm({ customers, products, onCreate }) {
       </form>
     </>
   );
-
-  // return (
-  //   <form className="sale-form">
-  //     {/* Customer */}
-
-  //     <div className="sale-customer-container">
-  //       <label className="sale-customer-label">Customer</label>
-
-  //       <select
-  //         className="sale-customer-select"
-  //         name="customer"
-  //         value={formData.customer}
-  //         onChange={handleChange}
-  //       >
-  //         <option value="">Select Customer</option>
-
-  //         {customers.map((customer) => (
-  //           <option
-  //             key={customer._id}
-  //             value={customer.name}
-  //             className="sale-customer-option"
-  //           >
-  //             {customer.name}
-  //           </option>
-  //         ))}
-  //       </select>
-  //     </div>
-
-  //     <hr className="sale-divider" />
-
-  //     {/* Products */}
-
-  //     <div className="sale-products-container">
-  //       {formData.items.map((item, index) => {
-  //         const selectedProduct = products.find(
-  //           (product) => product.name === item.product,
-  //         );
-
-  //         const itemTotal = selectedProduct
-  //           ? selectedProduct.sellingPrice * item.quantity
-  //           : 0;
-
-  //         return (
-  //           <div key={index} className="sale-product-card">
-  //             <h4 className="sale-product-heading">Product {index + 1}</h4>
-
-  //             <select
-  //               className="sale-product-select"
-  //               value={item.product}
-  //               onChange={(e) =>
-  //                 handleItemChange(index, "product", e.target.value)
-  //               }
-  //             >
-  //               <option value="">Select Product</option>
-
-  //               {products.map((product) => (
-  //                 <option
-  //                   key={product._id}
-  //                   value={product.name}
-  //                   className="sale-product-option"
-  //                 >
-  //                   {product.name}
-  //                 </option>
-  //               ))}
-  //             </select>
-
-  //             <input
-  //               className="sale-product-quantity-input"
-  //               type="number"
-  //               min="1"
-  //               value={item.quantity}
-  //               onChange={(e) =>
-  //                 handleItemChange(index, "quantity", e.target.value)
-  //               }
-  //             />
-
-  //             {selectedProduct && (
-  //               <div className="sale-product-details">
-  //                 <p className="sale-product-price">
-  //                   Price : ₹{selectedProduct.sellingPrice}
-  //                 </p>
-
-  //                 <p className="sale-product-total">Total : ₹{itemTotal}</p>
-
-  //                 <p className="sale-product-stock">
-  //                   Stock : {selectedProduct.quantity}
-  //                 </p>
-  //               </div>
-  //             )}
-
-  //             <button
-  //               className="sale-remove-product-btn"
-  //               type="button"
-  //               onClick={() => removeProduct(index)}
-  //             >
-  //               Remove
-  //             </button>
-  //           </div>
-  //         );
-  //       })}
-
-  //       <button
-  //         className="sale-add-product-btn"
-  //         type="button"
-  //         onClick={addProduct}
-  //       >
-  //         + Add Product
-  //       </button>
-  //     </div>
-
-  //     <hr className="sale-divider" />
-
-  //     {/* Discount */}
-
-  //     <div className="sale-discount-container">
-  //       <label className="sale-discount-label">Discount</label>
-
-  //       <input
-  //         className="sale-discount-input"
-  //         type="number"
-  //         name="discount"
-  //         min="0"
-  //         value={formData.discount}
-  //         onChange={handleChange}
-  //       />
-  //     </div>
-
-  //     {/* Paid */}
-
-  //     <div className="sale-paid-container">
-  //       <label className="sale-paid-label">Paid Amount</label>
-
-  //       <input
-  //         className="sale-paid-input"
-  //         type="number"
-  //         name="paidAmount"
-  //         min="0"
-  //         value={formData.paidAmount}
-  //         onChange={handleChange}
-  //       />
-  //     </div>
-
-  //     {/* Note */}
-
-  //     <div className="sale-note-container">
-  //       <label className="sale-note-label">Note</label>
-
-  //       <textarea
-  //         className="sale-note-textarea"
-  //         name="note"
-  //         value={formData.note}
-  //         onChange={handleChange}
-  //         rows="3"
-  //       />
-  //     </div>
-
-  //     <hr className="sale-divider" />
-
-  //     {/* Summary */}
-
-  //     <div className="sale-summary-container">
-  //       <h3 className="sale-summary-heading">Summary</h3>
-
-  //       <p className="sale-summary-row">
-  //         <strong>Subtotal :</strong> ₹{subtotal}
-  //       </p>
-
-  //       <p className="sale-summary-row">
-  //         <strong>Discount :</strong> ₹{formData.discount}
-  //       </p>
-
-  //       <p className="sale-summary-row">
-  //         <strong>Total :</strong> ₹{totalAmount}
-  //       </p>
-
-  //       <p className="sale-summary-row">
-  //         <strong>Paid :</strong> ₹{formData.paidAmount}
-  //       </p>
-
-  //       <p className="sale-summary-row">
-  //         <strong>Due :</strong> ₹{dueAmount}
-  //       </p>
-
-  //       <button className="sale-create-btn" type="submit">
-  //         Create Sale
-  //       </button>
-  //     </div>
-  //   </form>
-  // );
 }
 
 export default SaleForm;

@@ -220,101 +220,237 @@
 /* ===========================
    Product CARD
 =========================== */
-.sale-products-card {
-  background: #ffffff; /* pehle se thoda clean */
+/* ===========================
+   PRODUCT CARD
+=========================== */
 
-  border-radius: 24px;
+.sale-product-item-card {
+  background: #fcfcfd;
 
-  padding: 20px;
+  border: 1px solid #eceef5;
 
-  border: 1px solid #eef1f6;
+  border-radius: 20px;
 
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  padding: 18px;
+
+  margin-top: 18px;
 }
-.sale-product-card {
-  margin-top: 16px;
 
-  background: #fcfcfd; /* ye sabse important */
+/* ===========================
+   TOP
+=========================== */
 
-  border: 1px solid #eceff5;
-
-  border-radius: 18px;
-
-  padding: 16px 18px; /* pehle 20 tha */
+.sale-product-top {
+  margin-bottom: 18px;
 }
+
+.sale-product-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #111827;
+}
+
+/* ===========================
+   SELECT + DELETE
+=========================== */
+
+.sale-product-select-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
 .sale-product-select {
-  width: 100%;
+  flex: 1;
 
-  height: 46px; /* pehle 56px tha */
+  height: 46px;
 
   padding: 0 14px;
 
-  border-radius: 14px;
-
   border: 1px solid #e7ebf2;
 
-  background: #fcfcfd; /* pure white mat rakho */
+  border-radius: 14px;
 
-  color: #334155;
+  background: #fcfcfd;
 
   font-size: 15px;
+
+  color: #334155;
 
   outline: none;
 
   transition: 0.25s;
 }
-.sale-product-select:focus {
-  background: #ffffff;
 
+.sale-product-select:focus {
   border-color: #5b4cf5;
+
+  background: white;
 
   box-shadow: 0 0 0 4px rgba(91, 76, 245, 0.08);
 }
-.sale-product-quantity {
-  width: 100%;
+
+.sale-remove-product-btn {
+  width: 46px;
 
   height: 46px;
 
+  flex-shrink: 0;
+
+  border: none;
+
   border-radius: 14px;
+
+  background: #fef2f2;
+
+  color: #ef4444;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.sale-remove-product-btn:hover {
+  background: #fee2e2;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.sale-product-footer {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+.sale-product-info-box {
+  background: white;
+
+  border: 1px solid #eceef5;
+
+  border-radius: 14px;
+
+  padding: 14px 10px;
+
+  text-align: center;
+}
+
+.sale-product-info-box small {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+.sale-product-info-box h4 {
+  margin: 0;
+
+  font-size: 22px;
+
+  color: #111827;
+
+  font-weight: 700;
+}
+
+/* ===========================
+   QTY INPUT
+=========================== */
+
+.sale-product-quantity-input {
+  width: 60px;
+
+  height: 36px;
+
+  text-align: center;
 
   border: 1px solid #e7ebf2;
 
+  border-radius: 10px;
+
   background: #fcfcfd;
 
-  padding: 0 14px;
+  font-size: 16px;
 
-  font-size: 15px;
+  font-weight: 600;
+
+  outline: none;
 }
-.sale-stat-box {
-  background: #fcfcfd;
 
-  border: 1px solid #eef1f6;
-
-  border-radius: 14px;
-
-  padding: 12px;
+.sale-product-quantity-input:focus {
+  border-color: #5b4cf5;
 }
-.sale-product-info label {
-  font-size: 13px;
 
-  color: #94a3b8;
+/* Chrome arrows */
+.sale-product-quantity-input::-webkit-inner-spin-button,
+.sale-product-quantity-input::-webkit-outer-spin-button {
+  opacity: 1;
+}
 
-  margin-bottom: 6px;
+/* ===========================
+   STOCK
+=========================== */
+
+.sale-stock-value {
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  background: #dcfce7;
+
+  color: #16a34a !important;
+
+  border-radius: 10px;
+
+  font-size: 18px;
+
+  font-weight: 700;
 }
 .sale-add-product-btn {
   height: 44px;
 
-  padding: 0 16px;
+  padding: 0 18px;
 
-  border: none;
+  display: flex;
 
-  border-radius: 12px;
+  align-items: center;
 
-  background: #eef2ff;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 2px solid #7c6cf8;
+
+  border-radius: 14px;
+
+  background: #ffffff;
 
   color: #5b4cf5;
 
-  font-size: 14px;
+  font-size: 15px;
 
   font-weight: 600;
 
@@ -324,9 +460,478 @@
 }
 
 .sale-add-product-btn:hover {
-  background: #e0e7ff;
+  background: #f7f5ff;
+
+  border-color: #5b4cf5;
 }
 
 .sale-add-product-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
+}
+.sale-products-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.sale-products-title {
+  margin-left: 4px;
+}
+
+.sale-add-product-btn {
+  margin-right: 4px;
+}
+.sale-products-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.sale-products-title h3 {
+  margin: 0;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.sale-products-title span {
+  width: 24px;
+
+  height: 24px;
+
+  border-radius: 8px;
+
+  background: #5b4cf5;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+.sale-products-card {
+  padding: 20px;
+}
+
+/* ==========================
+   DETAILS CARD
+========================== */
+
+.sale-details-card {
+  background: #ffffff;
+
+  border: 1px solid #eceef5;
+
+  border-radius: 22px;
+
+  padding: 20px;
+
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.sale-card-title {
+  margin-bottom: 20px;
+}
+
+.sale-card-title h3 {
+  margin: 0;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  color: #111827;
+}
+
+/* ==========================
+   GRID
+========================== */
+
+.sale-details-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+/* ==========================
+   INPUT GROUP
+========================== */
+
+.sale-input-group {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.sale-input-group label {
+  margin-bottom: 8px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #6b7280;
+}
+
+/* ==========================
+   INPUT
+========================== */
+
+.sale-discount-input,
+.sale-paid-input {
+  width: 100%;
+
+  height: 52px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  background: #fcfcfd;
+
+  padding: 0 16px;
+
+  font-size: 18px;
+
+  color: #111827;
+
+  outline: none;
+
+  transition: 0.25s;
+}
+
+.sale-discount-input:focus,
+.sale-paid-input:focus {
+  background: white;
+
+  border-color: #5b4cf5;
+
+  box-shadow: 0 0 0 4px rgba(91, 76, 245, 0.08);
+}
+
+/* ==========================
+   NOTE
+========================== */
+
+.sale-note-group {
+  margin-top: 2px;
+}
+
+.sale-note-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #6b7280;
+}
+
+.sale-note-textarea {
+  width: 100%;
+
+  min-height: 110px;
+
+  resize: none;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  background: #fcfcfd;
+
+  padding: 16px;
+
+  font-size: 16px;
+
+  color: #111827;
+
+  outline: none;
+
+  transition: 0.25s;
+}
+
+.sale-note-textarea:focus {
+  background: white;
+
+  border-color: #5b4cf5;
+
+  box-shadow: 0 0 0 4px rgba(91, 76, 245, 0.08);
+}
+
+.sale-note-textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+  .sale-details-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+  }
+
+  .sale-card-title h3 {
+    font-size: 18px;
+  }
+
+  .sale-discount-input,
+  .sale-paid-input {
+    height: 48px;
+
+    font-size: 16px;
+  }
+
+  .sale-note-textarea {
+    min-height: 95px;
+
+    font-size: 15px;
+  }
+} /* ==========================
+   SUMMARY CARD
+========================== */
+
+.sale-summary-card {
+  background: #f8f7ff;
+
+  border: 1px solid #e7e3ff;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  box-shadow: 0 8px 24px rgba(91, 76, 245, 0.05);
+}
+
+/* ==========================
+   SUMMARY GRID
+========================== */
+
+.sale-summary-list {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 28px 20px;
+
+  padding-bottom: 22px;
+
+  margin-bottom: 20px;
+
+  border-bottom: 2px dashed #e7e3ff;
+}
+
+/* ==========================
+   ITEMS
+========================== */
+
+.sale-summary-item {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.sale-summary-item span {
+  font-size: 15px;
+
+  color: #6b7280;
+
+  font-weight: 500;
+}
+
+.sale-summary-item strong {
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #111827;
+}
+
+/* ==========================
+   COLORS
+========================== */
+
+.sale-paid-value {
+  color: #22c55e !important;
+}
+
+.sale-due-value {
+  color: #ef4444 !important;
+}
+
+.sale-payment-unpaid {
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  width: 100px;
+
+  height: 38px;
+
+  border-radius: 999px;
+
+  background: #fee2e2;
+
+  color: #ef4444 !important;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.sale-payment-paid {
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  width: 90px;
+
+  height: 38px;
+
+  border-radius: 999px;
+
+  background: #dcfce7;
+
+  color: #16a34a !important;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+/* ==========================
+   TOTAL
+========================== */
+
+.sale-total-box {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin: 22px 0;
+}
+
+.sale-total-box span {
+  font-size: 16px;
+
+  color: #6b7280;
+
+  font-weight: 500;
+}
+
+.sale-total-box h2 {
+  margin: 0;
+
+  font-size: 38px;
+
+  color: #5b4cf5;
+
+  font-weight: 700;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.sale-create-btn {
+  width: 100%;
+
+  height: 56px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: linear-gradient(90deg, #4f46e5, #5b4cf5);
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  box-shadow: 0 10px 25px rgba(91, 76, 245, 0.22);
+}
+
+.sale-create-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 16px 32px rgba(91, 76, 245, 0.28);
+}
+
+.sale-create-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+  .sale-summary-list {
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px 12px;
+  }
+
+  .sale-summary-item span {
+    font-size: 13px;
+  }
+
+  .sale-summary-item strong {
+    font-size: 16px;
+  }
+
+  .sale-total-box h2 {
+    font-size: 30px;
+  }
+
+  .sale-payment-unpaid,
+  .sale-payment-paid {
+    width: 88px;
+
+    height: 34px;
+
+    font-size: 12px;
+  }
 }
