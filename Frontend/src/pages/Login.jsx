@@ -23,7 +23,6 @@ function Login() {
     try {
       const response = await loginUser(formData);
 
-      console.log(response);
 
       login(response.data);
 

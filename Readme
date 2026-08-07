@@ -1,0 +1,313 @@
+# 📦 Inventory Management System
+
+A modern Inventory Management System built using the MERN Stack to help businesses manage products, sales, customers, payments, and inventory from a single dashboard.
+
+---
+
+# 🚀 Project Overview
+
+This application is designed for shop owners and small businesses to manage their complete inventory lifecycle.
+
+The system provides a real-time dashboard where the owner can instantly see:
+
+- Today's Sales
+- Monthly Revenue
+- Total Products
+- Customers
+- Pending Payments
+- Low Stock Alerts
+- Recent Sales
+- Inventory Status
+
+Instead of manually maintaining Excel sheets, every inventory operation is updated automatically.
+
+---
+
+# 🎯 Project Goal
+
+The main objective is to build a fast, secure, and user-friendly inventory management application that can:
+
+- Track stock
+- Record sales
+- Manage customers
+- Track pending payments
+- Generate reports
+- Visualize business growth
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React.js
+- React Router
+- Axios
+- Context API
+- CSS3
+- Recharts
+
+## Backend
+
+- Node.js
+- Express.js
+- JWT Authentication
+- bcryptjs
+
+## Database
+
+- MongoDB
+- Mongoose
+
+---
+
+# 📂 Modules
+
+## Authentication
+
+- Secure Login
+- JWT Authentication
+- Protected Routes
+- Auto Login
+- Logout
+
+---
+
+## Dashboard
+
+The dashboard gives a complete overview of the business.
+
+### Dashboard Cards
+
+- Today's Sales
+- Total Products
+- Monthly Sales
+- Customers
+- Pending Payments
+
+Each card contains
+
+- Current Value
+- Growth Percentage
+- Small Trend Graph
+
+---
+
+## Sales Module
+
+Features
+
+- Create Sale
+- Multiple Products in One Sale
+- Automatic Stock Deduction
+- Invoice Number
+- Payment Status
+- Sale History
+
+---
+
+## Product Module
+
+Features
+
+- Add Product
+- Edit Product
+- Delete Product
+- Soft Delete
+- Category Selection
+- Stock Quantity
+- Cost Price
+- Selling Price
+
+---
+
+## Category Module
+
+Features
+
+- Create Category
+- Edit Category
+- Delete Category
+
+---
+
+## Customer Module
+
+Features
+
+- Add Customer
+- Customer Details
+- Pending Balance
+- Purchase History
+
+---
+
+## Payment Module
+
+Features
+
+- Receive Payment
+- Partial Payment
+- Payment History
+- Customer Balance Update
+
+---
+
+## Reports
+
+- Daily Sales
+- Monthly Sales
+- Revenue Report
+- Inventory Report
+- Customer Report
+
+---
+
+# 📊 Dashboard Sections
+
+## Greeting Section
+
+Displays
+
+Good Morning, User
+
+along with today's date.
+
+---
+
+## Statistics Cards
+
+Shows important business metrics.
+
+- Today's Sales
+- Total Products
+- Monthly Revenue
+- Customers
+- Pending Payments
+
+---
+
+## Sales Overview
+
+A line chart displaying revenue growth.
+
+User can filter by
+
+- Weekly
+- Monthly
+- Yearly
+
+---
+
+## Inventory Status
+
+A Doughnut Chart displaying
+
+🟢 In Stock
+
+🟡 Low Stock
+
+🔴 Out of Stock
+
+---
+
+## Quick Actions
+
+Quick buttons
+
+- New Sale
+- Add Product
+- Add Customer
+- Receive Payment
+
+---
+
+## Recent Sales
+
+Shows latest invoices.
+
+Information includes
+
+- Customer Name
+- Invoice Number
+- Amount
+- Payment Status
+
+---
+
+## Low Stock Alerts
+
+Displays products that are about to run out.
+
+Example
+
+- Wireless Mouse
+- HDMI Cable
+- Mechanical Keyboard
+
+---
+
+# 🔐 Security
+
+- JWT Authentication
+- Password Hashing
+- Protected APIs
+- Input Validation
+- Error Handling
+
+---
+
+# 📱 UI Features
+
+- Responsive Design
+- Mobile Friendly
+- Clean Dashboard
+- Modern Cards
+- Charts
+- Soft Shadows
+- Gradient Buttons
+- Smooth Animations
+
+---
+
+# 📈 Future Improvements
+
+- Barcode Scanner
+- QR Code Support
+- Excel Import/Export
+- PDF Invoice
+- GST Billing
+- Email Invoice
+- Dark Mode
+- Multi User Support
+- Analytics
+- Notifications
+- Backup & Restore
+
+---
+
+# 📸 Dashboard Preview
+
+The dashboard contains
+
+✔ Business Summary
+
+✔ Revenue Analytics
+
+✔ Inventory Analytics
+
+✔ Recent Sales
+
+✔ Low Stock Alerts
+
+✔ Quick Actions
+
+making inventory management simple, fast, and efficient.
+
+---
+
+# 👨‍💻 Author
+
+Developed by **Rohan Pal**
+
+Built as a complete MERN Stack Inventory Management Project.

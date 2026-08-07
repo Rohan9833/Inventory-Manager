@@ -168,10 +168,10 @@ function Sale() {
         onCreate={handleCreate}
       />
 
-      <SaleTable
+      {/* <SaleTable
         sales={sales}
         loading={loading}
-      />
+      /> */}
 
     </div>
   );

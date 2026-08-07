@@ -6,9 +6,15 @@ import {
   Wallet,
   TrendingUp,
 } from "lucide-react";
-import "../../css/StatsCards.home.css"
+import "../../css/StatsCards.home.css";
+import { useState, useEffect } from "react";
+import { getDashboard } from "../../api/dashboard.api";
 
 function StatsCards() {
+  const [Loading, setLoading] = useState(true);
+  const [dashboard, setDashboard] = useState(null);
+  const [Error, setError] = useState(null);
+
   const cards = [
     {
       title: "Today's Sales",
@@ -17,6 +23,7 @@ function StatsCards() {
       subtitle: "vs yesterday",
       icon: <IndianRupee size={28} />,
       color: "green",
+      key: "todayRevenue",
     },
     {
       title: "Total Products",
@@ -25,14 +32,16 @@ function StatsCards() {
       subtitle: "vs last month",
       icon: <Boxes size={28} />,
       color: "blue",
+      key: "totalProducts",
     },
     {
-      title: "Total Sales (July)",
+      title: "Monthly Sales (July)",
       value: "₹1,25,430",
       change: "15.7%",
       subtitle: "vs last month",
       icon: <ShoppingCart size={28} />,
       color: "purple",
+      key: "monthlyRevenue",
     },
     {
       title: "Customers",
@@ -41,6 +50,7 @@ function StatsCards() {
       subtitle: "vs last month",
       icon: <Users size={28} />,
       color: "orange",
+      key: "totalCustomers",
     },
     {
       title: "Pending Payments",
@@ -49,13 +59,34 @@ function StatsCards() {
       subtitle: "vs last month",
       icon: <Wallet size={28} />,
       color: "red",
+      key: "pendingAmount",
     },
   ];
 
+  const fetchDashboard = async () => {
+    try {
+      const data = await getDashboard();
+      setDashboard(data.data);
+      setLoading(false);
+    } catch (error) {
+      setError(error.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchDashboard();
+  }, []);
+  if (Loading) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <section className="home-stats">
-      {cards.map((card, index) => (
-        <div key={index} className={`home-stat-card home-stat-${card.color}`}>
+      {cards.map((card) => (
+        <div
+          key={card.key}
+          className={`home-stat-card home-stat-${card.color}`}
+        >
           <div className="home-stat-top">
             <div className={`home-stat-icon home-icon-${card.color}`}>
               {card.icon}
@@ -63,7 +94,7 @@ function StatsCards() {
 
             <div className="home-stat-info">
               <h4>{card.title}</h4>
-              <h2>{card.value}</h2>
+              <h2>{dashboard[card.key]}</h2>
             </div>
           </div>
 

@@ -43,7 +43,6 @@ function Dashboard() {
     setLoading(true);
     try {
       const data = await getDashboard();
-      console.log(data);
       setDashboard(data.data);
     } catch (error) {
       setError(error.response?.data?.message || "Something went wrong");
