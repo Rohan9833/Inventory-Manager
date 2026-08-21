@@ -1,127 +1,231 @@
-function SaleTable({
-  sales = [],
-  loading,
-}) {
+import { useState } from "react";
+// import "./SaleTable.css";
+
+function SaleTable({ sales = [], loading }) {
+  const [visibleColumns, setVisibleColumns] = useState({
+    customer: true,
+
+    products: true,
+  
+    subtotal: false,
+
+    discount: false,
+
+    total: true,
+
+    paid: true,
+
+    due: true,
+
+    status: true,
+
+    date: false,
+  });
+
+  const columns = [
+    {
+      key: "customer",
+      label: "Customer",
+    },
+
+    {
+      key: "products",
+      label: "Products",
+    },
+
+    {
+      key: "subtotal",
+      label: "Subtotal",
+    },
+
+    {
+      key: "discount",
+      label: "Discount",
+    },
+
+    {
+      key: "total",
+      label: "Total",
+    },
+
+    {
+      key: "paid",
+      label: "Paid",
+    },
+
+    {
+      key: "due",
+      label: "Due",
+    },
+
+    {
+      key: "status",
+      label: "Status",
+    },
+
+    {
+      key: "date",
+      label: "Date",
+    },
+  ];
+
   if (loading) {
-    return <h3>Loading...</h3>;
+    return <h2 className="sale-table-loading">Loading...</h2>;
   }
 
   if (!Array.isArray(sales) || sales.length === 0) {
-    return <h3>No Sales Found.</h3>;
+    return <h2 className="sale-table-empty">No Sales Found.</h2>;
   }
 
   return (
-    <div>
-      <h2>Sale History</h2>
+    <>
+      <div className="sale-table-container">
+        <div className="sale-table-top">
+          <div className="sale-table-title">
+            <h2>Sale History</h2>
 
-      <table
-        border="1"
-        cellPadding="8"
-        cellSpacing="0"
-      >
-        <thead>
-          <tr>
-            <th>Customer</th>
-            <th>Products</th>
-            <th>Subtotal</th>
-            <th>Discount</th>
-            <th>Total</th>
-            <th>Paid</th>
-            <th>Due</th>
-            <th>Status</th>
-            <th>Date</th>
-          </tr>
-        </thead>
+            <p>Manage all your sales</p>
+          </div>
 
-        <tbody>
-          {sales.map((sale) => (
-            <tr key={sale._id}>
-              {/* Customer */}
+          <div className="sale-table-column-selector">
+            <h4>Visible Columns</h4>
 
-              <td>
-                {sale.customer?.name}
-              </td>
+            <div className="sale-table-checkbox-grid">
+              {columns.map((column) => (
+                <label key={column.key} className="sale-table-checkbox-item">
+                  <input
+                    type="checkbox"
+                    checked={visibleColumns[column.key]}
+                    onChange={() =>
+                      setVisibleColumns((prev) => ({
+                        ...prev,
+                        [column.key]: !prev[column.key],
+                      }))
+                    }
+                  />
 
-              {/* Products */}
+                  <span>{column.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </div>
 
-              <td>
-                {sale.items.map(
-                  (item, index) => (
-                    <div key={index}>
-                      {item.product?.name}
-                      {" × "}
-                      {item.quantity}
-                    </div>
-                  )
-                )}
-              </td>
+        <div className="sale-table-wrapper">
+          <table className="sale-table">
+            <thead>
+              <tr>
+                {columns
+                  .filter((column) => visibleColumns[column.key])
+                  .map((column) => (
+                    <th key={column.key}>{column.label}</th>
+                  ))}
+              </tr>
+            </thead>
 
-              {/* Amounts */}
+            <tbody>
+              {" "}
+              {sales.map((sale) => (
+                <tr key={sale._id}>
+                  {columns
+                    .filter((column) => visibleColumns[column.key])
+                    .map((column) => {
+                      switch (column.key) {
+                        case "customer":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              {sale.customer?.name}
+                            </td>
+                          );
 
-              <td>
-                ₹{sale.subtotal}
-              </td>
+                        case "products":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              <div className="sale-table-products">
+                                {sale.items.map((item, index) => (
+                                  <div
+                                    key={index}
+                                    className="sale-table-product-item"
+                                  >
+                                    {item.product?.name}
+                                    {" × "}
+                                    {item.quantity}
+                                  </div>
+                                ))}
+                              </div>
+                            </td>
+                          );
 
-              <td>
-                ₹{sale.discount}
-              </td>
+                        case "subtotal":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              ₹{sale.subtotal}
+                            </td>
+                          );
 
-              <td>
-                ₹{sale.totalAmount}
-              </td>
+                        case "discount":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              ₹{sale.discount}
+                            </td>
+                          );
 
-              <td>
-                ₹{sale.paidAmount}
-              </td>
+                        case "total":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              ₹{sale.totalAmount}
+                            </td>
+                          );
 
-              <td>
-                ₹{sale.dueAmount}
-              </td>
+                        case "paid":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              ₹{sale.paidAmount}
+                            </td>
+                          );
 
-              {/* Payment Status */}
+                        case "due":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              ₹{sale.dueAmount}
+                            </td>
+                          );
 
-              <td>
-                {sale.paymentStatus ===
-                "PAID" ? (
-                  <span
-                    style={{
-                      color: "green",
-                    }}
-                  >
-                    Paid
-                  </span>
-                ) : sale.paymentStatus ===
-                  "PARTIAL" ? (
-                  <span
-                    style={{
-                      color: "orange",
-                    }}
-                  >
-                    Partial
-                  </span>
-                ) : (
-                  <span
-                    style={{
-                      color: "red",
-                    }}
-                  >
-                    Unpaid
-                  </span>
-                )}
-              </td>
+                        case "status":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              <span
+                                className={`sale-table-status ${
+                                  sale.paymentStatus === "PAID"
+                                    ? "sale-table-status-paid"
+                                    : sale.paymentStatus === "PARTIAL"
+                                      ? "sale-table-status-partial"
+                                      : "sale-table-status-unpaid"
+                                }`}
+                              >
+                                {sale.paymentStatus}
+                              </span>
+                            </td>
+                          );
 
-              {/* Date */}
+                        case "date":
+                          return (
+                            <td key={column.key} className="sale-table-cell">
+                              {new Date(sale.createdAt).toLocaleString()}
+                            </td>
+                          );
 
-              <td>
-                {new Date(
-                  sale.createdAt
-                ).toLocaleString()}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+                        default:
+                          return null;
+                      }
+                    })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
 }
 
