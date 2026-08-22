@@ -8,8 +8,7 @@ import "../css/Home.home.css";
 function Home() {
   return (
     <>
-      <div className="Home">
-        <Sidebar />
+      <div className="">
         <StatsCards />
         <QuickActions />
         <HomeBottom />

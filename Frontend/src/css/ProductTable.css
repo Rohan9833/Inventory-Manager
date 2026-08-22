@@ -1,0 +1,557 @@
+/* =========================================
+   PRODUCT TABLE
+========================================= */
+
+.product-table-container {
+  width: 100%;
+  margin-top: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.product-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 24px;
+
+  border-bottom: 1px solid #eef0f3;
+}
+
+.product-table-header h2 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+}
+
+.product-table-header p {
+  margin: 5px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.product-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.product-table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.product-table-wrapper::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.product-table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.product-table {
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.product-table thead {
+  background: #f8fafc;
+}
+
+.product-table th {
+  height: 45px;
+
+  padding: 0 16px;
+
+  color: #64748b;
+
+  text-align: left;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+.product-table tbody tr {
+  background: #ffffff;
+
+  transition: background 0.2s ease;
+}
+
+.product-table tbody tr:hover {
+  background: #fffaf5;
+}
+
+.product-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   CELLS
+========================================= */
+
+.product-table td {
+  height: 52px;
+
+  padding: 0 16px;
+
+  color: #475569;
+
+  font-size: 13px;
+
+  border-bottom: 1px solid #f1f5f9;
+
+  white-space: nowrap;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.product-table th:first-child,
+.product-table td:first-child {
+  width: 45px;
+
+  color: #94a3b8;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   PRODUCT NAME
+========================================= */
+
+.product-table .product-name {
+  color: #172033;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.product-table td:nth-child(3) {
+  color: #64748b;
+}
+
+
+/* =========================================
+   PRICES
+========================================= */
+
+.product-table td:nth-child(4),
+.product-table td:nth-child(5) {
+  color: #334155;
+
+  font-weight: 600;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================
+   QUANTITY
+========================================= */
+
+.product-table td:nth-child(6) {
+  color: #334155;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.product-status {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 6px;
+
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+}
+
+
+/* Active */
+
+.product-status.active {
+  color: #15803d;
+
+  background: #f0fdf4;
+}
+
+.product-status.active .status-dot {
+  background: #22c55e;
+
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
+}
+
+
+/* Deleted */
+
+.product-status.deleted {
+  color: #dc2626;
+
+  background: #fef2f2;
+}
+
+.product-status.deleted .status-dot {
+  background: #ef4444;
+
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.product-actions {
+  min-width: 155px;
+}
+
+.product-actions button {
+  height: 31px;
+
+  padding: 0 10px;
+
+  margin-right: 6px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.product-actions button:hover {
+  transform: translateY(-1px);
+}
+
+
+/* Edit */
+
+.product-edit-btn {
+  background: #fff7ed;
+
+  border: 1px solid #fed7aa;
+
+  color: #ea580c;
+}
+
+.product-edit-btn:hover {
+  background: #ffedd5;
+
+  border-color: #fdba74;
+}
+
+
+/* Delete */
+
+.product-delete-btn {
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  color: #dc2626;
+}
+
+.product-delete-btn:hover {
+  background: #fee2e2;
+
+  border-color: #fca5a5;
+}
+
+
+/* Restore */
+
+.product-restore-btn {
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+
+  color: #16a34a;
+}
+
+.product-restore-btn:hover {
+  background: #dcfce7;
+
+  border-color: #86efac;
+}
+
+
+/* =========================================
+   LOADING / EMPTY
+========================================= */
+
+.product-table-state {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 180px;
+
+  margin: 24px 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+  .product-table-container {
+    border-radius: 14px;
+  }
+
+  .product-table-header {
+    padding: 17px 18px;
+  }
+
+  .product-table-header h2 {
+    font-size: 18px;
+  }
+
+  .product-table-header p {
+    font-size: 11px;
+  }
+
+  .product-table th {
+    height: 42px;
+
+    padding: 0 13px;
+
+    font-size: 10px;
+  }
+
+  .product-table td {
+    height: 48px;
+
+    padding: 0 13px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .product-table-container {
+    margin-top: 18px;
+
+    border-radius: 12px;
+  }
+
+  .product-table-header {
+    padding: 14px 15px;
+  }
+
+  .product-table-header h2 {
+    font-size: 16px;
+  }
+
+  .product-table-header p {
+    margin-top: 3px;
+
+    font-size: 10px;
+  }
+
+  /*
+     Don't squeeze all 8 columns.
+     Keep a comfortable table width and
+     allow horizontal scrolling.
+  */
+
+  .product-table {
+    min-width: 760px;
+  }
+
+  .product-table th {
+    height: 40px;
+
+    padding: 0 11px;
+
+    font-size: 9px;
+  }
+
+  .product-table td {
+    height: 45px;
+
+    padding: 0 11px;
+
+    font-size: 11px;
+  }
+
+  .product-status {
+    padding: 4px 7px;
+
+    font-size: 9px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .product-actions {
+    min-width: 135px;
+  }
+
+  .product-actions button {
+    height: 28px;
+
+    padding: 0 8px;
+
+    margin-right: 4px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media (max-width: 400px) {
+  .product-table-header {
+    padding: 13px 14px;
+  }
+
+  .product-table-header h2 {
+    font-size: 15px;
+  }
+
+  .product-table-header p {
+    font-size: 9px;
+  }
+
+  .product-table {
+    min-width: 740px;
+  }
+
+  .product-table th {
+    height: 38px;
+
+    padding: 0 10px;
+
+    font-size: 8.5px;
+  }
+
+  .product-table td {
+    height: 43px;
+
+    padding: 0 10px;
+
+    font-size: 10.5px;
+  }
+
+  .product-status {
+    padding: 4px 6px;
+
+    font-size: 8.5px;
+  }
+
+  .product-actions button {
+    height: 27px;
+
+    padding: 0 7px;
+
+    font-size: 8.5px;
+  }
+}

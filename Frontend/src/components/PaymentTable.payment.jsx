@@ -1,3 +1,5 @@
+import "../css/PaymentTable.css";
+
 function PaymentTable({
   payments = [],
   loading,
@@ -5,14 +7,22 @@ function PaymentTable({
   onDelete,
 }) {
   if (loading) {
-    return <h3>Loading...</h3>;
+    return (
+      <div className="payment-table-state">
+        <h3>Loading Payments...</h3>
+      </div>
+    );
   }
 
   if (
     !Array.isArray(payments) ||
     payments.length === 0
   ) {
-    return <h3>No Payments Found.</h3>;
+    return (
+      <div className="payment-table-state">
+        <h3>No Payments Found.</h3>
+      </div>
+    );
   }
 
   const handleDelete = (id) => {
@@ -26,87 +36,141 @@ function PaymentTable({
   };
 
   return (
-    <div>
-      <h2>Payment History</h2>
+    <div className="payment-table-container">
 
-      <table
-        border="1"
-        cellPadding="8"
-        cellSpacing="0"
-      >
-        <thead>
-          <tr>
-            <th>Customer</th>
-            <th>Amount</th>
-            <th>Method</th>
-            <th>Note</th>
-            <th>Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      {/* =========================
+          HEADER
+      ========================= */}
 
-        <tbody>
-          {payments.map((payment) => (
-            <tr key={payment._id}>
-              {/* Customer */}
+      <div className="payment-table-header">
+        <div>
+          <h2 className="payment-table-title">
+            Payment History
+          </h2>
 
-              <td>
-                {payment.customer?.name}
-              </td>
+          <p className="payment-table-subtitle">
+            Manage all customer payments
+          </p>
+        </div>
 
-              {/* Amount */}
+        <div className="payment-table-count">
+          {payments.length}{" "}
+          {payments.length === 1
+            ? "Payment"
+            : "Payments"}
+        </div>
+      </div>
 
-              <td>
-                ₹{payment.amount}
-              </td>
+      {/* =========================
+          TABLE SCROLL
+      ========================= */}
 
-              {/* Method */}
+      <div className="payment-table-scroll">
+        <table className="payment-table">
 
-              <td>
-                {payment.paymentMethod}
-              </td>
-
-              {/* Note */}
-
-              <td>
-                {payment.note || "-"}
-              </td>
-
-              {/* Date */}
-
-              <td>
-                {new Date(
-                  payment.createdAt
-                ).toLocaleString()}
-              </td>
-
-              {/* Actions */}
-
-              <td>
-                <button
-                  onClick={() =>
-                    onEdit(payment)
-                  }
-                >
-                  Edit
-                </button>
-
-                {" "}
-
-                <button
-                  onClick={() =>
-                    handleDelete(
-                      payment._id
-                    )
-                  }
-                >
-                  Delete
-                </button>
-              </td>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Note</th>
+              <th>Date</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {payments.map((payment) => (
+              <tr key={payment._id}>
+
+                {/* Customer */}
+
+                <td>
+                  <div className="payment-table-customer">
+                    <div className="payment-table-avatar">
+                      {payment.customer?.name
+                        ?.charAt(0)
+                        ?.toUpperCase() || "?"}
+                    </div>
+
+                    <span>
+                      {payment.customer?.name || "-"}
+                    </span>
+                  </div>
+                </td>
+
+                {/* Amount */}
+
+                <td>
+                  <span className="payment-table-amount">
+                    ₹{payment.amount}
+                  </span>
+                </td>
+
+                {/* Method */}
+
+                <td>
+                  <span
+                    className={`payment-table-method payment-table-method-${payment.paymentMethod?.toLowerCase()}`}
+                  >
+                    {payment.paymentMethod}
+                  </span>
+                </td>
+
+                {/* Note */}
+
+                <td>
+                  <span className="payment-table-note">
+                    {payment.note || "-"}
+                  </span>
+                </td>
+
+                {/* Date */}
+
+                <td>
+                  <span className="payment-table-date">
+                    {new Date(
+                      payment.createdAt
+                    ).toLocaleString()}
+                  </span>
+                </td>
+
+                {/* Actions */}
+
+                <td>
+                  <div className="payment-table-actions">
+
+                    <button
+                      type="button"
+                      className="payment-table-edit-btn"
+                      onClick={() =>
+                        onEdit(payment)
+                      }
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      type="button"
+                      className="payment-table-delete-btn"
+                      onClick={() =>
+                        handleDelete(
+                          payment._id
+                        )
+                      }
+                    >
+                      Delete
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+            ))}
+          </tbody>
+
+        </table>
+      </div>
     </div>
   );
 }

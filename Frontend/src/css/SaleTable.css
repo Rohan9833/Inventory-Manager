@@ -1,0 +1,485 @@
+/* ================================
+   SALE TABLE
+================================ */
+
+.sale-table-container {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+
+/* ================================
+   TOP SECTION
+================================ */
+
+.sale-table-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* ================================
+   TITLE
+================================ */
+
+.sale-table-title {
+  min-width: 220px;
+}
+
+.sale-table-title h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #172033;
+  letter-spacing: -0.3px;
+}
+
+.sale-table-title p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+
+/* ================================
+   COLUMN SELECTOR
+================================ */
+
+.sale-table-column-selector {
+  min-width: 420px;
+  max-width: 560px;
+}
+
+.sale-table-column-selector h4 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sale-table-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  gap: 8px 12px;
+}
+
+.sale-table-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 9px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  color: #4b5563;
+
+  background: #fafafa;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.sale-table-checkbox-item:hover {
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #ea580c;
+}
+
+.sale-table-checkbox-item input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+
+  accent-color: #f97316;
+
+  cursor: pointer;
+}
+
+.sale-table-checkbox-item span {
+  white-space: nowrap;
+}
+
+
+/* ================================
+   TABLE WRAPPER
+================================ */
+
+.sale-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+.sale-table-wrapper::-webkit-scrollbar {
+  height: 7px;
+}
+
+.sale-table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sale-table-wrapper::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 20px;
+}
+
+
+/* ================================
+   TABLE
+================================ */
+
+.sale-table {
+  width: 100%;
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+  font-size: 14px;
+}
+
+
+/* ================================
+   TABLE HEADER
+================================ */
+
+.sale-table thead {
+  background: #f8fafc;
+}
+
+.sale-table th {
+  padding: 14px 18px;
+
+  text-align: left;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  color: #64748b;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* ================================
+   TABLE BODY
+================================ */
+
+.sale-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.sale-table tbody tr:hover {
+  background: #fffaf5;
+}
+
+.sale-table tbody tr:not(:last-child) {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sale-table-cell {
+  padding: 16px 18px;
+
+  color: #374151;
+
+  vertical-align: middle;
+
+  white-space: nowrap;
+}
+
+
+/* ================================
+   CUSTOMER
+================================ */
+
+.sale-table tbody td:first-child {
+  font-weight: 600;
+  color: #172033;
+}
+
+
+/* ================================
+   PRODUCTS
+================================ */
+
+.sale-table-products {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 150px;
+  max-width: 260px;
+}
+
+.sale-table-product-item {
+  display: block;
+
+  padding: 4px 8px;
+
+  background: #f8fafc;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+  color: #475569;
+
+  white-space: normal;
+  line-height: 1.4;
+}
+
+
+/* ================================
+   MONEY VALUES
+================================ */
+
+.sale-table-cell {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ================================
+   STATUS
+================================ */
+
+.sale-table-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 75px;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* PAID */
+
+.sale-table-status-paid {
+  color: #15803d;
+  background: #dcfce7;
+}
+
+
+/* PARTIAL */
+
+.sale-table-status-partial {
+  color: #c2410c;
+  background: #ffedd5;
+}
+
+
+/* UNPAID */
+
+.sale-table-status-unpaid {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+
+/* ================================
+   LOADING
+================================ */
+
+.sale-table-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 220px;
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+/* ================================
+   EMPTY
+================================ */
+
+.sale-table-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 220px;
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1000px) {
+  .sale-table-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sale-table-column-selector {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .sale-table-checkbox-grid {
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+  }
+}
+
+
+/* ================================
+   SMALL TABLET
+================================ */
+
+@media (max-width: 700px) {
+  .sale-table-top {
+    padding: 18px;
+  }
+
+  .sale-table-title h2 {
+    font-size: 20px;
+  }
+
+  .sale-table-checkbox-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sale-table th {
+    padding: 12px 14px;
+  }
+
+  .sale-table-cell {
+    padding: 14px;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 500px) {
+  .sale-table-container {
+    border-radius: 12px;
+  }
+
+  .sale-table-top {
+    padding: 16px;
+
+    gap: 18px;
+  }
+
+  .sale-table-title h2 {
+    font-size: 18px;
+  }
+
+  .sale-table-title p {
+    font-size: 13px;
+  }
+
+  .sale-table-column-selector h4 {
+    font-size: 12px;
+  }
+
+  .sale-table-checkbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+  }
+
+  .sale-table-checkbox-item {
+    padding: 7px;
+    font-size: 12px;
+  }
+
+  .sale-table-checkbox-item input {
+    width: 14px;
+    height: 14px;
+  }
+
+  .sale-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .sale-table {
+    min-width: 750px;
+  }
+
+  .sale-table th {
+    padding: 11px 12px;
+    font-size: 11px;
+  }
+
+  .sale-table-cell {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .sale-table-product-item {
+    font-size: 12px;
+  }
+
+  .sale-table-status {
+    min-width: 65px;
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+}
+
+
+/* ================================
+   VERY SMALL MOBILE
+================================ */
+
+@media (max-width: 360px) {
+  .sale-table-top {
+    padding: 14px;
+  }
+
+  .sale-table-checkbox-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sale-table-checkbox-item {
+    font-size: 11px;
+  }
+}

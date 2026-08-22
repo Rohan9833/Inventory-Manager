@@ -1,0 +1,587 @@
+/* =========================================================
+   CUSTOMER FORM
+========================================================= */
+
+.customer-form {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e9ed;
+  border-radius: 16px;
+
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.03),
+    0 8px 24px rgba(15, 23, 42, 0.04);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.customer-form-header {
+  width: 100%;
+  min-width: 0;
+
+  padding-bottom: 17px;
+
+  border-bottom: 1px solid #edf0f2;
+}
+
+.customer-form-title {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  line-height: 1.3;
+  letter-spacing: -0.35px;
+}
+
+.customer-form-subtitle {
+  margin: 5px 0 0;
+
+  color: #8b95a5;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.customer-form-grid {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 17px 20px;
+
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   FORM FIELD
+========================================================= */
+
+.customer-form-field {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-form-field-half {
+  grid-column: span 1;
+}
+
+.customer-form-field-full {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.customer-form-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #374151;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+.customer-form-required {
+  color: #f97316;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.customer-form-input {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  height: 42px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #172033;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.customer-form-textarea {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  min-height: 82px;
+
+  box-sizing: border-box;
+
+  padding: 10px 12px;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #172033;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  resize: vertical;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.customer-form-input::placeholder,
+.customer-form-textarea::placeholder {
+  color: #a5adb8;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.customer-form-input:hover,
+.customer-form-textarea:hover {
+  border-color: #cbd2da;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.customer-form-input:focus,
+.customer-form-textarea:focus {
+  border-color: #f97316;
+
+  background: #fffdfb;
+
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.09);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.customer-form-footer {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.customer-form-submit-btn {
+  min-width: 145px;
+  height: 41px;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #f97316;
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 10px rgba(249, 115, 22, 0.18);
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.customer-form-submit-btn:hover {
+  background: #ea580c;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 14px rgba(249, 115, 22, 0.23);
+}
+
+.customer-form-submit-btn:active {
+  transform: translateY(0);
+
+  box-shadow:
+    0 3px 7px rgba(249, 115, 22, 0.18);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .customer-form {
+    padding: 21px;
+    border-radius: 14px;
+  }
+
+  .customer-form-title {
+    font-size: 19px;
+  }
+
+  .customer-form-subtitle {
+    font-size: 11px;
+  }
+
+  .customer-form-grid {
+    gap: 15px 16px;
+    margin-top: 17px;
+  }
+
+  .customer-form-label {
+    font-size: 11.5px;
+  }
+
+  .customer-form-input {
+    height: 40px;
+
+    padding: 0 11px;
+
+    font-size: 12px;
+  }
+
+  .customer-form-textarea {
+    min-height: 77px;
+
+    padding: 9px 11px;
+
+    font-size: 12px;
+  }
+
+  .customer-form-footer {
+    margin-top: 17px;
+  }
+
+  .customer-form-submit-btn {
+    min-width: 138px;
+    height: 39px;
+
+    font-size: 11.5px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .customer-form {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 17px;
+
+    border-radius: 12px;
+
+    box-shadow:
+      0 2px 8px rgba(15, 23, 42, 0.04);
+  }
+
+
+  /* Header */
+
+  .customer-form-header {
+    padding-bottom: 13px;
+  }
+
+  .customer-form-title {
+    font-size: 17px;
+    letter-spacing: -0.2px;
+  }
+
+  .customer-form-subtitle {
+    margin-top: 4px;
+
+    font-size: 10px;
+  }
+
+
+  /* Grid */
+
+  .customer-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 13px;
+
+    margin-top: 15px;
+  }
+
+
+  /* Fields */
+
+  .customer-form-field,
+  .customer-form-field-half,
+  .customer-form-field-full {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* Labels */
+
+  .customer-form-label {
+    margin-bottom: 5px;
+
+    font-size: 11px;
+  }
+
+
+  /* Inputs */
+
+  .customer-form-input {
+    width: 100%;
+    max-width: 100%;
+
+    height: 38px;
+
+    padding: 0 10px;
+
+    border-radius: 7px;
+
+    font-size: 11.5px;
+  }
+
+
+  /* Textarea */
+
+  .customer-form-textarea {
+    width: 100%;
+    max-width: 100%;
+
+    min-height: 70px;
+
+    padding: 8px 10px;
+
+    border-radius: 7px;
+
+    font-size: 11.5px;
+  }
+
+
+  /* Footer */
+
+  .customer-form-footer {
+    margin-top: 15px;
+  }
+
+
+  /* Button */
+
+  .customer-form-submit-btn {
+    width: 100%;
+    min-width: 0;
+
+    height: 38px;
+
+    border-radius: 7px;
+
+    font-size: 11.5px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .customer-form {
+    padding: 15px;
+  }
+
+  .customer-form-title {
+    font-size: 16px;
+  }
+
+  .customer-form-subtitle {
+    font-size: 9.5px;
+  }
+
+  .customer-form-grid {
+    gap: 12px;
+
+    margin-top: 14px;
+  }
+
+  .customer-form-label {
+    font-size: 10.5px;
+  }
+
+  .customer-form-input {
+    height: 36px;
+
+    padding: 0 9px;
+
+    font-size: 11px;
+  }
+
+  .customer-form-textarea {
+    min-height: 65px;
+
+    padding: 8px 9px;
+
+    font-size: 11px;
+  }
+
+  .customer-form-submit-btn {
+    height: 36px;
+
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 340px) {
+
+  .customer-form {
+    padding: 13px;
+  }
+
+  .customer-form-title {
+    font-size: 15px;
+  }
+
+  .customer-form-subtitle {
+    font-size: 9px;
+  }
+
+  .customer-form-input {
+    height: 35px;
+  }
+
+  .customer-form-textarea {
+    min-height: 62px;
+  }
+
+  .customer-form-submit-btn {
+    height: 35px;
+  }
+}
+
+
+/* =========================================================
+   IMPORTANT - GLOBAL OVERFLOW PROTECTION
+========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}

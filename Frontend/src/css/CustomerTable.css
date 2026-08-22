@@ -1,0 +1,755 @@
+/* =========================================================
+   CUSTOMER TABLE CONTAINER
+========================================================= */
+
+.customer-table-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  margin-top: 20px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e9ed;
+  border-radius: 16px;
+
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.03),
+    0 8px 24px rgba(15, 23, 42, 0.04);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.customer-table-header {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 16px;
+}
+
+.customer-table-title {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  letter-spacing: -0.3px;
+}
+
+.customer-table-subtitle {
+  margin: 4px 0 0;
+
+  color: #8b95a5;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   CUSTOMER COUNT
+========================================================= */
+
+.customer-table-count {
+  flex-shrink: 0;
+
+  padding: 6px 10px;
+
+  border-radius: 7px;
+
+  background: #fff7ed;
+
+  color: #ea580c;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TABLE SCROLL
+   ONLY THIS ELEMENT SCROLLS
+========================================================= */
+
+.customer-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #d1d5db transparent;
+}
+
+
+/* Chrome / Edge */
+
+.customer-table-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.customer-table-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.customer-table-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+
+  border-radius: 10px;
+}
+
+.customer-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.customer-table {
+  width: 100%;
+
+  /*
+    Keeps table readable on small screens.
+    Scroll is handled by .customer-table-scroll.
+  */
+
+  min-width: 900px;
+
+  border-collapse: collapse;
+
+  white-space: nowrap;
+
+  font-family: inherit;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.customer-table thead th {
+  padding: 11px 13px;
+
+  background: #f8f9fb;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  color: #4b5563;
+
+  font-size: 10.5px;
+  font-weight: 700;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.25px;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.customer-table tbody td {
+  padding: 12px 13px;
+
+  border-bottom: 1px solid #f0f1f3;
+
+  color: #374151;
+
+  font-size: 12px;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+.customer-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.customer-table tbody tr:hover {
+  background: #fffaf5;
+}
+
+.customer-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   CUSTOMER
+========================================================= */
+
+.customer-table-customer {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 130px;
+}
+
+.customer-table-avatar {
+  width: 29px;
+  height: 29px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff1e6;
+
+  color: #ea580c;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.customer-table-name {
+  color: #273142;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+.customer-table-phone {
+  color: #374151;
+
+  font-size: 11.5px;
+}
+
+
+/* =========================================================
+   EMAIL
+========================================================= */
+
+.customer-table-email {
+  display: block;
+
+  max-width: 190px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   ADDRESS
+========================================================= */
+
+.customer-table-address {
+  display: block;
+
+  max-width: 180px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   BALANCE
+========================================================= */
+
+.customer-table-balance {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 8px;
+
+  border-radius: 6px;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.customer-table-balance-due {
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+.customer-table-balance-clear {
+  background: #ecfdf5;
+
+  color: #15803d;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.customer-table-status {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 5px 8px;
+
+  border-radius: 6px;
+
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.customer-table-status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+}
+
+
+/* Active */
+
+.customer-table-status-active {
+  background: #ecfdf5;
+
+  color: #15803d;
+}
+
+.customer-table-status-active
+.customer-table-status-dot {
+  background: #22c55e;
+}
+
+
+/* Inactive */
+
+.customer-table-status-inactive {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+.customer-table-status-inactive
+.customer-table-status-dot {
+  background: #ef4444;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.customer-table-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.customer-table-actions button {
+  height: 29px;
+
+  padding: 0 10px;
+
+  border-radius: 6px;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+.customer-table-edit-btn {
+  border: 1px solid #fed7aa;
+
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+.customer-table-edit-btn:hover {
+  background: #ffedd5;
+
+  border-color: #fdba74;
+}
+
+
+/* =========================================================
+   DEACTIVATE
+========================================================= */
+
+.customer-table-deactivate-btn {
+  border: 1px solid #fecaca;
+
+  background: #fff5f5;
+
+  color: #dc2626;
+}
+
+.customer-table-deactivate-btn:hover {
+  background: #fee2e2;
+
+  border-color: #fca5a5;
+}
+
+
+/* =========================================================
+   ACTIVATE
+========================================================= */
+
+.customer-table-activate-btn {
+  border: 1px solid #bbf7d0;
+
+  background: #f0fdf4;
+
+  color: #15803d;
+}
+
+.customer-table-activate-btn:hover {
+  background: #dcfce7;
+
+  border-color: #86efac;
+}
+
+
+/* =========================================================
+   LOADING / EMPTY
+========================================================= */
+
+.customer-table-state {
+  width: 100%;
+  max-width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e9ed;
+
+  border-radius: 14px;
+
+  color: #8b95a5;
+}
+
+.customer-table-state h3 {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .customer-table-container {
+    padding: 18px;
+
+    border-radius: 14px;
+  }
+
+  .customer-table-title {
+    font-size: 17px;
+  }
+
+  .customer-table-subtitle {
+    font-size: 10px;
+  }
+
+  .customer-table {
+    min-width: 850px;
+  }
+
+  .customer-table thead th {
+    padding: 10px 11px;
+
+    font-size: 10px;
+  }
+
+  .customer-table tbody td {
+    padding: 11px;
+
+    font-size: 11px;
+  }
+
+  .customer-table-avatar {
+    width: 27px;
+    height: 27px;
+  }
+
+  .customer-table-actions button {
+    height: 28px;
+
+    padding: 0 9px;
+
+    font-size: 9.5px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .customer-table-container {
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 16px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    box-shadow:
+      0 2px 8px rgba(15, 23, 42, 0.04);
+  }
+
+
+  /* Header */
+
+  .customer-table-header {
+    align-items: flex-start;
+
+    margin-bottom: 12px;
+  }
+
+  .customer-table-title {
+    font-size: 16px;
+  }
+
+  .customer-table-subtitle {
+    margin-top: 3px;
+
+    font-size: 9.5px;
+  }
+
+  .customer-table-count {
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+
+
+  /* Scroll */
+
+  .customer-table-scroll {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto;
+  }
+
+
+  /* Table */
+
+  .customer-table {
+    min-width: 820px;
+
+    font-size: 10.5px;
+  }
+
+  .customer-table thead th {
+    padding: 9px 10px;
+
+    font-size: 9px;
+  }
+
+  .customer-table tbody td {
+    padding: 10px;
+
+    font-size: 10.5px;
+  }
+
+
+  /* Customer */
+
+  .customer-table-customer {
+    gap: 7px;
+  }
+
+  .customer-table-avatar {
+    width: 25px;
+    height: 25px;
+
+    font-size: 10px;
+  }
+
+  .customer-table-name {
+    font-size: 10.5px;
+  }
+
+
+  /* Balance */
+
+  .customer-table-balance {
+    padding: 4px 7px;
+
+    font-size: 9px;
+  }
+
+
+  /* Status */
+
+  .customer-table-status {
+    padding: 4px 7px;
+
+    font-size: 8.5px;
+  }
+
+  .customer-table-status-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+
+  /* Actions */
+
+  .customer-table-actions {
+    gap: 5px;
+  }
+
+  .customer-table-actions button {
+    height: 27px;
+
+    padding: 0 8px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .customer-table-container {
+    padding: 13px;
+  }
+
+  .customer-table-title {
+    font-size: 15px;
+  }
+
+  .customer-table-subtitle {
+    font-size: 9px;
+  }
+
+  .customer-table-count {
+    font-size: 8.5px;
+  }
+
+  .customer-table {
+    min-width: 800px;
+  }
+
+  .customer-table thead th {
+    padding: 8px 9px;
+
+    font-size: 8.5px;
+  }
+
+  .customer-table tbody td {
+    padding: 9px;
+
+    font-size: 10px;
+  }
+
+  .customer-table-avatar {
+    width: 24px;
+    height: 24px;
+
+    font-size: 9px;
+  }
+
+  .customer-table-balance {
+    font-size: 8.5px;
+  }
+
+  .customer-table-status {
+    font-size: 8px;
+  }
+
+  .customer-table-actions button {
+    height: 25px;
+
+    padding: 0 7px;
+
+    font-size: 8.5px;
+  }
+}

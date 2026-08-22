@@ -1,0 +1,706 @@
+/* =========================================================
+   PAYMENT TABLE CONTAINER
+========================================================= */
+
+.payment-table-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  margin-top: 20px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e9ed;
+  border-radius: 16px;
+
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.03),
+    0 8px 24px rgba(15, 23, 42, 0.04);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.payment-table-header {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 16px;
+}
+
+.payment-table-title {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  letter-spacing: -0.3px;
+}
+
+.payment-table-subtitle {
+  margin: 4px 0 0;
+
+  color: #8b95a5;
+
+  font-size: 11px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   PAYMENT COUNT
+========================================================= */
+
+.payment-table-count {
+  flex-shrink: 0;
+
+  padding: 6px 10px;
+
+  border-radius: 7px;
+
+  background: #fff7ed;
+
+  color: #ea580c;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TABLE SCROLL CONTAINER
+
+   IMPORTANT:
+   ONLY THIS ELEMENT SCROLLS
+========================================================= */
+
+.payment-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #d1d5db transparent;
+}
+
+
+/* Chrome / Edge scrollbar */
+
+.payment-table-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.payment-table-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.payment-table-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+
+  border-radius: 10px;
+}
+
+.payment-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.payment-table {
+  width: 100%;
+
+  /*
+    Table can become wider than mobile screen.
+    Parent .payment-table-scroll handles scrolling.
+  */
+
+  min-width: 780px;
+
+  border-collapse: collapse;
+
+  white-space: nowrap;
+
+  font-family: inherit;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.payment-table thead th {
+  padding: 11px 13px;
+
+  background: #f8f9fb;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  color: #4b5563;
+
+  font-size: 10.5px;
+  font-weight: 700;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.25px;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.payment-table tbody td {
+  padding: 12px 13px;
+
+  border-bottom: 1px solid #f0f1f3;
+
+  color: #374151;
+
+  font-size: 12px;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+.payment-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.payment-table tbody tr:hover {
+  background: #fffaf5;
+}
+
+.payment-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   CUSTOMER
+========================================================= */
+
+.payment-table-customer {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 130px;
+}
+
+.payment-table-avatar {
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff1e6;
+
+  color: #ea580c;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.payment-table-customer span {
+  color: #273142;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   AMOUNT
+========================================================= */
+
+.payment-table-amount {
+  color: #15803d;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PAYMENT METHOD
+========================================================= */
+
+.payment-table-method {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 52px;
+
+  padding: 5px 8px;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* CASH */
+
+.payment-table-method-cash {
+  background: #ecfdf5;
+
+  color: #15803d;
+}
+
+
+/* UPI */
+
+.payment-table-method-upi {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+
+/* CARD */
+
+.payment-table-method-card {
+  background: #f5f3ff;
+
+  color: #7c3aed;
+}
+
+
+/* BANK */
+
+.payment-table-method-bank {
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.payment-table-note {
+  display: block;
+
+  max-width: 180px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  color: #6b7280;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.payment-table-date {
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.payment-table-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.payment-table-actions button {
+  height: 29px;
+
+  padding: 0 10px;
+
+  border-radius: 6px;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+/* Edit */
+
+.payment-table-edit-btn {
+  border: 1px solid #fed7aa;
+
+  background: #fff7ed;
+
+  color: #ea580c;
+}
+
+.payment-table-edit-btn:hover {
+  background: #ffedd5;
+
+  border-color: #fdba74;
+}
+
+
+/* Delete */
+
+.payment-table-delete-btn {
+  border: 1px solid #fecaca;
+
+  background: #fff5f5;
+
+  color: #dc2626;
+}
+
+.payment-table-delete-btn:hover {
+  background: #fee2e2;
+
+  border-color: #fca5a5;
+}
+
+
+/* =========================================================
+   LOADING / EMPTY
+========================================================= */
+
+.payment-table-state {
+  width: 100%;
+  max-width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e9ed;
+  border-radius: 14px;
+
+  color: #8b95a5;
+}
+
+.payment-table-state h3 {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .payment-table-container {
+    padding: 18px;
+
+    border-radius: 14px;
+  }
+
+  .payment-table-title {
+    font-size: 17px;
+  }
+
+  .payment-table-subtitle {
+    font-size: 10px;
+  }
+
+  .payment-table {
+    min-width: 750px;
+  }
+
+  .payment-table thead th {
+    padding: 10px 11px;
+
+    font-size: 10px;
+  }
+
+  .payment-table tbody td {
+    padding: 11px;
+
+    font-size: 11px;
+  }
+
+  .payment-table-avatar {
+    width: 27px;
+    height: 27px;
+  }
+
+  .payment-table-actions button {
+    height: 28px;
+
+    padding: 0 9px;
+
+    font-size: 9.5px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .payment-table-container {
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 16px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    box-shadow:
+      0 2px 8px rgba(15, 23, 42, 0.04);
+  }
+
+
+  /* Header */
+
+  .payment-table-header {
+    align-items: flex-start;
+
+    margin-bottom: 12px;
+  }
+
+  .payment-table-title {
+    font-size: 16px;
+  }
+
+  .payment-table-subtitle {
+    margin-top: 3px;
+
+    font-size: 9.5px;
+  }
+
+  .payment-table-count {
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+
+
+  /* Table */
+
+  .payment-table-scroll {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto;
+  }
+
+  .payment-table {
+    min-width: 700px;
+
+    font-size: 11px;
+  }
+
+  .payment-table thead th {
+    padding: 9px 10px;
+
+    font-size: 9px;
+  }
+
+  .payment-table tbody td {
+    padding: 10px;
+
+    font-size: 10.5px;
+  }
+
+
+  /* Customer */
+
+  .payment-table-customer {
+    gap: 7px;
+  }
+
+  .payment-table-avatar {
+    width: 25px;
+    height: 25px;
+
+    font-size: 10px;
+  }
+
+
+  /* Amount */
+
+  .payment-table-amount {
+    font-size: 11px;
+  }
+
+
+  /* Method */
+
+  .payment-table-method {
+    min-width: 48px;
+
+    padding: 4px 7px;
+
+    font-size: 8px;
+  }
+
+
+  /* Note */
+
+  .payment-table-note {
+    max-width: 150px;
+  }
+
+
+  /* Date */
+
+  .payment-table-date {
+    font-size: 9.5px;
+  }
+
+
+  /* Actions */
+
+  .payment-table-actions {
+    gap: 5px;
+  }
+
+  .payment-table-actions button {
+    height: 27px;
+
+    padding: 0 8px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .payment-table-container {
+    padding: 13px;
+  }
+
+  .payment-table-title {
+    font-size: 15px;
+  }
+
+  .payment-table-subtitle {
+    font-size: 9px;
+  }
+
+  .payment-table-count {
+    font-size: 8.5px;
+  }
+
+  .payment-table {
+    min-width: 680px;
+  }
+
+  .payment-table thead th {
+    padding: 8px 9px;
+
+    font-size: 8.5px;
+  }
+
+  .payment-table tbody td {
+    padding: 9px;
+
+    font-size: 10px;
+  }
+
+  .payment-table-avatar {
+    width: 24px;
+    height: 24px;
+
+    font-size: 9px;
+  }
+
+  .payment-table-actions button {
+    height: 25px;
+
+    padding: 0 7px;
+
+    font-size: 8.5px;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL OVERFLOW PROTECTION
+========================================================= */
+
+.payment-table-container,
+.payment-table-header,
+.payment-table-scroll,
+.payment-table {
+  box-sizing: border-box;
+}

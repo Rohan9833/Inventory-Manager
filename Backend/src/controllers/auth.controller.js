@@ -2,6 +2,7 @@ const authService = require("../services/auth.service");
 
 const loginUser = async (req, res) => {
   try {
+    console.log("login api hit")
     const result = await authService.loginUser(req.body);
 
     return res.status(200).json({

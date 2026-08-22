@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import "./SaleTable.css";
+import "../css/SaleTable.css";
 
 function SaleTable({ sales = [], loading }) {
   const [visibleColumns, setVisibleColumns] = useState({

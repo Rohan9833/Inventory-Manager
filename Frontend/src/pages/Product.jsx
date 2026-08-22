@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import ProductForm from "../components/ProductForm.product";
 import ProductTable from "../components/ProductTable.product";
+// import "../css/product.css"
 
 import {
   createProduct,
@@ -139,7 +140,7 @@ function Product() {
   }, []);
 
   return (
-    <div>
+    <div className="product-page">
       <h1>Product Management</h1>
 
       <ProductForm

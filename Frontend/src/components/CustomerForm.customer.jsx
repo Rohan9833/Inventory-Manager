@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../css/CustomerForm.css";
 
 function CustomerForm({ editingCustomer, onCreate, onUpdate }) {
   const [formData, setFormData] = useState({
@@ -76,68 +77,85 @@ function CustomerForm({ editingCustomer, onCreate, onUpdate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{editingCustomer ? "Update Customer" : "Create Customer"}</h2>
-
-      {/* Name */}
-
-      <div>
-        <label>Name</label>
-
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Enter customer name"
-        />
+    <form className="customer-form" onSubmit={handleSubmit}>
+      <div className="customer-form-header">
+        <h2 className="customer-form-title">
+          {editingCustomer ? "Update Customer" : "Create Customer"}
+        </h2>
+        <p className="customer-form-subtitle">
+          {editingCustomer
+            ? "Update customer information"
+            : "Add a new customer to your records"}
+        </p>
       </div>
 
-      {/* Phone */}
+      <div className="customer-form-grid">
+        <div className="customer-form-field customer-form-field-half">
+          <label className="customer-form-label" htmlFor="customer-name">
+            Name <span className="customer-form-required">*</span>
+          </label>
+          <input
+            className="customer-form-input"
+            id="customer-name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter customer name"
+          />
+        </div>
 
-      <div>
-        <label>Phone</label>
+        <div className="customer-form-field customer-form-field-half">
+          <label className="customer-form-label" htmlFor="customer-phone">
+            Phone <span className="customer-form-required">*</span>
+          </label>
+          <input
+            className="customer-form-input"
+            id="customer-phone"
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Enter phone number"
+          />
+        </div>
 
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="Enter phone number"
-        />
+        <div className="customer-form-field customer-form-field-full">
+          <label className="customer-form-label" htmlFor="customer-email">
+            Email
+          </label>
+          <input
+            className="customer-form-input"
+            id="customer-email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter email address"
+          />
+        </div>
+
+        <div className="customer-form-field customer-form-field-full">
+          <label className="customer-form-label" htmlFor="customer-address">
+            Address
+          </label>
+          <textarea
+            className="customer-form-textarea"
+            id="customer-address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            rows="3"
+            placeholder="Enter address"
+          />
+        </div>
       </div>
 
-      {/* Email */}
-
-      <div>
-        <label>Email</label>
-
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter email"
-        />
+      <div className="customer-form-footer">
+        <button type="submit" className="customer-form-submit-btn">
+          {editingCustomer ? "Update Customer" : "Create Customer"}
+        </button>
       </div>
-
-      {/* Address */}
-
-      <div>
-        <label>Address</label>
-
-        <textarea
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          rows="3"
-          placeholder="Enter address"
-        />
-      </div>
-
-      <button type="submit">
-        {editingCustomer ? "Update Customer" : "Create Customer"}
-      </button>
     </form>
   );
 }

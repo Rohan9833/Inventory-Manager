@@ -1,16 +1,21 @@
 import AppRoutes from "./routes/AppRoutes";
 import BottomNavigation from "./components/BottomNavigation";
+import Sidebar from "./components/Home/Sidebar.home";
 function App() {
   return (
     <>
-      <AppRoutes />
-      <BottomNavigation />
+      <div className="Home">
+        <Sidebar />
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+        <AppRoutes />
+        <BottomNavigation />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
     </>
   );
 }

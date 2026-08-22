@@ -1,0 +1,523 @@
+/* =========================================
+   PRODUCT PAGE
+========================================= */
+
+.product-page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+
+  padding: 28px 30px 40px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.product-page > h1 {
+  margin: 0 0 24px;
+
+  color: #172033;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================
+   FORM + TABLE SPACING
+========================================= */
+
+.product-page > * + * {
+  margin-top: 24px;
+}
+
+
+/* =========================================
+   PRODUCT FORM CARD
+========================================= */
+
+.product-page > form,
+.product-page .product-form {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================
+   FORM LABELS
+========================================= */
+
+.product-page label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #374151;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   FORM INPUTS
+========================================= */
+
+.product-page input,
+.product-page select {
+  width: 100%;
+
+  min-height: 42px;
+
+  padding: 9px 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #dfe3e8;
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #172033;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.product-page input::placeholder {
+  color: #9ca3af;
+}
+
+.product-page input:focus,
+.product-page select:focus {
+  border-color: #f97316;
+
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+
+/* =========================================
+   FORM BUTTONS
+========================================= */
+
+.product-page button {
+  min-height: 40px;
+
+  padding: 9px 16px;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.product-page button:hover {
+  transform: translateY(-1px);
+}
+
+.product-page button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLE CARD
+========================================= */
+
+.product-page > .product-table,
+.product-page .product-table-container {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.product-page .product-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.product-page .product-table-wrapper::-webkit-scrollbar {
+  height: 7px;
+}
+
+.product-page .product-table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-page .product-table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 20px;
+}
+
+
+/* =========================================
+   PRODUCT TABLE
+========================================= */
+
+.product-page table {
+  width: 100%;
+
+  min-width: 760px;
+
+  border-collapse: collapse;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.product-page thead {
+  background: #f8fafc;
+}
+
+.product-page th {
+  padding: 14px 16px;
+
+  text-align: left;
+
+  color: #64748b;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.product-page td {
+  padding: 14px 16px;
+
+  color: #374151;
+
+  border-bottom: 1px solid #f1f5f9;
+
+  vertical-align: middle;
+}
+
+.product-page tbody tr {
+  transition: background 0.2s ease;
+}
+
+.product-page tbody tr:hover {
+  background: #fffaf5;
+}
+
+.product-page tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   PRODUCT NAME
+========================================= */
+
+.product-page td:first-child {
+  color: #172033;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   TABLE ACTION BUTTONS
+========================================= */
+
+.product-page td button {
+  min-height: 34px;
+
+  padding: 7px 11px;
+
+  margin-right: 5px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   LOADING / EMPTY
+========================================= */
+
+.product-page .product-table-loading,
+.product-page .product-table-empty {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 200px;
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+  .product-page {
+    padding: 24px 22px 35px;
+  }
+
+  .product-page > h1 {
+    margin-bottom: 20px;
+
+    font-size: 25px;
+  }
+
+  .product-page > * + * {
+    margin-top: 20px;
+  }
+
+  .product-page > form,
+  .product-page .product-form {
+    padding: 20px;
+  }
+
+  .product-page th {
+    padding: 12px 14px;
+  }
+
+  .product-page td {
+    padding: 12px 14px;
+  }
+}
+
+
+/* =========================================
+   SMALL TABLET
+========================================= */
+
+@media (max-width: 750px) {
+  .product-page {
+    padding: 20px 18px 30px;
+  }
+
+  .product-page > h1 {
+    font-size: 23px;
+  }
+
+  .product-page > form,
+  .product-page .product-form {
+    padding: 18px;
+    border-radius: 13px;
+  }
+
+  .product-page > .product-table,
+  .product-page .product-table-container {
+    border-radius: 13px;
+  }
+
+  .product-page input,
+  .product-page select {
+    min-height: 40px;
+
+    padding: 8px 10px;
+
+    font-size: 13px;
+  }
+
+  .product-page button {
+    min-height: 38px;
+
+    padding: 8px 13px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+  .product-page {
+    padding: 17px 14px 25px;
+  }
+
+  .product-page > h1 {
+    margin-bottom: 16px;
+
+    font-size: 20px;
+
+    letter-spacing: -0.3px;
+  }
+
+  .product-page > * + * {
+    margin-top: 16px;
+  }
+
+
+  /* Form */
+
+  .product-page > form,
+  .product-page .product-form {
+    padding: 15px;
+
+    border-radius: 12px;
+  }
+
+  .product-page label {
+    margin-bottom: 5px;
+
+    font-size: 12px;
+  }
+
+  .product-page input,
+  .product-page select {
+    min-height: 38px;
+
+    padding: 7px 9px;
+
+    font-size: 12px;
+
+    border-radius: 7px;
+  }
+
+  .product-page button {
+    min-height: 36px;
+
+    padding: 7px 11px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+  }
+
+
+  /* Table */
+
+  .product-page > .product-table,
+  .product-page .product-table-container {
+    border-radius: 12px;
+  }
+
+  .product-page table {
+    min-width: 680px;
+
+    font-size: 12px;
+  }
+
+  .product-page th {
+    padding: 10px 11px;
+
+    font-size: 10px;
+  }
+
+  .product-page td {
+    padding: 10px 11px;
+
+    font-size: 12px;
+  }
+
+  .product-page td button {
+    min-height: 30px;
+
+    padding: 6px 9px;
+
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 360px) {
+  .product-page {
+    padding: 14px 11px 22px;
+  }
+
+  .product-page > h1 {
+    font-size: 19px;
+  }
+
+  .product-page > form,
+  .product-page .product-form {
+    padding: 13px;
+  }
+
+  .product-page input,
+  .product-page select {
+    min-height: 36px;
+
+    font-size: 11px;
+  }
+
+  .product-page button {
+    min-height: 34px;
+
+    padding: 6px 9px;
+
+    font-size: 10px;
+  }
+}
