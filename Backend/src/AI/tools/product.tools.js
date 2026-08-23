@@ -1,7 +1,7 @@
 const productService = require("../../services/product.service");
 
 // ==========================================
-// GET ALL PRODUCTS
+// GET PRODUCTS
 // ==========================================
 
 const getProductsTool = async () => {
@@ -11,16 +11,16 @@ const getProductsTool = async () => {
 };
 
 // ==========================================
-// GET PRODUCT BY ID
+// CREATE PRODUCT
 // ==========================================
 
-const getProductByIdTool = async (id) => {
-  const product = await productService.getProductById(id);
+const createProductTool = async (data) => {
+  const product = await productService.createProduct(data);
 
   return product;
 };
 
 module.exports = {
   getProductsTool,
-  getProductByIdTool,
+  createProductTool,
 };
