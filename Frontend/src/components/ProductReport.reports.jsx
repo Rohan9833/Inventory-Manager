@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProductReport } from "../api/reports.api";
+import "../css/ProductReport.css";
 
 function ProductReport() {
   const [products, setProducts] = useState([]);
@@ -41,166 +42,251 @@ function ProductReport() {
   }, [filters]);
 
   return (
-    <div>
-      <h2>Product Report</h2>
+    <div className="product-report">
+      {/* ==========================
+          Header
+      ========================== */}
+
+      <div className="product-report-header">
+        <div>
+          <h2 className="product-report-title">
+            Product Report
+          </h2>
+
+          <p className="product-report-subtitle">
+            Overview of your products and stock performance
+          </p>
+        </div>
+      </div>
 
       {/* ==========================
           Summary
       ========================== */}
 
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          flexWrap: "wrap",
-          marginBottom: "20px",
-        }}
-      >
-        <div>
-          <strong>Total Products</strong>
-          <p>{summary.totalProducts}</p>
+      <div className="product-report-summary">
+        <div className="product-report-card">
+          <span className="product-report-card-label">
+            Total Products
+          </span>
+
+          <strong className="product-report-card-value">
+            {summary.totalProducts || 0}
+          </strong>
         </div>
 
-        <div>
-          <strong>Total Stock</strong>
-          <p>{summary.totalStock}</p>
+        <div className="product-report-card">
+          <span className="product-report-card-label">
+            Total Stock
+          </span>
+
+          <strong className="product-report-card-value">
+            {summary.totalStock || 0}
+          </strong>
         </div>
 
-        <div>
-          <strong>Total Cost Value</strong>
-          <p>₹{summary.totalCostValue}</p>
+        <div className="product-report-card">
+          <span className="product-report-card-label">
+            Total Cost Value
+          </span>
+
+          <strong className="product-report-card-value">
+            ₹{summary.totalCostValue || 0}
+          </strong>
         </div>
 
-        <div>
-          <strong>Total Selling Value</strong>
-          <p>₹{summary.totalSellingValue}</p>
+        <div className="product-report-card">
+          <span className="product-report-card-label">
+            Total Selling Value
+          </span>
+
+          <strong className="product-report-card-value">
+            ₹{summary.totalSellingValue || 0}
+          </strong>
         </div>
 
-        <div>
-          <strong>Low Stock</strong>
-          <p>{summary.lowStockProducts}</p>
+        <div className="product-report-card product-report-card-warning">
+          <span className="product-report-card-label">
+            Low Stock
+          </span>
+
+          <strong className="product-report-card-value">
+            {summary.lowStockProducts || 0}
+          </strong>
         </div>
 
-        <div>
-          <strong>Out Of Stock</strong>
-          <p>{summary.outOfStockProducts}</p>
+        <div className="product-report-card product-report-card-danger">
+          <span className="product-report-card-label">
+            Out Of Stock
+          </span>
+
+          <strong className="product-report-card-value">
+            {summary.outOfStockProducts || 0}
+          </strong>
         </div>
       </div>
-
-      <hr />
 
       {/* ==========================
           Filters
       ========================== */}
 
-      <input
-        type="text"
-        placeholder="Search Product"
-        value={filters.search}
-        onChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
-            search: e.target.value,
-            page: 1,
-          }))
-        }
-      />
+      <div className="product-report-filter-section">
+        <div className="product-report-filter-group">
+          <label className="product-report-filter-label">
+            Search
+          </label>
 
-      <select
-        value={filters.stockStatus}
-        onChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
-            stockStatus: e.target.value,
-            page: 1,
-          }))
-        }
-      >
-        <option value="">All</option>
-        <option value="AVAILABLE">Available</option>
-        <option value="LOW">Low Stock</option>
-        <option value="OUT">Out Of Stock</option>
-      </select>
+          <input
+            className="product-report-input"
+            type="text"
+            placeholder="Search Product"
+            value={filters.search}
+            onChange={(e) =>
+              setFilters((prev) => ({
+                ...prev,
+                search: e.target.value,
+                page: 1,
+              }))
+            }
+          />
+        </div>
 
-      <select
-        value={filters.sort}
-        onChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
-            sort: e.target.value,
-          }))
-        }
-      >
-        <option value="">Newest</option>
-        <option value="oldest">Oldest</option>
-      </select>
+        <div className="product-report-filter-group">
+          <label className="product-report-filter-label">
+            Stock Status
+          </label>
 
-      <hr />
+          <select
+            className="product-report-select"
+            value={filters.stockStatus}
+            onChange={(e) =>
+              setFilters((prev) => ({
+                ...prev,
+                stockStatus: e.target.value,
+                page: 1,
+              }))
+            }
+          >
+            <option value="">All</option>
+            <option value="AVAILABLE">Available</option>
+            <option value="LOW">Low Stock</option>
+            <option value="OUT">Out Of Stock</option>
+          </select>
+        </div>
+
+        <div className="product-report-filter-group">
+          <label className="product-report-filter-label">
+            Sort By
+          </label>
+
+          <select
+            className="product-report-select"
+            value={filters.sort}
+            onChange={(e) =>
+              setFilters((prev) => ({
+                ...prev,
+                sort: e.target.value,
+              }))
+            }
+          >
+            <option value="">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+      </div>
 
       {/* ==========================
           Table
       ========================== */}
 
-      {loading ? (
-        <h3>Loading...</h3>
-      ) : (
-        <table
-          border="1"
-          cellPadding="8"
-          cellSpacing="0"
-        >
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Cost</th>
-              <th>Selling</th>
-              <th>Quantity</th>
-              <th>Created</th>
-            </tr>
-          </thead>
+      <div className="product-report-table-section">
+        <div className="product-report-table-header">
+          <div>
+            <h3>Products</h3>
 
-          <tbody>
-            {products.map((product) => (
-              <tr key={product._id}>
-                <td>{product.name}</td>
+            <p>
+              Showing product details and stock information
+            </p>
+          </div>
+        </div>
 
-                <td>
-                  {product.category?.name}
-                </td>
+        {loading ? (
+          <div className="product-report-state">
+            <h3>Loading...</h3>
+          </div>
+        ) : products.length === 0 ? (
+          <div className="product-report-state">
+            <h3>No Products Found</h3>
 
-                <td>
-                  ₹{product.costPrice}
-                </td>
+            <p>
+              No products match the selected filters.
+            </p>
+          </div>
+        ) : (
+          <div className="product-report-table-wrapper">
+            <table className="product-report-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Cost</th>
+                  <th>Selling</th>
+                  <th>Quantity</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
 
-                <td>
-                  ₹{product.sellingPrice}
-                </td>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product._id}>
+                    <td className="product-report-product-name">
+                      {product.name}
+                    </td>
 
-                <td>
-                  {product.quantity}
-                </td>
+                    <td>
+                      {product.category?.name || "-"}
+                    </td>
 
-                <td>
-                  {new Date(
-                    product.createdAt
-                  ).toLocaleDateString()}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+                    <td>
+                      ₹{product.costPrice}
+                    </td>
 
-      <div
-        style={{
-          marginTop: "20px",
-        }}
-      >
+                    <td>
+                      ₹{product.sellingPrice}
+                    </td>
+
+                    <td>
+                      <span
+                        className={
+                          product.quantity === 0
+                            ? "product-report-stock-out"
+                            : "product-report-stock"
+                        }
+                      >
+                        {product.quantity}
+                      </span>
+                    </td>
+
+                    <td>
+                      {new Date(
+                        product.createdAt
+                      ).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+      {/* ==========================
+          Pagination
+      ========================== */}
+
+      <div className="product-report-pagination">
         <button
-          disabled={
-            pagination.page === 1
-          }
+          className="product-report-pagination-btn"
+          disabled={pagination.page === 1}
           onClick={() =>
             setFilters((prev) => ({
               ...prev,
@@ -211,16 +297,16 @@ function ProductReport() {
           Previous
         </button>
 
-        <span>
-          {" "}
-          Page {pagination.page} of{" "}
-          {pagination.totalPages}
+        <span className="product-report-pagination-info">
+          Page {pagination.page || 1} of{" "}
+          {pagination.totalPages || 1}
         </span>
 
         <button
+          className="product-report-pagination-btn"
           disabled={
-            pagination.page ===
-            pagination.totalPages
+            pagination.page === pagination.totalPages ||
+            !pagination.totalPages
           }
           onClick={() =>
             setFilters((prev) => ({

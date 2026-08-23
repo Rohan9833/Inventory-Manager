@@ -1,0 +1,645 @@
+/* ================================
+   PAYMENT REPORT
+================================ */
+
+.payment-report {
+  width: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+  overflow-x: hidden;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.payment-report-header {
+  margin-bottom: 1.5rem;
+}
+
+.payment-report-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.payment-report-header p {
+  margin-top: 0.35rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* ================================
+   SUMMARY
+================================ */
+
+.payment-report-summary {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.payment-report-card {
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.25rem;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+
+  transition: 0.2s;
+}
+
+.payment-report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+.payment-report-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.payment-report-card strong {
+  display: block;
+  color: #111827;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+/* ================================
+   FILTER BOX
+================================ */
+
+.payment-report-filter-box {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  padding: 1rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+/* ================================
+   SEARCH
+================================ */
+
+.payment-report-search {
+  flex: 1;
+
+  min-width: 200px;
+
+  height: 2.8rem;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.6rem;
+
+  padding: 0 0.9rem;
+
+  border: 1px solid #d1d5db;
+  border-radius: 0.7rem;
+
+  background: #ffffff;
+}
+
+.payment-report-search span {
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+.payment-report-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  font-size: 0.9rem;
+  color: #111827;
+
+  background: transparent;
+}
+
+.payment-report-search input::placeholder {
+  color: #9ca3af;
+}
+
+/* ================================
+   SELECT
+================================ */
+
+.payment-report-select {
+  height: 2.8rem;
+
+  min-width: 150px;
+
+  padding: 0 0.8rem;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 0.7rem;
+
+  background: #ffffff;
+
+  color: #374151;
+
+  outline: none;
+
+  cursor: pointer;
+
+  font-size: 0.9rem;
+}
+
+.payment-report-select:focus {
+  border-color: #3968ff;
+}
+
+/* ================================
+   TABLE SECTION
+================================ */
+
+.payment-report-table-section {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 1rem;
+
+  overflow: hidden;
+}
+
+/* ================================
+   TABLE HEADER
+================================ */
+
+.payment-report-table-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1.2rem 1.3rem;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.payment-report-table-header h3 {
+  margin: 0;
+
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+.payment-report-table-header p {
+  margin-top: 0.25rem;
+
+  color: #6b7280;
+
+  font-size: 0.8rem;
+}
+
+.payment-report-count {
+  padding: 0.4rem 0.7rem;
+
+  border-radius: 2rem;
+
+  background: #eef2ff;
+
+  color: #3968ff;
+
+  font-size: 0.75rem;
+
+  font-weight: 600;
+}
+
+/* ================================
+   TABLE WRAPPER
+   ONLY THIS SCROLLS
+================================ */
+
+.payment-report-table-wrapper {
+  width: 100%;
+
+  max-width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ================================
+   TABLE
+================================ */
+
+.payment-report-table {
+  width: 100%;
+
+  min-width: 800px;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+}
+
+.payment-report-table th {
+  padding: 0.9rem 1rem;
+
+  text-align: left;
+
+  background: #f9fafb;
+
+  color: #6b7280;
+
+  font-size: 0.75rem;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.payment-report-table td {
+  padding: 1rem;
+
+  border-bottom: 1px solid #f1f5f9;
+
+  color: #374151;
+
+  font-size: 0.88rem;
+
+  white-space: nowrap;
+}
+
+.payment-report-table tbody tr {
+  transition: 0.15s;
+}
+
+.payment-report-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.payment-report-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ================================
+   CUSTOMER
+================================ */
+
+.payment-report-customer {
+  display: flex;
+  align-items: center;
+
+  gap: 0.7rem;
+}
+
+.payment-report-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #3968ff;
+  color: #ffffff;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.payment-report-customer strong {
+  display: block;
+
+  color: #111827;
+
+  font-size: 0.85rem;
+}
+
+.payment-report-customer span {
+  display: block;
+
+  margin-top: 0.15rem;
+
+  color: #9ca3af;
+
+  font-size: 0.72rem;
+}
+
+/* ================================
+   AMOUNT
+================================ */
+
+.payment-report-amount {
+  color: #111827;
+
+  font-weight: 700;
+}
+
+/* ================================
+   PAYMENT METHOD
+================================ */
+
+.payment-report-method {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 0.35rem 0.65rem;
+
+  border-radius: 2rem;
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+}
+
+.payment-report-method-cash {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.payment-report-method-upi {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.payment-report-method-card {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.payment-report-method-bank {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+/* ================================
+   NOTE
+================================ */
+
+.payment-report-note {
+  color: #6b7280;
+
+  max-width: 250px;
+
+  display: inline-block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  vertical-align: middle;
+}
+
+/* ================================
+   DATE
+================================ */
+
+.payment-report-date {
+  color: #6b7280;
+}
+
+/* ================================
+   LOADING
+================================ */
+
+.payment-report-loading {
+  min-height: 250px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-report-loading h3 {
+  color: #6b7280;
+
+  font-size: 0.95rem;
+}
+
+/* ================================
+   EMPTY
+================================ */
+
+.payment-report-empty {
+  min-height: 280px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 2rem;
+}
+
+.payment-report-empty-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #6b7280;
+
+  font-size: 1.3rem;
+
+  margin-bottom: 0.8rem;
+}
+
+.payment-report-empty h3 {
+  margin: 0;
+
+  color: #374151;
+
+  font-size: 1rem;
+}
+
+.payment-report-empty p {
+  margin-top: 0.4rem;
+
+  color: #9ca3af;
+
+  font-size: 0.8rem;
+}
+
+/* ================================
+   PAGINATION
+================================ */
+
+.payment-report-pagination {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 1rem 1.3rem;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.payment-report-pagination button {
+  border: 1px solid #d1d5db;
+
+  background: #ffffff;
+
+  color: #374151;
+
+  padding: 0.55rem 0.9rem;
+
+  border-radius: 0.6rem;
+
+  cursor: pointer;
+
+  font-size: 0.8rem;
+
+  transition: 0.2s;
+}
+
+.payment-report-pagination button:hover:not(:disabled) {
+  background: #f3f4f6;
+
+  border-color: #3968ff;
+
+  color: #3968ff;
+}
+
+.payment-report-pagination button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+.payment-report-page-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  color: #6b7280;
+
+  font-size: 0.8rem;
+}
+
+.payment-report-page-info strong {
+  color: #111827;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1100px) {
+
+  .payment-report-summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .payment-report {
+    padding: 1rem;
+  }
+
+  .payment-report-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .payment-report-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .payment-report-filter-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .payment-report-search {
+    width: 100%;
+  }
+
+  .payment-report-select {
+    width: 100%;
+  }
+
+  .payment-report-table-header {
+    padding: 1rem;
+  }
+
+  .payment-report-pagination {
+    padding: 0.9rem;
+  }
+
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+
+  .payment-report-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-report-card {
+    padding: 1rem;
+  }
+
+  .payment-report-pagination {
+    gap: 0.5rem;
+  }
+
+  .payment-report-page-info {
+    font-size: 0.72rem;
+  }
+
+  .payment-report-pagination button {
+    padding: 0.5rem 0.65rem;
+  }
+
+}

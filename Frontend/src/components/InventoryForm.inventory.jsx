@@ -1,10 +1,7 @@
 import { useState } from "react";
+import "../css/InventoryForm.css";
 
-function InventoryForm({
-  products,
-  onStockIn,
-  onStockOut,
-}) {
+function InventoryForm({ products, onStockIn, onStockOut }) {
   const [formData, setFormData] = useState({
     product: "",
     type: "IN",
@@ -68,80 +65,151 @@ function InventoryForm({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Inventory Entry</h2>
+    <form className="inventory-form" onSubmit={handleSubmit}>
+      {/* ================= HEADER ================= */}
 
-      {/* Product */}
+      <div className="inventory-form-header">
+        <div className="inventory-form-heading">
+          <h2 className="inventory-form-title">Inventory Entry</h2>
 
-      <div>
-        <label>Product</label>
+          <p className="inventory-form-subtitle">
+            Manage your stock in and stock out transactions
+          </p>
+        </div>
 
-        <select
-          name="product"
-          value={formData.product}
-          onChange={handleChange}
+        <div
+          className={`inventory-form-type-badge ${
+            formData.type === "OUT"
+              ? "inventory-form-type-badge-out"
+              : "inventory-form-type-badge-in"
+          }`}
         >
-          <option value="">Select Product</option>
+          <span className="inventory-form-type-dot"></span>
 
-          {products.map((product) => (
-            <option
-              key={product._id}
-              value={product._id}
-            >
-              {product.name}
-            </option>
-          ))}
-        </select>
+          {formData.type === "IN" ? "Stock In" : "Stock Out"}
+        </div>
       </div>
 
-      {/* Type */}
+      {/* ================= FORM GRID ================= */}
 
-      <div>
-        <label>Transaction Type</label>
+      <div className="inventory-form-grid">
+        {/* Product */}
 
-        <select
-          name="type"
-          value={formData.type}
-          onChange={handleChange}
+        <div className="inventory-form-field">
+          <label
+            className="inventory-form-label"
+            htmlFor="inventory-product"
+          >
+            Product
+            <span className="inventory-form-required">*</span>
+          </label>
+
+          <select
+            id="inventory-product"
+            className="inventory-form-input"
+            name="product"
+            value={formData.product}
+            onChange={handleChange}
+          >
+            <option value="">Select Product</option>
+
+            {products.map((product) => (
+              <option key={product._id} value={product._id}>
+                {product.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Transaction Type */}
+
+        <div className="inventory-form-field">
+          <label
+            className="inventory-form-label"
+            htmlFor="inventory-type"
+          >
+            Transaction Type
+          </label>
+
+          <select
+            id="inventory-type"
+            className="inventory-form-input"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+          >
+            <option value="IN">Stock In</option>
+            <option value="OUT">Stock Out</option>
+          </select>
+        </div>
+
+        {/* Quantity */}
+
+        <div className="inventory-form-field">
+          <label
+            className="inventory-form-label"
+            htmlFor="inventory-quantity"
+          >
+            Quantity
+            <span className="inventory-form-required">*</span>
+          </label>
+
+          <input
+            id="inventory-quantity"
+            className="inventory-form-input"
+            type="number"
+            name="quantity"
+            value={formData.quantity}
+            onChange={handleChange}
+            min="1"
+            placeholder="Enter quantity"
+          />
+        </div>
+
+        {/* Note */}
+
+        <div className="inventory-form-field inventory-form-field-full">
+          <label
+            className="inventory-form-label"
+            htmlFor="inventory-note"
+          >
+            Note
+          </label>
+
+          <textarea
+            id="inventory-note"
+            className="inventory-form-textarea"
+            name="note"
+            value={formData.note}
+            onChange={handleChange}
+            rows="3"
+            placeholder="Add an optional note..."
+          />
+        </div>
+      </div>
+
+      {/* ================= FOOTER ================= */}
+
+      <div className="inventory-form-footer">
+        <button
+          type="button"
+          className="inventory-form-reset-btn"
+          onClick={resetForm}
         >
-          <option value="IN">Stock In</option>
-          <option value="OUT">Stock Out</option>
-        </select>
+          Clear
+        </button>
+
+        <button
+          type="submit"
+          className={`inventory-form-submit ${
+            formData.type === "OUT"
+              ? "inventory-form-submit-out"
+              : "inventory-form-submit-in"
+          }`}
+        >
+          {formData.type === "IN" ? "Stock In" : "Stock Out"}
+        </button>
       </div>
-
-      {/* Quantity */}
-
-      <div>
-        <label>Quantity</label>
-
-        <input
-          type="number"
-          name="quantity"
-          value={formData.quantity}
-          onChange={handleChange}
-          min="1"
-        />
-      </div>
-
-      {/* Note */}
-
-      <div>
-        <label>Note</label>
-
-        <textarea
-          name="note"
-          value={formData.note}
-          onChange={handleChange}
-          rows="3"
-          placeholder="Optional note"
-        />
-      </div>
-
-      <button type="submit">
-        {formData.type === "IN"
-          ? "Stock In"
-          : "Stock Out"}
-      </button>
     </form>
   );
 }

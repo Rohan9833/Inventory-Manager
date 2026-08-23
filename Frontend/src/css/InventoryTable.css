@@ -1,0 +1,659 @@
+/* =====================================================
+   INVENTORY HISTORY CONTAINER
+===================================================== */
+
+.inventory-history-container {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1.5rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.inventory-history-header {
+  width: 100%;
+
+  padding: 1.25rem 1.35rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 1.25rem;
+
+  border-bottom: 1px solid #eef0f3;
+}
+
+.inventory-history-heading {
+  min-width: 0;
+}
+
+.inventory-history-heading h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.inventory-history-heading p {
+  margin: 0.35rem 0 0;
+
+  color: #6b7280;
+
+  font-size: 0.82rem;
+}
+
+
+/* =====================================================
+   COLUMN SELECTOR
+===================================================== */
+
+.inventory-history-column-selector {
+  display: flex;
+  align-items: center;
+
+  gap: 0.7rem;
+
+  flex-shrink: 0;
+}
+
+.inventory-history-column-title {
+  color: #6b7280;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.inventory-history-column-buttons {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.4rem;
+}
+
+.inventory-history-column-btn {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.35rem;
+
+  padding: 0.4rem 0.65rem;
+
+  border: 1px solid #e2e5e9;
+  border-radius: 7px;
+
+  background: #f8f9fa;
+
+  color: #6b7280;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.inventory-history-column-btn:hover {
+  background: #f1f3f5;
+
+  border-color: #cbd5e1;
+
+  color: #374151;
+}
+
+.inventory-history-column-btn-active {
+  background: #eff6ff;
+
+  border-color: #93c5fd;
+
+  color: #2563eb;
+}
+
+.inventory-history-column-check {
+  width: 15px;
+  height: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+
+  font-size: 0.65rem;
+}
+
+.inventory-history-column-btn-active
+  .inventory-history-column-check {
+  background: #2563eb;
+
+  border-color: #2563eb;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   ONLY TABLE SCROLLS
+===================================================== */
+
+.inventory-history-table-scroll {
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.inventory-history-table-scroll::-webkit-scrollbar {
+  height: 7px;
+}
+
+.inventory-history-table-scroll::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.inventory-history-table-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 10px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.inventory-history-table {
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+  font-size: 0.84rem;
+}
+
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.inventory-history-table thead {
+  background: #f8fafc;
+}
+
+.inventory-history-table th {
+  padding: 0.85rem 1rem;
+
+  text-align: left;
+
+  color: #64748b;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.035em;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* =====================================================
+   TABLE BODY
+===================================================== */
+
+.inventory-history-table td {
+  padding: 0.9rem 1rem;
+
+  color: #374151;
+
+  border-bottom: 1px solid #f1f3f5;
+
+  white-space: nowrap;
+
+  vertical-align: middle;
+}
+
+.inventory-history-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.inventory-history-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.inventory-history-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   INDEX
+===================================================== */
+
+.inventory-history-index-column,
+.inventory-history-index-cell {
+  width: 50px;
+
+  text-align: center !important;
+}
+
+.inventory-history-index-cell {
+  color: #94a3b8 !important;
+
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   PRODUCT
+===================================================== */
+
+.inventory-history-product-cell {
+  min-width: 190px;
+}
+
+.inventory-history-product {
+  display: flex;
+  align-items: center;
+
+  gap: 0.65rem;
+}
+
+.inventory-history-product-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #eff6ff;
+
+  font-size: 0.9rem;
+}
+
+.inventory-history-product span {
+  color: #1f2937;
+
+  font-weight: 600;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   TYPE
+===================================================== */
+
+.inventory-history-type {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.4rem;
+
+  padding: 0.35rem 0.6rem;
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.inventory-history-type-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+}
+
+.inventory-history-type-in {
+  background: #ecfdf3;
+
+  color: #15803d;
+}
+
+.inventory-history-type-in
+  .inventory-history-type-dot {
+  background: #22c55e;
+}
+
+.inventory-history-type-out {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+.inventory-history-type-out
+  .inventory-history-type-dot {
+  background: #ef4444;
+}
+
+
+/* =====================================================
+   QUANTITY
+===================================================== */
+
+.inventory-history-quantity {
+  font-size: 0.86rem;
+
+  font-weight: 700;
+}
+
+.inventory-history-quantity-in {
+  color: #16a34a;
+}
+
+.inventory-history-quantity-out {
+  color: #dc2626;
+}
+
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.inventory-history-note {
+  max-width: 220px;
+
+  white-space: normal !important;
+
+  line-height: 1.4;
+
+  color: #64748b !important;
+}
+
+
+/* =====================================================
+   CREATED BY
+===================================================== */
+
+.inventory-history-user {
+  display: flex;
+  align-items: center;
+
+  gap: 0.55rem;
+}
+
+.inventory-history-user-avatar {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.inventory-history-user span {
+  color: #374151;
+
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+.inventory-history-date {
+  color: #64748b !important;
+
+  font-size: 0.78rem;
+}
+
+
+/* =====================================================
+   LOADING / EMPTY
+===================================================== */
+
+.inventory-history-state {
+  width: 100%;
+
+  min-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.45rem;
+
+  padding: 2rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  text-align: center;
+}
+
+.inventory-history-state h3 {
+  margin: 0;
+
+  color: #374151;
+
+  font-size: 1rem;
+}
+
+.inventory-history-state p {
+  margin: 0;
+
+  color: #9ca3af;
+
+  font-size: 0.8rem;
+}
+
+.inventory-history-empty-icon {
+  margin-bottom: 0.25rem;
+
+  font-size: 2rem;
+}
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+.inventory-history-loader {
+  width: 28px;
+  height: 28px;
+
+  border: 3px solid #e5e7eb;
+
+  border-top-color: #2563eb;
+
+  border-radius: 50%;
+
+  animation: inventory-history-spin 0.8s linear infinite;
+}
+
+@keyframes inventory-history-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+  .inventory-history-header {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .inventory-history-column-selector {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .inventory-history-column-buttons {
+    width: 100%;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+  .inventory-history-container {
+    margin-top: 1rem;
+
+    border-radius: 12px;
+  }
+
+  .inventory-history-header {
+    padding: 1rem;
+  }
+
+  .inventory-history-heading h2 {
+    font-size: 1rem;
+  }
+
+  .inventory-history-heading p {
+    font-size: 0.74rem;
+  }
+
+  .inventory-history-column-title {
+    font-size: 0.72rem;
+  }
+
+  .inventory-history-column-buttons {
+    gap: 0.35rem;
+  }
+
+  .inventory-history-column-btn {
+    padding: 0.35rem 0.5rem;
+
+    font-size: 0.67rem;
+  }
+
+  .inventory-history-column-check {
+    width: 14px;
+    height: 14px;
+  }
+
+  .inventory-history-table {
+    min-width: 820px;
+
+    font-size: 0.78rem;
+  }
+
+  .inventory-history-table th {
+    padding: 0.7rem 0.75rem;
+
+    font-size: 0.65rem;
+  }
+
+  .inventory-history-table td {
+    padding: 0.75rem;
+
+    font-size: 0.76rem;
+  }
+
+  .inventory-history-product-icon {
+    width: 28px;
+    height: 28px;
+
+    font-size: 0.8rem;
+  }
+
+  .inventory-history-type {
+    padding: 0.3rem 0.5rem;
+
+    font-size: 0.65rem;
+  }
+
+  .inventory-history-quantity {
+    font-size: 0.78rem;
+  }
+
+  .inventory-history-user-avatar {
+    width: 27px;
+    height: 27px;
+
+    font-size: 0.65rem;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+  .inventory-history-header {
+    padding: 0.85rem;
+  }
+
+  .inventory-history-heading h2 {
+    font-size: 0.95rem;
+  }
+
+  .inventory-history-heading p {
+    font-size: 0.7rem;
+  }
+
+  .inventory-history-column-btn {
+    padding: 0.32rem 0.45rem;
+
+    font-size: 0.63rem;
+  }
+
+  .inventory-history-table {
+    min-width: 780px;
+  }
+}

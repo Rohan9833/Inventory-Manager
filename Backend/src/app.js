@@ -10,6 +10,7 @@ const paymentRoutes = require("./routes/payment.routes");
 const saleRoutes = require("./routes/sale.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
 const reportRoutes = require("./routes/report.routes");
+const appai = require("./AI/app")
 
 const app = express();
 app.use(express.json());
@@ -30,5 +31,6 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/sale", saleRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/reports", reportRoutes);
+app.use("/api/ai",appai)
 
 module.exports = app;

@@ -1,0 +1,517 @@
+/* ==============================
+   CUSTOMER REPORT
+============================== */
+
+.customer-report {
+  width: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.customer-report-header {
+  margin-bottom: 1.5rem;
+}
+
+.customer-report-title {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #172033;
+}
+
+.customer-report-subtitle {
+  margin: 0.4rem 0 0;
+  color: #7a8495;
+  font-size: 0.9rem;
+}
+
+/* ==============================
+   FILTERS
+============================== */
+
+.customer-report-filters {
+  width: 100%;
+  display: grid;
+  grid-template-columns:
+    minmax(180px, 1.5fr)
+    minmax(160px, 1fr)
+    minmax(160px, 1fr);
+
+  gap: 1rem;
+
+  padding: 1.1rem;
+
+  margin-bottom: 1.25rem;
+
+  background: #ffffff;
+
+  border: 1px solid #e7ebf2;
+  border-radius: 0.9rem;
+
+  box-shadow: 0 4px 18px rgba(20, 32, 55, 0.04);
+
+  box-sizing: border-box;
+}
+
+.customer-report-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+
+  min-width: 0;
+}
+
+.customer-report-filter-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #596579;
+}
+
+.customer-report-filter-group input,
+.customer-report-filter-group select {
+  width: 100%;
+  height: 2.65rem;
+
+  padding: 0 0.8rem;
+
+  border: 1px solid #dfe4ec;
+  border-radius: 0.6rem;
+
+  background: #ffffff;
+
+  color: #252d3a;
+
+  font-size: 0.85rem;
+
+  outline: none;
+
+  transition: 0.2s;
+
+  box-sizing: border-box;
+}
+
+.customer-report-filter-group input:focus,
+.customer-report-filter-group select:focus {
+  border-color: #3968ff;
+
+  box-shadow: 0 0 0 3px rgba(57, 104, 255, 0.1);
+}
+
+/* ==============================
+   TABLE CARD
+============================== */
+
+.customer-report-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e7ebf2;
+
+  border-radius: 0.9rem;
+
+  box-shadow: 0 4px 18px rgba(20, 32, 55, 0.04);
+
+  overflow: hidden;
+}
+
+/* ==============================
+   TABLE HEADER
+============================== */
+
+.customer-report-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.1rem 1.2rem;
+
+  border-bottom: 1px solid #edf0f5;
+}
+
+.customer-report-table-header h3 {
+  margin: 0;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: #172033;
+}
+
+.customer-report-table-header p {
+  margin: 0.25rem 0 0;
+
+  font-size: 0.75rem;
+
+  color: #8a93a3;
+}
+
+/* ==============================
+   TABLE WRAPPER
+   IMPORTANT:
+   ONLY THIS ELEMENT SCROLLS
+============================== */
+
+.customer-report-table-wrapper {
+  width: 100%;
+
+  max-width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  overscroll-behavior-x: contain;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent page from becoming wider */
+
+.customer-report-table {
+  width: 100%;
+
+  min-width: 760px;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+}
+
+/* ==============================
+   TABLE HEAD
+============================== */
+
+.customer-report-table thead {
+  background: #f7f9fc;
+}
+
+.customer-report-table th {
+  padding: 0.85rem 1rem;
+
+  text-align: left;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  color: #687386;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.03em;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #e9edf3;
+}
+
+/* ==============================
+   TABLE BODY
+============================== */
+
+.customer-report-table td {
+  padding: 0.9rem 1rem;
+
+  font-size: 0.82rem;
+
+  color: #4c5667;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #f0f2f6;
+}
+
+.customer-report-table tbody tr {
+  transition: 0.2s;
+}
+
+.customer-report-table tbody tr:hover {
+  background: #f9fbff;
+}
+
+.customer-report-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==============================
+   CUSTOMER NAME
+============================== */
+
+.customer-report-name {
+  color: #202938;
+
+  font-weight: 600;
+}
+
+/* ==============================
+   BALANCE
+============================== */
+
+.customer-report-balance {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 0.35rem 0.6rem;
+
+  border-radius: 0.45rem;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+}
+
+.customer-report-balance.pending {
+  color: #b45309;
+
+  background: #fff7e6;
+}
+
+.customer-report-balance.clear {
+  color: #15803d;
+
+  background: #ecfdf3;
+}
+
+/* ==============================
+   EMPTY / LOADING
+============================== */
+
+.customer-report-state {
+  min-height: 220px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 2rem;
+}
+
+.customer-report-state h3 {
+  margin: 0;
+
+  font-size: 1rem;
+
+  color: #3a4352;
+}
+
+.customer-report-state p {
+  margin: 0.4rem 0 0;
+
+  font-size: 0.8rem;
+
+  color: #8a93a3;
+}
+
+/* ==============================
+   PAGINATION
+============================== */
+
+.customer-report-pagination {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem 1.2rem;
+
+  border-top: 1px solid #edf0f5;
+}
+
+.customer-report-page-btn {
+  min-width: 6.5rem;
+
+  height: 2.35rem;
+
+  padding: 0 0.8rem;
+
+  border: 1px solid #dfe4ec;
+
+  border-radius: 0.55rem;
+
+  background: #ffffff;
+
+  color: #3e4858;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.customer-report-page-btn:hover:not(:disabled) {
+  border-color: #3968ff;
+
+  color: #3968ff;
+
+  background: #f5f7ff;
+}
+
+.customer-report-page-btn:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+.customer-report-page-info {
+  color: #737d8d;
+
+  font-size: 0.78rem;
+
+  white-space: nowrap;
+}
+
+.customer-report-page-info strong {
+  color: #273142;
+}
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 900px) {
+  .customer-report {
+    padding: 1.1rem;
+  }
+
+  .customer-report-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .customer-report-filter-group:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+  .customer-report {
+    padding: 0.8rem;
+
+    width: 100%;
+  }
+
+  .customer-report-title {
+    font-size: 1.3rem;
+  }
+
+  .customer-report-subtitle {
+    font-size: 0.76rem;
+
+    line-height: 1.4;
+  }
+
+  .customer-report-filters {
+    grid-template-columns: 1fr;
+
+    gap: 0.75rem;
+
+    padding: 0.85rem;
+
+    border-radius: 0.75rem;
+  }
+
+  .customer-report-filter-group:first-child {
+    grid-column: auto;
+  }
+
+  .customer-report-filter-group input,
+  .customer-report-filter-group select {
+    height: 2.45rem;
+
+    font-size: 0.8rem;
+  }
+
+  .customer-report-table-header {
+    padding: 0.9rem;
+  }
+
+  .customer-report-table-header h3 {
+    font-size: 0.9rem;
+  }
+
+  .customer-report-table-header p {
+    font-size: 0.7rem;
+  }
+
+  .customer-report-table th {
+    padding: 0.7rem 0.8rem;
+
+    font-size: 0.68rem;
+  }
+
+  .customer-report-table td {
+    padding: 0.75rem 0.8rem;
+
+    font-size: 0.76rem;
+  }
+
+  .customer-report-pagination {
+    padding: 0.8rem;
+
+    gap: 0.5rem;
+  }
+
+  .customer-report-page-btn {
+    min-width: auto;
+
+    height: 2.15rem;
+
+    padding: 0 0.65rem;
+
+    font-size: 0.7rem;
+  }
+
+  .customer-report-page-info {
+    font-size: 0.7rem;
+  }
+}
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media (max-width: 400px) {
+  .customer-report {
+    padding: 0.65rem;
+  }
+
+  .customer-report-title {
+    font-size: 1.15rem;
+  }
+
+  .customer-report-table {
+    min-width: 700px;
+  }
+
+  .customer-report-table th,
+  .customer-report-table td {
+    padding: 0.65rem 0.7rem;
+  }
+
+  .customer-report-page-btn {
+    padding: 0 0.5rem;
+
+    font-size: 0.65rem;
+  }
+}

@@ -1,0 +1,554 @@
+/* =========================================
+   CATEGORY TABLE CONTAINER
+========================================= */
+
+.category-table-container {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 1.5rem auto 0;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.category-table-header {
+  min-height: 85px;
+
+  padding: 1.2rem 1.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.category-table-title {
+  margin: 0;
+
+  font-size: 1.25rem;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.category-table-subtitle {
+  margin-top: 0.3rem;
+
+  font-size: 0.8rem;
+
+  color: #6b7280;
+}
+
+.category-table-count {
+  flex-shrink: 0;
+
+  padding: 0.45rem 0.75rem;
+
+  border-radius: 2rem;
+
+  background: #eef3ff;
+
+  color: #3968ff;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+   ONLY THIS AREA SCROLLS
+========================================= */
+
+.category-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+}
+
+
+/* Prevent ugly page-level horizontal scrolling */
+
+.category-table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-table-wrapper::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.category-table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.category-table {
+  width: 100%;
+
+  min-width: 760px;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+}
+
+
+/* =========================================
+   TABLE HEAD
+========================================= */
+
+.category-table thead {
+  background: #f8fafc;
+}
+
+.category-table th {
+  padding: 0.85rem 1rem;
+
+  text-align: left;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  color: #475569;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.025rem;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.category-table td {
+  padding: 0.9rem 1rem;
+
+  border-bottom: 1px solid #f0f2f5;
+
+  color: #374151;
+
+  font-size: 0.82rem;
+
+  vertical-align: middle;
+}
+
+.category-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.category-table tbody tr:hover {
+  background: #f8faff;
+}
+
+.category-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.category-table-number {
+  width: 50px;
+
+  color: #9ca3af !important;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   NAME
+========================================= */
+
+.category-table-name {
+  min-width: 140px;
+
+  color: #111827 !important;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.category-table-description {
+  min-width: 220px;
+
+  max-width: 300px;
+
+  color: #6b7280 !important;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.category-table-date {
+  white-space: nowrap;
+
+  color: #6b7280 !important;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.category-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  padding: 0.35rem 0.65rem;
+
+  border-radius: 2rem;
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.category-status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+}
+
+
+/* Active */
+
+.category-status-active {
+  background: #ecfdf3;
+
+  color: #15803d;
+}
+
+.category-status-active .category-status-dot {
+  background: #22c55e;
+}
+
+
+/* Inactive */
+
+.category-status-inactive {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+.category-status-inactive .category-status-dot {
+  background: #ef4444;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.category-table-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.45rem;
+
+  white-space: nowrap;
+}
+
+.category-table-actions button {
+  height: 2.1rem;
+
+  padding: 0 0.7rem;
+
+  border: none;
+
+  border-radius: 0.5rem;
+
+  font-family: inherit;
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Edit */
+
+.category-action-edit {
+  background: #eef3ff;
+
+  color: #3968ff;
+}
+
+.category-action-edit:hover {
+  background: #dfe8ff;
+
+  transform: translateY(-1px);
+}
+
+
+/* Deactivate */
+
+.category-action-deactivate {
+  background: #fff1f2;
+
+  color: #e11d48;
+}
+
+.category-action-deactivate:hover {
+  background: #ffe4e6;
+
+  transform: translateY(-1px);
+}
+
+
+/* Activate */
+
+.category-action-activate {
+  background: #ecfdf3;
+
+  color: #15803d;
+}
+
+.category-action-activate:hover {
+  background: #dcfce7;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   LOADING / EMPTY
+========================================= */
+
+.category-table-state {
+  width: 100%;
+
+  min-height: 180px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+
+  color: #6b7280;
+
+  text-align: center;
+}
+
+.category-table-state h3 {
+  font-size: 0.95rem;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+  .category-table-container {
+    margin-top: 1.2rem;
+
+    border-radius: 0.85rem;
+  }
+
+  .category-table-header {
+    padding: 1rem 1.1rem;
+
+    min-height: 75px;
+  }
+
+  .category-table-title {
+    font-size: 1.05rem;
+  }
+
+  .category-table-subtitle {
+    font-size: 0.72rem;
+  }
+
+  .category-table-count {
+    font-size: 0.68rem;
+
+    padding: 0.4rem 0.65rem;
+  }
+
+  .category-table th {
+    padding: 0.75rem 0.8rem;
+
+    font-size: 0.66rem;
+  }
+
+  .category-table td {
+    padding: 0.8rem;
+
+    font-size: 0.76rem;
+  }
+
+  .category-table-actions button {
+    height: 2rem;
+
+    font-size: 0.67rem;
+
+    padding: 0 0.6rem;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .category-table-container {
+    margin-top: 1rem;
+
+    border-radius: 0.75rem;
+  }
+
+  .category-table-header {
+    padding: 0.85rem;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 0.55rem;
+  }
+
+  .category-table-title {
+    font-size: 0.98rem;
+  }
+
+  .category-table-subtitle {
+    font-size: 0.68rem;
+  }
+
+  .category-table-count {
+    font-size: 0.65rem;
+
+    padding: 0.35rem 0.6rem;
+  }
+
+  /*
+     Table remains readable,
+     but wrapper handles horizontal scroll.
+  */
+
+  .category-table {
+    min-width: 700px;
+  }
+
+  .category-table th {
+    padding: 0.7rem;
+
+    font-size: 0.62rem;
+  }
+
+  .category-table td {
+    padding: 0.7rem;
+
+    font-size: 0.72rem;
+  }
+
+  .category-table-actions button {
+    height: 1.9rem;
+
+    padding: 0 0.55rem;
+
+    font-size: 0.64rem;
+  }
+
+  .category-status {
+    padding: 0.3rem 0.55rem;
+
+    font-size: 0.64rem;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL SCREEN
+========================================= */
+
+@media (max-width: 360px) {
+  .category-table-header {
+    padding: 0.75rem;
+  }
+
+  .category-table-title {
+    font-size: 0.92rem;
+  }
+
+  .category-table-subtitle {
+    font-size: 0.64rem;
+  }
+
+  .category-table {
+    min-width: 680px;
+  }
+
+  .category-table th {
+    padding: 0.65rem;
+
+    font-size: 0.59rem;
+  }
+
+  .category-table td {
+    padding: 0.65rem;
+
+    font-size: 0.69rem;
+  }
+}
