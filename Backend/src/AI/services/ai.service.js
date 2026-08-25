@@ -9,6 +9,7 @@ const {
   updateCategoryTool,
   changeCategoryStatusTool,
 } = require("../tools/category.tools");
+
 const {
   getCustomerTool,
   createCustomerTool,
@@ -243,51 +244,212 @@ const tools = [
   },
 
   // ==========================================
-  // Customer
+  // CUSTOMERS
   // ==========================================
-  { type: "function",
-    function:{
-      name:"get_Customer",
-      description:"Get categories from the inventory management system. Use this when the user asks to see, list, show, or find categories. Also use this before creating a product when you need to check whether a requested category exists.",
 
-    }
-   },
+  {
+    type: "function",
+
+    function: {
+      name: "get_customers",
+
+      description:
+        "Get all customers from the inventory management system. Use this when the user asks to see, list, show, or find customers.",
+
+      parameters: {
+        type: "object",
+        properties: {},
+        required: [],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "create_customer",
+
+      description: "Create a new customer in the inventory management system.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          name: {
+            type: "string",
+            description: "Name of the customer.",
+          },
+
+          phone: {
+            type: "string",
+            description: "Phone number of the customer.",
+          },
+
+          email: {
+            type: "string",
+            description: "Email address of the customer.",
+          },
+
+          address: {
+            type: "string",
+            description: "Address of the customer.",
+          },
+        },
+
+        required: ["name", "phone"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_customer_by_id",
+
+      description: "Get a specific customer by their MongoDB ID.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the customer.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "update_customer",
+
+      description: "Update an existing customer's information.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the customer.",
+          },
+
+          name: {
+            type: "string",
+            description: "Updated customer name.",
+          },
+
+          phone: {
+            type: "string",
+            description: "Updated customer phone number.",
+          },
+
+          email: {
+            type: "string",
+            description: "Updated customer email.",
+          },
+
+          address: {
+            type: "string",
+            description: "Updated customer address.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "change_customer_status",
+
+      description: "Activate or deactivate an existing customer.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the customer.",
+          },
+
+          isActive: {
+            type: "boolean",
+            description: "true to activate the customer, false to deactivate the customer.",
+          },
+        },
+
+        required: ["id", "isActive"],
+      },
+    },
+  },
 ];
 
 // ==========================================
 // TOOL EXECUTOR
 // ==========================================
 
-const executeTool = async (toolName, toolArguments) => {
+const executeTool = async (toolName, toolArguments, userId) => {
   switch (toolName) {
     // ==============================
     // PRODUCTS
     // ==============================
 
     case "get_products":
-      return await getProductsTool(toolArguments);
+      return await getProductsTool(toolArguments, userId);
 
     case "create_product":
-      return await createProductTool(toolArguments);
+      return await createProductTool(toolArguments, userId);
 
     // ==============================
     // CATEGORIES
     // ==============================
 
     case "get_categories":
-      return await getCategoriesTool(toolArguments);
+      return await getCategoriesTool(toolArguments, userId);
 
     case "get_category_by_id":
-      return await getCategoryByIdTool(toolArguments);
+      return await getCategoryByIdTool(toolArguments, userId);
 
     case "create_category":
-      return await createCategoryTool(toolArguments);
+      return await createCategoryTool(toolArguments, userId);
 
     case "update_category":
-      return await updateCategoryTool(toolArguments);
+      return await updateCategoryTool(toolArguments, userId);
 
     case "change_category_status":
-      return await changeCategoryStatusTool(toolArguments);
+      return await changeCategoryStatusTool(toolArguments, userId);
+
+    // ==============================
+    // CUSTOMERS
+    // ==============================
+
+    case "get_customers":
+      return await getCustomerTool(toolArguments, userId);
+
+    case "create_customer":
+      return await createCustomerTool(toolArguments, userId);
+
+    case "get_customer_by_id":
+      return await getCustomerByIdTool(toolArguments, userId);
+
+    case "update_customer":
+      return await updateCustomerTool(toolArguments, userId);
+
+    case "change_customer_status":
+      return await changeCustomerStatusTool(toolArguments, userId);
 
     default:
       throw new Error(`Unknown AI tool: ${toolName}`);
@@ -320,7 +482,7 @@ const testAI = async () => {
 // CHAT WITH AI
 // ==========================================
 
-const chatWithAI = async (message) => {
+const chatWithAI = async (message, userId) => {
   const messages = [
     {
       role: "system",
@@ -374,6 +536,11 @@ IMPORTANT TOOL RULES
 
 6. For dependent operations, perform the required
    operations step by step.
+
+7. Never ask the user for their userId.
+
+8. The userId is provided internally by the backend
+   and must never be generated or modified by the AI.
 
 ==========================================
 DEPENDENT OPERATIONS
@@ -439,6 +606,31 @@ Only provide the final response after all required
 operations are completed.
 
 ==========================================
+CUSTOMER OPERATIONS
+==========================================
+
+Use customer tools when the user asks about customers.
+
+Examples:
+
+"mere saare customers dikha"
+→ get_customers
+
+"Rohan naam ka customer bana"
+→ create_customer
+
+"customer ki details dikha"
+→ get_customer_by_id
+
+"customer ka phone update kar"
+→ update_customer
+
+"customer deactivate kar"
+→ change_customer_status
+
+Do not invent customer information.
+
+==========================================
 RESPONSE STYLE
 ==========================================
 
@@ -481,7 +673,7 @@ or implementation details unless explicitly asked.
 
       temperature: 0.3,
 
-      max_tokens: 1000,
+      max_tokens: 10000,
     });
 
     const assistantMessage = response.choices[0].message;
@@ -497,7 +689,7 @@ or implementation details unless explicitly asked.
     }
 
     // ==========================================
-    // ADD ASSISTANT TOOL CALL MESSAGE
+    // ADD AI RESPONSE
     // ==========================================
 
     messages.push(assistantMessage);
@@ -525,6 +717,8 @@ or implementation details unless explicitly asked.
 
       console.log("AI TOOL ARGUMENTS:", toolArguments);
 
+      console.log("AI USER ID:", userId);
+
       // ==========================================
       // EXECUTE TOOL
       // ==========================================
@@ -532,7 +726,7 @@ or implementation details unless explicitly asked.
       let toolResult;
 
       try {
-        toolResult = await executeTool(toolName, toolArguments);
+        toolResult = await executeTool(toolName, toolArguments, userId);
 
         console.log("AI TOOL SUCCESS:", toolName);
 

@@ -1,7 +1,4 @@
-const {
-  testAI,
-  chatWithAI,
-} = require("../services/ai.service");
+const { testAI, chatWithAI } = require("../services/ai.service");
 
 // ==========================================
 // TEST AI
@@ -30,7 +27,6 @@ const testAIController = async (req, res) => {
 // ==========================================
 // CHAT
 // ==========================================
-
 const chatController = async (req, res) => {
   try {
     const { message } = req.body;
@@ -42,7 +38,7 @@ const chatController = async (req, res) => {
       });
     }
 
-    const response = await chatWithAI(message);
+    const response = await chatWithAI(message, req.user._id);
 
     res.status(200).json({
       success: true,
@@ -59,7 +55,6 @@ const chatController = async (req, res) => {
     });
   }
 };
-
 module.exports = {
   testAIController,
   chatController,
