@@ -1,9 +1,6 @@
 const aiClient = require("../config/ai.config");
 
-const {
-  getProductsTool,
-  createProductTool,
-} = require("../tools/product.tools");
+const { getProductsTool, createProductTool } = require("../tools/product.tools");
 
 const {
   getCategoriesTool,
@@ -12,6 +9,13 @@ const {
   updateCategoryTool,
   changeCategoryStatusTool,
 } = require("../tools/category.tools");
+const {
+  getCustomerTool,
+  createCustomerTool,
+  getCustomerByIdTool,
+  updateCustomerTool,
+  changeCustomerStatusTool,
+} = require("../tools/customer.tool");
 
 // ==========================================
 // DEBUG
@@ -19,17 +23,13 @@ const {
 
 console.log("AI CLIENT:", !!aiClient);
 console.log("AI CHAT:", !!aiClient?.chat);
-console.log(
-  "AI COMPLETIONS:",
-  !!aiClient?.chat?.completions
-);
+console.log("AI COMPLETIONS:", !!aiClient?.chat?.completions);
 
 // ==========================================
 // MODEL
 // ==========================================
 
-const MODEL =
-  "nvidia/nemotron-3-ultra-550b-a55b";
+const MODEL = "nvidia/nemotron-3-ultra-550b-a55b";
 
 // ==========================================
 // AI TOOLS
@@ -72,42 +72,31 @@ const tools = [
         properties: {
           name: {
             type: "string",
-            description:
-              "Name of the product",
+            description: "Name of the product",
           },
 
           category: {
             type: "string",
-            description:
-              "Name of the existing category the product belongs to",
+            description: "Name of the existing category the product belongs to",
           },
 
           costPrice: {
             type: "number",
-            description:
-              "Purchase/cost price of the product",
+            description: "Purchase/cost price of the product",
           },
 
           sellingPrice: {
             type: "number",
-            description:
-              "Selling price of the product",
+            description: "Selling price of the product",
           },
 
           quantity: {
             type: "number",
-            description:
-              "Initial quantity of the product",
+            description: "Initial quantity of the product",
           },
         },
 
-        required: [
-          "name",
-          "category",
-          "costPrice",
-          "sellingPrice",
-          "quantity",
-        ],
+        required: ["name", "category", "costPrice", "sellingPrice", "quantity"],
       },
     },
   },
@@ -147,8 +136,7 @@ const tools = [
     function: {
       name: "get_category_by_id",
 
-      description:
-        "Get a specific category by its MongoDB ID.",
+      description: "Get a specific category by its MongoDB ID.",
 
       parameters: {
         type: "object",
@@ -156,8 +144,7 @@ const tools = [
         properties: {
           id: {
             type: "string",
-            description:
-              "MongoDB ID of the category.",
+            description: "MongoDB ID of the category.",
           },
         },
 
@@ -172,8 +159,7 @@ const tools = [
     function: {
       name: "create_category",
 
-      description:
-        "Create a new category in the inventory management system.",
+      description: "Create a new category in the inventory management system.",
 
       parameters: {
         type: "object",
@@ -181,14 +167,12 @@ const tools = [
         properties: {
           name: {
             type: "string",
-            description:
-              "Name of the new category.",
+            description: "Name of the new category.",
           },
 
           description: {
             type: "string",
-            description:
-              "Optional description of the category.",
+            description: "Optional description of the category.",
           },
         },
 
@@ -203,8 +187,7 @@ const tools = [
     function: {
       name: "update_category",
 
-      description:
-        "Update an existing category's name or description.",
+      description: "Update an existing category's name or description.",
 
       parameters: {
         type: "object",
@@ -212,20 +195,17 @@ const tools = [
         properties: {
           id: {
             type: "string",
-            description:
-              "MongoDB ID of the category.",
+            description: "MongoDB ID of the category.",
           },
 
           name: {
             type: "string",
-            description:
-              "New category name.",
+            description: "New category name.",
           },
 
           description: {
             type: "string",
-            description:
-              "New category description.",
+            description: "New category description.",
           },
         },
 
@@ -240,8 +220,7 @@ const tools = [
     function: {
       name: "change_category_status",
 
-      description:
-        "Activate or deactivate an existing category.",
+      description: "Activate or deactivate an existing category.",
 
       parameters: {
         type: "object",
@@ -249,14 +228,12 @@ const tools = [
         properties: {
           id: {
             type: "string",
-            description:
-              "MongoDB ID of the category.",
+            description: "MongoDB ID of the category.",
           },
 
           isActive: {
             type: "boolean",
-            description:
-              "true to activate the category, false to deactivate it.",
+            description: "true to activate the category, false to deactivate it.",
           },
         },
 
@@ -264,64 +241,56 @@ const tools = [
       },
     },
   },
+
+  // ==========================================
+  // Customer
+  // ==========================================
+  { type: "function",
+    function:{
+      name:"get_Customer",
+      description:"Get categories from the inventory management system. Use this when the user asks to see, list, show, or find categories. Also use this before creating a product when you need to check whether a requested category exists.",
+
+    }
+   },
 ];
 
 // ==========================================
 // TOOL EXECUTOR
 // ==========================================
 
-const executeTool = async (
-  toolName,
-  toolArguments
-) => {
+const executeTool = async (toolName, toolArguments) => {
   switch (toolName) {
     // ==============================
     // PRODUCTS
     // ==============================
 
     case "get_products":
-      return await getProductsTool(
-        toolArguments
-      );
+      return await getProductsTool(toolArguments);
 
     case "create_product":
-      return await createProductTool(
-        toolArguments
-      );
+      return await createProductTool(toolArguments);
 
     // ==============================
     // CATEGORIES
     // ==============================
 
     case "get_categories":
-      return await getCategoriesTool(
-        toolArguments
-      );
+      return await getCategoriesTool(toolArguments);
 
     case "get_category_by_id":
-      return await getCategoryByIdTool(
-        toolArguments
-      );
+      return await getCategoryByIdTool(toolArguments);
 
     case "create_category":
-      return await createCategoryTool(
-        toolArguments
-      );
+      return await createCategoryTool(toolArguments);
 
     case "update_category":
-      return await updateCategoryTool(
-        toolArguments
-      );
+      return await updateCategoryTool(toolArguments);
 
     case "change_category_status":
-      return await changeCategoryStatusTool(
-        toolArguments
-      );
+      return await changeCategoryStatusTool(toolArguments);
 
     default:
-      throw new Error(
-        `Unknown AI tool: ${toolName}`
-      );
+      throw new Error(`Unknown AI tool: ${toolName}`);
   }
 };
 
@@ -330,21 +299,19 @@ const executeTool = async (
 // ==========================================
 
 const testAI = async () => {
-  const response =
-    await aiClient.chat.completions.create({
-      model: MODEL,
+  const response = await aiClient.chat.completions.create({
+    model: MODEL,
 
-      messages: [
-        {
-          role: "user",
-          content:
-            "Say hello in one short sentence.",
-        },
-      ],
+    messages: [
+      {
+        role: "user",
+        content: "Say hello in one short sentence.",
+      },
+    ],
 
-      temperature: 0.7,
-      max_tokens: 100,
-    });
+    temperature: 0.7,
+    max_tokens: 100,
+  });
 
   return response.choices[0].message.content;
 };
@@ -500,46 +467,31 @@ or implementation details unless explicitly asked.
 
   const MAX_TOOL_ROUNDS = 10;
 
-  for (
-    let round = 0;
-    round < MAX_TOOL_ROUNDS;
-    round++
-  ) {
-    console.log(
-      `\n========== AI ROUND ${
-        round + 1
-      } ==========`
-    );
+  for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
+    console.log(`\n========== AI ROUND ${round + 1} ==========`);
 
-    const response =
-      await aiClient.chat.completions.create({
-        model: MODEL,
+    const response = await aiClient.chat.completions.create({
+      model: MODEL,
 
-        messages,
+      messages,
 
-        tools,
+      tools,
 
-        tool_choice: "auto",
+      tool_choice: "auto",
 
-        temperature: 0.3,
+      temperature: 0.3,
 
-        max_tokens: 1000,
-      });
+      max_tokens: 1000,
+    });
 
-    const assistantMessage =
-      response.choices[0].message;
+    const assistantMessage = response.choices[0].message;
 
     // ==========================================
     // NO MORE TOOLS
     // ==========================================
 
-    if (
-      !assistantMessage.tool_calls ||
-      assistantMessage.tool_calls.length === 0
-    ) {
-      console.log(
-        "AI FINAL RESPONSE GENERATED"
-      );
+    if (!assistantMessage.tool_calls || assistantMessage.tool_calls.length === 0) {
+      console.log("AI FINAL RESPONSE GENERATED");
 
       return assistantMessage.content;
     }
@@ -555,42 +507,23 @@ or implementation details unless explicitly asked.
     // ==========================================
 
     for (const toolCall of assistantMessage.tool_calls) {
-      const toolName =
-        toolCall.function.name;
+      const toolName = toolCall.function.name;
 
       let toolArguments = {};
 
       try {
-        toolArguments =
-          toolCall.function.arguments
-            ? JSON.parse(
-                toolCall.function.arguments
-              )
-            : {};
+        toolArguments = toolCall.function.arguments ? JSON.parse(toolCall.function.arguments) : {};
       } catch (error) {
-        console.error(
-          "Tool arguments parse error:",
-          error
-        );
+        console.error("Tool arguments parse error:", error);
 
-        throw new Error(
-          "Invalid tool arguments generated by AI."
-        );
+        throw new Error("Invalid tool arguments generated by AI.");
       }
 
-      console.log(
-        "------------------------------------"
-      );
+      console.log("------------------------------------");
 
-      console.log(
-        "AI TOOL:",
-        toolName
-      );
+      console.log("AI TOOL:", toolName);
 
-      console.log(
-        "AI TOOL ARGUMENTS:",
-        toolArguments
-      );
+      console.log("AI TOOL ARGUMENTS:", toolArguments);
 
       // ==========================================
       // EXECUTE TOOL
@@ -599,26 +532,13 @@ or implementation details unless explicitly asked.
       let toolResult;
 
       try {
-        toolResult =
-          await executeTool(
-            toolName,
-            toolArguments
-          );
+        toolResult = await executeTool(toolName, toolArguments);
 
-        console.log(
-          "AI TOOL SUCCESS:",
-          toolName
-        );
+        console.log("AI TOOL SUCCESS:", toolName);
 
-        console.log(
-          "AI TOOL RESULT:",
-          toolResult
-        );
+        console.log("AI TOOL RESULT:", toolResult);
       } catch (error) {
-        console.error(
-          "AI TOOL ERROR:",
-          error
-        );
+        console.error("AI TOOL ERROR:", error);
 
         toolResult = {
           success: false,
@@ -635,21 +555,14 @@ or implementation details unless explicitly asked.
 
         tool_call_id: toolCall.id,
 
-        content:
-          JSON.stringify(toolResult),
+        content: JSON.stringify(toolResult),
       });
     }
 
-    console.log(
-      `========== END ROUND ${
-        round + 1
-      } ==========`
-    );
+    console.log(`========== END ROUND ${round + 1} ==========`);
   }
 
-  throw new Error(
-    "AI reached the maximum number of tool execution rounds."
-  );
+  throw new Error("AI reached the maximum number of tool execution rounds.");
 };
 
 // ==========================================
