@@ -1,10 +1,10 @@
-# 📦 Inventory Management System
+#  Inventory Management System
 
 A modern Inventory Management System built using the MERN Stack to help businesses manage products, sales, customers, payments, and inventory from a single dashboard.
 
 ---
 
-# 🚀 Project Overview
+#  Project Overview
 
 This application is designed for shop owners and small businesses to manage their complete inventory lifecycle.
 
@@ -23,7 +23,7 @@ Instead of manually maintaining Excel sheets, every inventory operation is updat
 
 ---
 
-# 🎯 Project Goal
+#  Project Goal
 
 The main objective is to build a fast, secure, and user-friendly inventory management application that can:
 
@@ -36,7 +36,7 @@ The main objective is to build a fast, secure, and user-friendly inventory manag
 
 ---
 
-# 🛠 Tech Stack
+#  Tech Stack
 
 ## Frontend
 
@@ -61,7 +61,7 @@ The main objective is to build a fast, secure, and user-friendly inventory manag
 
 ---
 
-# 📂 Modules
+# Modules
 
 ## Authentication
 
@@ -163,7 +163,7 @@ Features
 
 ---
 
-# 📊 Dashboard Sections
+# Dashboard Sections
 
 ## Greeting Section
 
@@ -247,7 +247,7 @@ Example
 
 ---
 
-# 🔐 Security
+# Security
 
 - JWT Authentication
 - Password Hashing
@@ -257,7 +257,7 @@ Example
 
 ---
 
-# 📱 UI Features
+# UI Features
 
 - Responsive Design
 - Mobile Friendly
@@ -270,7 +270,7 @@ Example
 
 ---
 
-# 📈 Future Improvements
+# Future Improvements
 
 - Barcode Scanner
 - QR Code Support
@@ -286,7 +286,7 @@ Example
 
 ---
 
-# 📸 Dashboard Preview
+# Dashboard Preview
 
 The dashboard contains
 
@@ -306,7 +306,7 @@ making inventory management simple, fast, and efficient.
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 Developed by **Rohan Pal**
 
