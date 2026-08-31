@@ -9,7 +9,7 @@ function App() {
 
         <AppRoutes />
         <BottomNavigation />
-
+     
         <br />
         <br />
         <br />
