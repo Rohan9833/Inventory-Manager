@@ -31,7 +31,13 @@ const {
   updatePaymentTool,
   deletePaymentTool,
 } = require("../tools/payment.tool.js");
-
+const {
+  getSalesReportTool,
+  getInventoryReportTool,
+  getCustomerReportTool,
+  getPaymentReportTool,
+  getProductReportTool,
+} = require("../tools/report.tool");
 // ==========================================
 // DEBUG
 // ==========================================
@@ -49,7 +55,6 @@ const MODEL = "nvidia/nemotron-3-ultra-550b-a55b";
 // ==========================================
 // AI TOOLS
 // ==========================================
-
 const tools = [
   // ==========================================
   // PRODUCTS
@@ -785,6 +790,165 @@ const tools = [
       },
     },
   },
+
+  // ==========================================
+  // REPORTS
+  // ==========================================
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_sales_report",
+
+      description:
+        "Get a sales report from the inventory management system. Use this when the user asks for sales, revenue, sales summary, or sales performance.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          startDate: {
+            type: "string",
+            description:
+              "Optional start date for the report in YYYY-MM-DD format.",
+          },
+
+          endDate: {
+            type: "string",
+            description:
+              "Optional end date for the report in YYYY-MM-DD format.",
+          },
+        },
+
+        required: [],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_inventory_report",
+
+      description:
+        "Get an inventory report showing stock and inventory information. Use this when the user asks for an inventory report, stock report, or inventory summary.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          startDate: {
+            type: "string",
+            description:
+              "Optional start date for the report in YYYY-MM-DD format.",
+          },
+
+          endDate: {
+            type: "string",
+            description:
+              "Optional end date for the report in YYYY-MM-DD format.",
+          },
+        },
+
+        required: [],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_customer_report",
+
+      description:
+        "Get a customer report from the inventory management system. Use this when the user asks for customer statistics, customer summary, or customer report.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          startDate: {
+            type: "string",
+            description:
+              "Optional start date for the report in YYYY-MM-DD format.",
+          },
+
+          endDate: {
+            type: "string",
+            description:
+              "Optional end date for the report in YYYY-MM-DD format.",
+          },
+        },
+
+        required: [],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_payment_report",
+
+      description:
+        "Get a payment report from the inventory management system. Use this when the user asks for payment summary, payment statistics, or payment report.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          startDate: {
+            type: "string",
+            description:
+              "Optional start date for the report in YYYY-MM-DD format.",
+          },
+
+          endDate: {
+            type: "string",
+            description:
+              "Optional end date for the report in YYYY-MM-DD format.",
+          },
+        },
+
+        required: [],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_product_report",
+
+      description:
+        "Get a product report from the inventory management system. Use this when the user asks for product statistics, product performance, or product report.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          startDate: {
+            type: "string",
+            description:
+              "Optional start date for the report in YYYY-MM-DD format.",
+          },
+
+          endDate: {
+            type: "string",
+            description:
+              "Optional end date for the report in YYYY-MM-DD format.",
+          },
+        },
+
+        required: [],
+      },
+    },
+  },
 ];
 // ==========================================
 // TOOL EXECUTOR
@@ -883,6 +1047,25 @@ const executeTool = async (toolName, toolArguments, userId) => {
 
     case "delete_payment":
       return await deletePaymentTool(toolArguments, userId);
+
+    // ==============================
+    // REPORTS
+    // ==============================
+
+    case "get_sales_report":
+      return await getSalesReportTool(toolArguments, userId);
+
+    case "get_inventory_report":
+      return await getInventoryReportTool(toolArguments, userId);
+
+    case "get_customer_report":
+      return await getCustomerReportTool(toolArguments, userId);
+
+    case "get_payment_report":
+      return await getPaymentReportTool(toolArguments, userId);
+
+    case "get_product_report":
+      return await getProductReportTool(toolArguments, userId);
 
     default:
       throw new Error(`Unknown AI tool: ${toolName}`);
