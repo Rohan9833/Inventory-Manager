@@ -38,6 +38,7 @@ const {
   getPaymentReportTool,
   getProductReportTool,
 } = require("../tools/report.tool");
+const { getSalesTool, createSaleTool, getSaleByIdTool } = require("../tools/sale.tools");
 // ==========================================
 // DEBUG
 // ==========================================
@@ -99,8 +100,7 @@ const tools = [
 
           category: {
             type: "string",
-            description:
-              "Name of the existing category the product belongs to",
+            description: "Name of the existing category the product belongs to",
           },
 
           costPrice: {
@@ -119,13 +119,7 @@ const tools = [
           },
         },
 
-        required: [
-          "name",
-          "category",
-          "costPrice",
-          "sellingPrice",
-          "quantity",
-        ],
+        required: ["name", "category", "costPrice", "sellingPrice", "quantity"],
       },
     },
   },
@@ -383,8 +377,7 @@ const tools = [
 
           isActive: {
             type: "boolean",
-            description:
-              "true to activate the category, false to deactivate it.",
+            description: "true to activate the category, false to deactivate it.",
           },
         },
 
@@ -422,8 +415,7 @@ const tools = [
     function: {
       name: "create_customer",
 
-      description:
-        "Create a new customer in the inventory management system.",
+      description: "Create a new customer in the inventory management system.",
 
       parameters: {
         type: "object",
@@ -540,8 +532,7 @@ const tools = [
 
           isActive: {
             type: "boolean",
-            description:
-              "true to activate the customer, false to deactivate the customer.",
+            description: "true to activate the customer, false to deactivate the customer.",
           },
         },
 
@@ -710,8 +701,7 @@ const tools = [
     function: {
       name: "get_payment_by_id",
 
-      description:
-        "Get a specific customer payment by its MongoDB ID.",
+      description: "Get a specific customer payment by its MongoDB ID.",
 
       parameters: {
         type: "object",
@@ -734,8 +724,7 @@ const tools = [
     function: {
       name: "update_payment",
 
-      description:
-        "Update an existing customer payment's amount, payment method, or note.",
+      description: "Update an existing customer payment's amount, payment method, or note.",
 
       parameters: {
         type: "object",
@@ -810,14 +799,12 @@ const tools = [
         properties: {
           startDate: {
             type: "string",
-            description:
-              "Optional start date for the report in YYYY-MM-DD format.",
+            description: "Optional start date for the report in YYYY-MM-DD format.",
           },
 
           endDate: {
             type: "string",
-            description:
-              "Optional end date for the report in YYYY-MM-DD format.",
+            description: "Optional end date for the report in YYYY-MM-DD format.",
           },
         },
 
@@ -841,14 +828,12 @@ const tools = [
         properties: {
           startDate: {
             type: "string",
-            description:
-              "Optional start date for the report in YYYY-MM-DD format.",
+            description: "Optional start date for the report in YYYY-MM-DD format.",
           },
 
           endDate: {
             type: "string",
-            description:
-              "Optional end date for the report in YYYY-MM-DD format.",
+            description: "Optional end date for the report in YYYY-MM-DD format.",
           },
         },
 
@@ -872,14 +857,12 @@ const tools = [
         properties: {
           startDate: {
             type: "string",
-            description:
-              "Optional start date for the report in YYYY-MM-DD format.",
+            description: "Optional start date for the report in YYYY-MM-DD format.",
           },
 
           endDate: {
             type: "string",
-            description:
-              "Optional end date for the report in YYYY-MM-DD format.",
+            description: "Optional end date for the report in YYYY-MM-DD format.",
           },
         },
 
@@ -903,14 +886,12 @@ const tools = [
         properties: {
           startDate: {
             type: "string",
-            description:
-              "Optional start date for the report in YYYY-MM-DD format.",
+            description: "Optional start date for the report in YYYY-MM-DD format.",
           },
 
           endDate: {
             type: "string",
-            description:
-              "Optional end date for the report in YYYY-MM-DD format.",
+            description: "Optional end date for the report in YYYY-MM-DD format.",
           },
         },
 
@@ -934,18 +915,123 @@ const tools = [
         properties: {
           startDate: {
             type: "string",
-            description:
-              "Optional start date for the report in YYYY-MM-DD format.",
+            description: "Optional start date for the report in YYYY-MM-DD format.",
           },
 
           endDate: {
             type: "string",
-            description:
-              "Optional end date for the report in YYYY-MM-DD format.",
+            description: "Optional end date for the report in YYYY-MM-DD format.",
           },
         },
 
         required: [],
+      },
+    },
+  },
+  // ==========================================
+  // SALES
+  // ==========================================
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_sales",
+
+      description:
+        "Get all sales from the inventory management system. Use this when the user asks to see, list, show, or check sales.",
+
+      parameters: {
+        type: "object",
+
+        properties: {},
+
+        required: [],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "create_sale",
+
+      description:
+        "Create a new sale in the inventory management system. Use this when the user explicitly asks to make, create, record, or complete a sale.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          customer: {
+            type: "string",
+            description: "Name of the existing customer making the purchase.",
+          },
+
+          items: {
+            type: "array",
+            description: "List of products being sold and their quantities.",
+
+            items: {
+              type: "object",
+
+              properties: {
+                product: {
+                  type: "string",
+                  description: "Name of the existing product being sold.",
+                },
+
+                quantity: {
+                  type: "number",
+                  description: "Quantity of the product being sold.",
+                },
+              },
+
+              required: ["product", "quantity"],
+            },
+          },
+
+          discount: {
+            type: "number",
+            description: "Optional discount amount applied to the sale.",
+          },
+
+          paidAmount: {
+            type: "number",
+            description: "Optional amount paid by the customer at the time of sale.",
+          },
+
+          note: {
+            type: "string",
+            description: "Optional note for the sale.",
+          },
+        },
+
+        required: ["customer", "items"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_sale_by_id",
+
+      description: "Get a specific sale by its MongoDB ID.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the sale.",
+          },
+        },
+
+        required: ["id"],
       },
     },
   },
@@ -995,7 +1081,10 @@ const executeTool = async (toolName, toolArguments, userId) => {
       return await updateCategoryTool(toolArguments, userId);
 
     case "change_category_status":
-      return await changeCategoryStatusTool(toolArguments, userId);
+      return await changeCategoryStatusTool(
+        toolArguments,
+        userId
+      );
 
     // ==============================
     // CUSTOMERS
@@ -1008,64 +1097,134 @@ const executeTool = async (toolName, toolArguments, userId) => {
       return await createCustomerTool(toolArguments, userId);
 
     case "get_customer_by_id":
-      return await getCustomerByIdTool(toolArguments, userId);
+      return await getCustomerByIdTool(
+        toolArguments,
+        userId
+      );
 
     case "update_customer":
-      return await updateCustomerTool(toolArguments, userId);
+      return await updateCustomerTool(
+        toolArguments,
+        userId
+      );
 
     case "change_customer_status":
-      return await changeCustomerStatusTool(toolArguments, userId);
+      return await changeCustomerStatusTool(
+        toolArguments,
+        userId
+      );
 
     // ==============================
     // INVENTORY
     // ==============================
 
     case "stock_in":
-      return await stockInTool(toolArguments, userId);
+      return await stockInTool(
+        toolArguments,
+        userId
+      );
 
     case "stock_out":
-      return await stockOutTool(toolArguments, userId);
+      return await stockOutTool(
+        toolArguments,
+        userId
+      );
 
     case "get_inventory_history":
-      return await getInventoryHistoryTool(toolArguments, userId);
+      return await getInventoryHistoryTool(
+        toolArguments,
+        userId
+      );
 
     // ==============================
     // PAYMENTS
     // ==============================
 
     case "create_payment":
-      return await createPaymentTool(toolArguments, userId);
+      return await createPaymentTool(
+        toolArguments,
+        userId
+      );
 
     case "get_payments":
-      return await getPaymentsTool(toolArguments, userId);
+      return await getPaymentsTool(
+        toolArguments,
+        userId
+      );
 
     case "get_payment_by_id":
-      return await getPaymentByIdTool(toolArguments, userId);
+      return await getPaymentByIdTool(
+        toolArguments,
+        userId
+      );
 
     case "update_payment":
-      return await updatePaymentTool(toolArguments, userId);
+      return await updatePaymentTool(
+        toolArguments,
+        userId
+      );
 
     case "delete_payment":
-      return await deletePaymentTool(toolArguments, userId);
+      return await deletePaymentTool(
+        toolArguments,
+        userId
+      );
+
+    // ==============================
+    // SALES
+    // ==============================
+
+    case "get_sales":
+      return await getSalesTool(
+        toolArguments,
+        userId
+      );
+
+    case "create_sale":
+      return await createSaleTool(
+        toolArguments,
+        userId
+      );
+
+    case "get_sale_by_id":
+      return await getSaleByIdTool(
+        toolArguments,
+        userId
+      );
 
     // ==============================
     // REPORTS
     // ==============================
 
     case "get_sales_report":
-      return await getSalesReportTool(toolArguments, userId);
+      return await getSalesReportTool(
+        toolArguments,
+        userId
+      );
 
     case "get_inventory_report":
-      return await getInventoryReportTool(toolArguments, userId);
+      return await getInventoryReportTool(
+        toolArguments,
+        userId
+      );
 
     case "get_customer_report":
-      return await getCustomerReportTool(toolArguments, userId);
+      return await getCustomerReportTool(
+        toolArguments,
+        userId
+      );
 
     case "get_payment_report":
-      return await getPaymentReportTool(toolArguments, userId);
+      return await getPaymentReportTool(
+        toolArguments,
+        userId
+      );
 
     case "get_product_report":
-      return await getProductReportTool(toolArguments, userId);
+      return await getProductReportTool(
+        toolArguments,
+        userId
+      );
 
     default:
       throw new Error(`Unknown AI tool: ${toolName}`);
