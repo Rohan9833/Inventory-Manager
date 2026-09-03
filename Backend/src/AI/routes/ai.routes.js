@@ -1,5 +1,5 @@
 const express = require("express");
-
+const authMiddleware = require("../../middleware/auth.middleware")
 const {
   testAIController,
   chatController,
@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.get("/test", testAIController);
 
-router.post("/chat", chatController);
+router.post("/chat", authMiddleware,chatController);
 
 module.exports = router;

@@ -1,30 +1,47 @@
 const customerService = require("../../services/customer.service");
 
-const getCustomerTool = async()=>{
-    const customer = await customerService.getAllCustomersService();
+const getCustomerTool = async (args, userId) => {
+  const customer = await customerService.getAllCustomersService(userId);
 
-    return customer
-}
+  return customer;
+};
 
-const createCustomerTool = async()=>{
-    const customer = await customerService.getAllCustomersService();
+const createCustomerTool = async (args, userId) => {
+  const customer = await customerService.createCustomerService(
+    args,
+    userId
+  );
 
-    return customer;
-}
+  return customer;
+};
 
-const getCustomerByIdTool = async()=>{
-    const customer = await customerService.getCustomerByIdService();
-    return customer;
-}
+const getCustomerByIdTool = async (args, userId) => {
+  const customer = await customerService.getCustomerByIdService(
+    args.id,
+    userId
+  );
 
-const updateCustomerTool = async()=>{
-    const customer = await customerService.updateCustomerService();
-}
+  return customer;
+};
 
-const changeCustomerStatusTool = async()=>{
-    const customer = await customerService.changeCustomerStatusService();
-    return customer;
-}
+const updateCustomerTool = async (args, userId) => {
+  const customer = await customerService.updateCustomerService(
+    args.id,
+    userId,
+    args
+  );
+
+  return customer;
+};
+
+const changeCustomerStatusTool = async (args, userId) => {
+  const customer = await customerService.changeCustomerStatusService(
+    args.id,
+    userId
+  );
+
+  return customer;
+};
 
 module.exports = {
   getCustomerTool,

@@ -1,7 +1,14 @@
 const aiClient = require("../config/ai.config");
 
-const { getProductsTool, createProductTool } = require("../tools/product.tools");
-
+const {
+  getProductsTool,
+  createProductTool,
+  getProductByIdTool,
+  updateProductTool,
+  deleteProductTool,
+  restoreProductTool,
+} = require("../tools/product.tools");
+const { stockInTool, stockOutTool, getInventoryHistoryTool } = require("../tools/inventory.tools");
 const {
   getCategoriesTool,
   getCategoryByIdTool,
@@ -17,6 +24,13 @@ const {
   updateCustomerTool,
   changeCustomerStatusTool,
 } = require("../tools/customer.tool");
+const {
+  createPaymentTool,
+  getPaymentsTool,
+  getPaymentByIdTool,
+  updatePaymentTool,
+  deletePaymentTool,
+} = require("../tools/payment.tool.js");
 
 // ==========================================
 // DEBUG
@@ -52,7 +66,9 @@ const tools = [
 
       parameters: {
         type: "object",
+
         properties: {},
+
         required: [],
       },
     },
@@ -78,7 +94,8 @@ const tools = [
 
           category: {
             type: "string",
-            description: "Name of the existing category the product belongs to",
+            description:
+              "Name of the existing category the product belongs to",
           },
 
           costPrice: {
@@ -97,7 +114,133 @@ const tools = [
           },
         },
 
-        required: ["name", "category", "costPrice", "sellingPrice", "quantity"],
+        required: [
+          "name",
+          "category",
+          "costPrice",
+          "sellingPrice",
+          "quantity",
+        ],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_product_by_id",
+
+      description: "Get a specific product by its MongoDB ID.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the product.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "update_product",
+
+      description:
+        "Update an existing product's information such as name, category, cost price, selling price, or quantity.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the product.",
+          },
+
+          name: {
+            type: "string",
+            description: "Updated name of the product.",
+          },
+
+          category: {
+            type: "string",
+            description: "Updated name of the existing category.",
+          },
+
+          costPrice: {
+            type: "number",
+            description: "Updated purchase/cost price.",
+          },
+
+          sellingPrice: {
+            type: "number",
+            description: "Updated selling price.",
+          },
+
+          quantity: {
+            type: "number",
+            description: "Updated quantity of the product.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "delete_product",
+
+      description:
+        "Delete an existing product from the inventory management system. Use this when the user explicitly asks to delete or remove a product.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the product.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "restore_product",
+
+      description:
+        "Restore a previously deleted product in the inventory management system. Use this when the user explicitly asks to restore or recover a deleted product.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the product.",
+          },
+        },
+
+        required: ["id"],
       },
     },
   },
@@ -121,6 +264,7 @@ const tools = [
         properties: {
           active: {
             type: "boolean",
+
             description:
               "Optional. If true, return only active categories. If false, return only inactive categories.",
           },
@@ -234,7 +378,8 @@ const tools = [
 
           isActive: {
             type: "boolean",
-            description: "true to activate the category, false to deactivate it.",
+            description:
+              "true to activate the category, false to deactivate it.",
           },
         },
 
@@ -258,7 +403,9 @@ const tools = [
 
       parameters: {
         type: "object",
+
         properties: {},
+
         required: [],
       },
     },
@@ -270,7 +417,8 @@ const tools = [
     function: {
       name: "create_customer",
 
-      description: "Create a new customer in the inventory management system.",
+      description:
+        "Create a new customer in the inventory management system.",
 
       parameters: {
         type: "object",
@@ -387,7 +535,8 @@ const tools = [
 
           isActive: {
             type: "boolean",
-            description: "true to activate the customer, false to deactivate the customer.",
+            description:
+              "true to activate the customer, false to deactivate the customer.",
           },
         },
 
@@ -395,8 +544,248 @@ const tools = [
       },
     },
   },
-];
 
+  // ==========================================
+  // INVENTORY
+  // ==========================================
+
+  {
+    type: "function",
+
+    function: {
+      name: "stock_in",
+
+      description:
+        "Add stock to a product in the inventory. Use this when the user explicitly asks to add, receive, increase, or stock in product quantity.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          product: {
+            type: "string",
+            description: "MongoDB ID of the product.",
+          },
+
+          quantity: {
+            type: "number",
+            description: "Quantity of stock to add.",
+          },
+
+          note: {
+            type: "string",
+            description: "Optional note for the stock-in transaction.",
+          },
+        },
+
+        required: ["product", "quantity"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "stock_out",
+
+      description:
+        "Remove stock from a product in the inventory. Use this when the user explicitly asks to remove, decrease, sell, or stock out product quantity.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          product: {
+            type: "string",
+            description: "MongoDB ID of the product.",
+          },
+
+          quantity: {
+            type: "number",
+            description: "Quantity of stock to remove.",
+          },
+
+          note: {
+            type: "string",
+            description: "Optional note for the stock-out transaction.",
+          },
+        },
+
+        required: ["product", "quantity"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_inventory_history",
+
+      description:
+        "Get inventory stock movement history. Use this when the user asks to see, list, show, or check inventory stock in and stock out history.",
+
+      parameters: {
+        type: "object",
+
+        properties: {},
+
+        required: [],
+      },
+    },
+  },
+
+  // ==========================================
+  // PAYMENTS
+  // ==========================================
+
+  {
+    type: "function",
+
+    function: {
+      name: "create_payment",
+
+      description:
+        "Create a new customer payment. Use this when the user explicitly asks to record, add, or receive a payment from a customer.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          customer: {
+            type: "string",
+            description: "MongoDB ID of the customer.",
+          },
+
+          amount: {
+            type: "number",
+            description: "Payment amount.",
+          },
+
+          paymentMethod: {
+            type: "string",
+            description:
+              "Payment method used by the customer, such as cash, UPI, card, or bank transfer.",
+          },
+
+          note: {
+            type: "string",
+            description: "Optional note for the payment.",
+          },
+        },
+
+        required: ["customer", "amount", "paymentMethod"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_payments",
+
+      description:
+        "Get all customer payments from the inventory management system. Use this when the user asks to see, list, show, or check payments.",
+
+      parameters: {
+        type: "object",
+
+        properties: {},
+
+        required: [],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "get_payment_by_id",
+
+      description:
+        "Get a specific customer payment by its MongoDB ID.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the payment.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "update_payment",
+
+      description:
+        "Update an existing customer payment's amount, payment method, or note.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the payment.",
+          },
+
+          amount: {
+            type: "number",
+            description: "Updated payment amount.",
+          },
+
+          paymentMethod: {
+            type: "string",
+            description: "Updated payment method.",
+          },
+
+          note: {
+            type: "string",
+            description: "Updated payment note.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+
+    function: {
+      name: "delete_payment",
+
+      description:
+        "Delete an existing customer payment. Use this when the user explicitly asks to delete or remove a payment.",
+
+      parameters: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            description: "MongoDB ID of the payment.",
+          },
+        },
+
+        required: ["id"],
+      },
+    },
+  },
+];
 // ==========================================
 // TOOL EXECUTOR
 // ==========================================
@@ -412,6 +801,18 @@ const executeTool = async (toolName, toolArguments, userId) => {
 
     case "create_product":
       return await createProductTool(toolArguments, userId);
+
+    case "get_product_by_id":
+      return await getProductByIdTool(toolArguments, userId);
+
+    case "update_product":
+      return await updateProductTool(toolArguments, userId);
+
+    case "delete_product":
+      return await deleteProductTool(toolArguments, userId);
+
+    case "restore_product":
+      return await restoreProductTool(toolArguments, userId);
 
     // ==============================
     // CATEGORIES
@@ -451,6 +852,38 @@ const executeTool = async (toolName, toolArguments, userId) => {
     case "change_customer_status":
       return await changeCustomerStatusTool(toolArguments, userId);
 
+    // ==============================
+    // INVENTORY
+    // ==============================
+
+    case "stock_in":
+      return await stockInTool(toolArguments, userId);
+
+    case "stock_out":
+      return await stockOutTool(toolArguments, userId);
+
+    case "get_inventory_history":
+      return await getInventoryHistoryTool(toolArguments, userId);
+
+    // ==============================
+    // PAYMENTS
+    // ==============================
+
+    case "create_payment":
+      return await createPaymentTool(toolArguments, userId);
+
+    case "get_payments":
+      return await getPaymentsTool(toolArguments, userId);
+
+    case "get_payment_by_id":
+      return await getPaymentByIdTool(toolArguments, userId);
+
+    case "update_payment":
+      return await updatePaymentTool(toolArguments, userId);
+
+    case "delete_payment":
+      return await deletePaymentTool(toolArguments, userId);
+
     default:
       throw new Error(`Unknown AI tool: ${toolName}`);
   }
@@ -472,6 +905,7 @@ const testAI = async () => {
     ],
 
     temperature: 0.7,
+
     max_tokens: 100,
   });
 
