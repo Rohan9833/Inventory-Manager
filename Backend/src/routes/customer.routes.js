@@ -5,7 +5,7 @@ const {
   createCustomer,
   getAllCustomers,
   getCustomerById,
-  getCustomerByName,
+  getCustomerByname,
   updateCustomer,
   changeCustomerStatus,
 } = require("../controllers/customer.controller");
@@ -24,7 +24,7 @@ router.post("/create", verifyToken, createCustomerValidation, validate, createCu
 router.get("/getall", verifyToken, getAllCustomers);
 
 router.get("/getbyid/:id", verifyToken, validateObjectId, getCustomerById);
-router.get("/getbyname", verifyToken, getCustomerByName);
+router.get("/getbyname", verifyToken, getCustomerByname);
 
 router.put(
   "/update/:id",

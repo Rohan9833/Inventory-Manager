@@ -2,47 +2,50 @@ import axiosInstance from "./axios";
 
 // Create Customer
 export const createCustomer = async (data) => {
-  const response = await axiosInstance.post(
-    "/customers/create",
-    data
-  );
+  try {
+    const response = await axiosInstance.post("/customers/create", data);
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.log("========== CREATE CUSTOMER ERROR ==========");
+    console.log("message:", error.message);
+    console.log("status:", error.response?.status);
+    console.log("data:", error.response?.data);
+    console.log("headers:", error.response?.headers);
+    console.log(
+      "errors:",
+      JSON.stringify(error.response?.data?.errors, null, 2),
+    );
+    console.log("===========================================");
+
+    throw error;
+  }
 };
 
 // Get All Customers
 export const getCustomers = async () => {
-  const response = await axiosInstance.get(
-    "/customers/getall"
-  );
+  const response = await axiosInstance.get("/customers/getall");
 
   return response.data;
 };
 
 // Get Customer By Id
 export const getCustomerById = async (id) => {
-  const response = await axiosInstance.get(
-    `/customers/getbyid/${id}`
-  );
+  const response = await axiosInstance.get(`/customers/getbyid/${id}`);
 
   return response.data;
 };
 
 // Update Customer
 export const updateCustomer = async (id, data) => {
-  const response = await axiosInstance.put(
-    `/customers/update/${id}`,
-    data
-  );
+  const response = await axiosInstance.put(`/customers/update/${id}`, data);
 
   return response.data;
 };
 
 // Change Status
 export const changeCustomerStatus = async (id) => {
-  const response = await axiosInstance.patch(
-    `/customers/status/${id}`
-  );
+  const response = await axiosInstance.patch(`/customers/status/${id}`);
 
   return response.data;
 };

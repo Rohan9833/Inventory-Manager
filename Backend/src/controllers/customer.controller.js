@@ -90,7 +90,7 @@ const changeCustomerStatus = async (req, res) => {
     });
   }
 };
-const getCustomerByName = async (req, res) => {
+const getCustomerByname = async (req, res) => {
   try {
     const result = await customerService.getCustomerByName(
       req.query.name,
@@ -115,5 +115,5 @@ module.exports = {
   getCustomerById,
   updateCustomer,
   changeCustomerStatus,
-  getCustomerByName
+  getCustomerByname
 };
