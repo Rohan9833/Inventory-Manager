@@ -3,7 +3,8 @@ const {
   getAllCustomersService,
   getCustomerByIdService,
   updateCustomerService,
-  changeCustomerStatusService,   
+  changeCustomerStatusService,
+  getCustomerByName
 } = require("../services/customer.service");
 
 const createCustomer = async (req, res) => {
@@ -89,6 +90,24 @@ const changeCustomerStatus = async (req, res) => {
     });
   }
 };
+const getCustomerByName = async (req, res) => {
+  try {
+    const result = await customerService.getCustomerByName(
+      req.query.name,
+      req.user.id
+    );
+
+    return res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    return res.status(error.statusCode || 500).json({
+      success: false,
+      message: error.message || "Failed to find customer",
+    });
+  }
+};
 
 module.exports = {
   createCustomer,
@@ -96,4 +115,5 @@ module.exports = {
   getCustomerById,
   updateCustomer,
   changeCustomerStatus,
+  getCustomerByName
 };

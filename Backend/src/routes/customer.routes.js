@@ -1,11 +1,11 @@
 const express = require("express");
 
 const router = express.Router();
-
 const {
   createCustomer,
   getAllCustomers,
   getCustomerById,
+  getCustomerByName,
   updateCustomer,
   changeCustomerStatus,
 } = require("../controllers/customer.controller");
@@ -24,6 +24,7 @@ router.post("/create", verifyToken, createCustomerValidation, validate, createCu
 router.get("/getall", verifyToken, getAllCustomers);
 
 router.get("/getbyid/:id", verifyToken, validateObjectId, getCustomerById);
+router.get("/getbyname", verifyToken, getCustomerByName);
 
 router.put(
   "/update/:id",

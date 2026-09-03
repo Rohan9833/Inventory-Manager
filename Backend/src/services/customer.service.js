@@ -1,7 +1,14 @@
 const Customer = require("../models/customer.model");
 
 const createCustomerService = async (customerData, userId) => {
-  const { phone } = customerData;
+  const normalizedData = Object.fromEntries(
+    Object.entries(customerData).map(([key, value]) => [
+      key,
+      typeof value === "string" ? value.trim().toLowerCase() : value,
+    ])
+  );
+
+  const { phone } = normalizedData;
 
   const existingCustomer = await Customer.findOne({
     phone,
@@ -15,7 +22,7 @@ const createCustomerService = async (customerData, userId) => {
   }
 
   const customer = await Customer.create({
-    ...customerData,
+    ...normalizedData,
     createdBy: userId,
   });
 
@@ -94,10 +101,29 @@ const changeCustomerStatusService = async (customerId, userId) => {
   return customer;
 };
 
+const getCustomerByName = async (name, userId) => {
+  const customerName = name?.trim().toLowerCase();
+
+  if (!customerName) {
+    throw new Error("Customer name is required");
+  }
+
+  return await Customer.find({
+    userId,
+    name: {
+      $regex: customerName,
+      $options: "i",
+    },
+  });
+};
+
+
+
 module.exports = {
   createCustomerService,
   getAllCustomersService,
   getCustomerByIdService,
   updateCustomerService,
   changeCustomerStatusService,
+  getCustomerByName
 };

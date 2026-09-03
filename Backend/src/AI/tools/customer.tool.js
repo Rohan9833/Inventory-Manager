@@ -5,6 +5,9 @@ const getCustomerTool = async (args, userId) => {
 
   return customer;
 };
+const getCustomerByNameTool = async (args, userId) => {
+  return await getCustomerByNameService(args.name, userId);
+};
 
 const createCustomerTool = async (args, userId) => {
   const customer = await customerService.createCustomerService(

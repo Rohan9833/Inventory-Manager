@@ -23,6 +23,7 @@ const {
   getCustomerByIdTool,
   updateCustomerTool,
   changeCustomerStatusTool,
+  getCustomerByNameService,
 } = require("../tools/customer.tool");
 const {
   createPaymentTool,
@@ -389,7 +390,23 @@ const tools = [
   // ==========================================
   // CUSTOMERS
   // ==========================================
-
+  {
+    type: "function",
+    function: {
+      name: "get_customer_by_name",
+      description: "Find customers by name.",
+      parameters: {
+        type: "object",
+        properties: {
+          name: {
+            type: "string",
+            description: "Customer name to search for.",
+          },
+        },
+        required: ["name"],
+      },
+    },
+  },
   {
     type: "function",
 
@@ -1081,10 +1098,7 @@ const executeTool = async (toolName, toolArguments, userId) => {
       return await updateCategoryTool(toolArguments, userId);
 
     case "change_category_status":
-      return await changeCategoryStatusTool(
-        toolArguments,
-        userId
-      );
+      return await changeCategoryStatusTool(toolArguments, userId);
 
     // ==============================
     // CUSTOMERS
@@ -1097,134 +1111,79 @@ const executeTool = async (toolName, toolArguments, userId) => {
       return await createCustomerTool(toolArguments, userId);
 
     case "get_customer_by_id":
-      return await getCustomerByIdTool(
-        toolArguments,
-        userId
-      );
+      return await getCustomerByIdTool(toolArguments, userId);
 
     case "update_customer":
-      return await updateCustomerTool(
-        toolArguments,
-        userId
-      );
+      return await updateCustomerTool(toolArguments, userId);
 
     case "change_customer_status":
-      return await changeCustomerStatusTool(
-        toolArguments,
-        userId
-      );
+      return await changeCustomerStatusTool(toolArguments, userId);
+    case "get_customer_by_name":
+      return await getCustomerByNameTool(toolArguments, userId);
 
     // ==============================
     // INVENTORY
     // ==============================
 
     case "stock_in":
-      return await stockInTool(
-        toolArguments,
-        userId
-      );
+      return await stockInTool(toolArguments, userId);
 
     case "stock_out":
-      return await stockOutTool(
-        toolArguments,
-        userId
-      );
+      return await stockOutTool(toolArguments, userId);
 
     case "get_inventory_history":
-      return await getInventoryHistoryTool(
-        toolArguments,
-        userId
-      );
+      return await getInventoryHistoryTool(toolArguments, userId);
 
     // ==============================
     // PAYMENTS
     // ==============================
 
     case "create_payment":
-      return await createPaymentTool(
-        toolArguments,
-        userId
-      );
+      return await createPaymentTool(toolArguments, userId);
 
     case "get_payments":
-      return await getPaymentsTool(
-        toolArguments,
-        userId
-      );
+      return await getPaymentsTool(toolArguments, userId);
 
     case "get_payment_by_id":
-      return await getPaymentByIdTool(
-        toolArguments,
-        userId
-      );
+      return await getPaymentByIdTool(toolArguments, userId);
 
     case "update_payment":
-      return await updatePaymentTool(
-        toolArguments,
-        userId
-      );
+      return await updatePaymentTool(toolArguments, userId);
 
     case "delete_payment":
-      return await deletePaymentTool(
-        toolArguments,
-        userId
-      );
+      return await deletePaymentTool(toolArguments, userId);
 
     // ==============================
     // SALES
     // ==============================
 
     case "get_sales":
-      return await getSalesTool(
-        toolArguments,
-        userId
-      );
+      return await getSalesTool(toolArguments, userId);
 
     case "create_sale":
-      return await createSaleTool(
-        toolArguments,
-        userId
-      );
+      return await createSaleTool(toolArguments, userId);
 
     case "get_sale_by_id":
-      return await getSaleByIdTool(
-        toolArguments,
-        userId
-      );
+      return await getSaleByIdTool(toolArguments, userId);
 
     // ==============================
     // REPORTS
     // ==============================
 
     case "get_sales_report":
-      return await getSalesReportTool(
-        toolArguments,
-        userId
-      );
+      return await getSalesReportTool(toolArguments, userId);
 
     case "get_inventory_report":
-      return await getInventoryReportTool(
-        toolArguments,
-        userId
-      );
+      return await getInventoryReportTool(toolArguments, userId);
 
     case "get_customer_report":
-      return await getCustomerReportTool(
-        toolArguments,
-        userId
-      );
+      return await getCustomerReportTool(toolArguments, userId);
 
     case "get_payment_report":
-      return await getPaymentReportTool(
-        toolArguments,
-        userId
-      );
+      return await getPaymentReportTool(toolArguments, userId);
 
     case "get_product_report":
-      return await getProductReportTool(
-        toolArguments,
-        userId
-      );
+      return await getProductReportTool(toolArguments, userId);
 
     default:
       throw new Error(`Unknown AI tool: ${toolName}`);
