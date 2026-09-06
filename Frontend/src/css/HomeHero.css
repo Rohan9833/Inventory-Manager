@@ -1,0 +1,271 @@
+.home-hero {
+  width: 100%;
+  min-height: 270px;
+
+  margin-top: 0.8rem;
+  padding: 2.5rem 2rem;
+
+  background-image: url("/herobig.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.home-hero-content {
+  width: 48%;
+  max-width: 560px;
+}
+
+.home-hero-label {
+  display: block;
+
+  margin-bottom: 0.45rem;
+
+  color: #6f7775;
+
+  font-size: 0.55rem;
+  font-weight: 600;
+
+  letter-spacing: 0.25rem;
+}
+
+.home-hero-content h1 {
+  margin: 0;
+
+  color: #12252d;
+
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
+  font-weight: 700;
+
+  line-height: 1.03;
+}
+
+.home-hero-content h1 span {
+  color: #418d76;
+}
+
+.home-hero-content p {
+  margin-top: 0.7rem;
+
+  color: #4f5d63;
+
+  font-size: 0.82rem;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.home-hero-buttons {
+  display: flex;
+  align-items: center;
+
+  gap: 0.65rem;
+
+  margin-top: 1rem;
+}
+
+.home-hero-buttons button {
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.35rem;
+
+  padding: 0 1rem;
+
+  border-radius: 7px;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.home-hero-add-btn {
+  border: 1px solid #17634f;
+
+  background: #17634f;
+
+  color: #ffffff;
+}
+
+.home-hero-add-btn:hover {
+  background: #125542;
+}
+
+.home-hero-ai-btn {
+  border: 1px solid #d1d5d3;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  color: #17252b;
+}
+
+.home-hero-ai-btn:hover {
+  background: #ffffff;
+}
+
+.home-hero-buttons button span {
+  font-size: 1rem;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: 220px;
+
+    padding: 1.8rem 1.5rem;
+
+    background-image: url("/herosmall.png");
+
+    background-position: center;
+  }
+
+  .home-hero-content {
+    width: 55%;
+  }
+
+  .home-hero-label {
+    font-size: 0.45rem;
+    letter-spacing: 0.17rem;
+  }
+
+  .home-hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-hero-content p {
+    font-size: 0.65rem;
+  }
+
+  .home-hero-buttons {
+    margin-top: 0.7rem;
+  }
+
+  .home-hero-buttons button {
+    height: 31px;
+
+    padding: 0 0.75rem;
+
+    font-size: 0.6rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .home-hero {
+    min-height: 190px;
+
+    margin-top: 0.6rem;
+
+    padding: 1.2rem 1rem;
+
+    border-radius: 9px;
+
+    background-position: center;
+  }
+
+  .home-hero-content {
+    width: 58%;
+  }
+
+  .home-hero-label {
+    margin-bottom: 0.3rem;
+
+    font-size: 0.35rem;
+    letter-spacing: 0.12rem;
+  }
+
+  .home-hero-content h1 {
+    font-size: 1.35rem;
+  }
+
+  .home-hero-content p {
+    margin-top: 0.35rem;
+
+    font-size: 0.5rem;
+
+    line-height: 1.35;
+  }
+
+  .home-hero-buttons {
+    gap: 0.4rem;
+
+    margin-top: 0.55rem;
+  }
+
+  .home-hero-buttons button {
+    height: 27px;
+
+    padding: 0 0.55rem;
+
+    gap: 0.2rem;
+
+    border-radius: 5px;
+
+    font-size: 0.48rem;
+  }
+
+  .home-hero-buttons button span {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 480px) {
+  .home-hero-label,
+  .home-hero-content p {
+    display: none;
+  }
+
+  .home-hero {
+    min-height: 190px;
+    margin-top: 0.6rem;
+    padding: 1.2rem 1rem;
+    border-radius: 9px;
+    background-position: center;
+  }
+
+  .home-hero-content {
+    width: 58%;
+  }
+
+  .home-hero-content h1 {
+    font-size: 1.35rem;
+  }
+
+  .home-hero-buttons {
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+  }
+
+  .home-hero-buttons button {
+    height: 29px;
+    padding: 0 0.6rem;
+    font-size: 0.5rem;
+  }
+}

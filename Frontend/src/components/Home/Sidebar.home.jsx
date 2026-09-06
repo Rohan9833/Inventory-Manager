@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../../css/Sidebar.home.css";
 
@@ -72,6 +72,18 @@ const Icons = {
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenSidebar = () => {
+      setIsOpen(true);
+    };
+
+    window.addEventListener("open-sidebar", handleOpenSidebar);
+
+    return () => {
+      window.removeEventListener("open-sidebar", handleOpenSidebar);
+    };
+  }, []);
 
   const menuItems = [
     { name: "Dashboard", path: "/home", icon: Icons.Dashboard },

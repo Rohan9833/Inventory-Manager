@@ -6,6 +6,7 @@ function HomeHeader() {
   const [listening, setListening] = useState(false);
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [voiceText, setVoiceText] = useState("");
+  const [voiceError, setVoiceError] = useState("");
 
   const recognitionRef = useRef(null);
   const finalTextRef = useRef("");
@@ -17,18 +18,33 @@ function HomeHeader() {
 
     console.log("AI Command:", input);
 
-    // Yaha AI API call karna hai
     // sendToAI(input);
   };
+
+  /* =====================================================
+     HAMBURGER
+  ===================================================== */
+
+  const openSidebar = () => {
+    window.dispatchEvent(new Event("open-sidebar"));
+  };
+
+  /* =====================================================
+     VOICE
+  ===================================================== */
 
   const startVoice = () => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      alert("Voice input is not supported in this browser.");
+      setVoiceError("Voice input is not supported in this browser.");
+      setVoiceOpen(true);
       return;
     }
+
+    // Agar already listening hai to kuch mat karo
+    if (listening) return;
 
     const recognition = new SpeechRecognition();
 
@@ -36,12 +52,13 @@ function HomeHeader() {
     recognition.continuous = false;
     recognition.interimResults = true;
 
-    finalTextRef.current = "";
-    setVoiceText("");
+    finalTextRef.current = voiceText;
+    setVoiceError("");
     setVoiceOpen(true);
 
     recognition.onstart = () => {
       setListening(true);
+      setVoiceError("");
     };
 
     recognition.onresult = (event) => {
@@ -60,19 +77,36 @@ function HomeHeader() {
 
       finalTextRef.current = finalTranscript;
 
-      setVoiceText(finalTranscript + interimTranscript);
+      setVoiceText(
+        (finalTranscript + interimTranscript).trim()
+      );
+    };
+
+    recognition.onerror = (event) => {
+      setListening(false);
+
+      if (event.error === "not-allowed") {
+        setVoiceError("Microphone permission was denied.");
+      } else if (event.error === "no-speech") {
+        setVoiceError("No speech detected. Tap the mic and try again.");
+      } else {
+        setVoiceError("Something went wrong. Please try again.");
+      }
     };
 
     recognition.onend = () => {
-      setListening(false);
-    };
-
-    recognition.onerror = () => {
+      // IMPORTANT:
+      // Popup close nahi karna
       setListening(false);
     };
 
     recognitionRef.current = recognition;
-    recognition.start();
+
+    try {
+      recognition.start();
+    } catch (error) {
+      setListening(false);
+    }
   };
 
   const closeVoice = () => {
@@ -82,15 +116,15 @@ function HomeHeader() {
 
     setListening(false);
     setVoiceOpen(false);
+    setVoiceError("");
   };
 
   const useVoiceText = () => {
     const text = voiceText.trim();
 
-    if (text) {
-      setInput(text);
-    }
+    if (!text) return;
 
+    setInput(text);
     closeVoice();
   };
 
@@ -102,8 +136,23 @@ function HomeHeader() {
 
       <header className="home-topbar">
 
+        {/* Hamburger - mobile/tablet */}
+        <button
+          className="home-header-menu"
+          onClick={openSidebar}
+          type="button"
+          aria-label="Open menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
         {/* AI Search */}
-        <form className="home-ai-search" onSubmit={handleSearch}>
+        <form
+          className="home-ai-search"
+          onSubmit={handleSearch}
+        >
           <span className="home-ai-search-icon">
             <svg
               viewBox="0 0 24 24"
@@ -112,7 +161,10 @@ function HomeHeader() {
               strokeWidth="2"
             >
               <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-4-4" strokeLinecap="round" />
+              <path
+                d="m20 20-4-4"
+                strokeLinecap="round"
+              />
             </svg>
           </span>
 
@@ -123,7 +175,9 @@ function HomeHeader() {
             placeholder="Ask AI anything about your inventory..."
           />
 
-          <span className="home-ai-shortcut">⌘ K</span>
+          <span className="home-ai-shortcut">
+            ⌘ K
+          </span>
         </form>
 
         {/* Right Side */}
@@ -134,7 +188,10 @@ function HomeHeader() {
             className={`home-mic-btn ${
               listening ? "home-mic-active" : ""
             }`}
-            onClick={startVoice}
+            onClick={() => {
+              setVoiceOpen(true);
+              startVoice();
+            }}
             type="button"
             aria-label="Voice input"
           >
@@ -159,7 +216,6 @@ function HomeHeader() {
             </svg>
           </button>
 
-          {/* Divider */}
           <div className="home-topbar-divider" />
 
           {/* Profile */}
@@ -206,24 +262,26 @@ function HomeHeader() {
             onClick={(e) => e.stopPropagation()}
           >
 
-            {/* Close */}
             <button
               className="voice-close"
               onClick={closeVoice}
               type="button"
-              aria-label="Close voice input"
             >
               ×
             </button>
 
             <div className="voice-title">
-              {listening ? "Listening..." : "Voice input"}
+              {listening
+                ? "Listening..."
+                : "Voice input"}
             </div>
 
             <p className="voice-subtitle">
               {listening
                 ? "Speak naturally"
-                : "Tap the mic to speak again"}
+                : voiceError
+                  ? voiceError
+                  : "Tap the mic to speak"}
             </p>
 
 
@@ -239,9 +297,11 @@ function HomeHeader() {
 
               <button
                 className={`voice-main-mic ${
-                  listening ? "voice-main-mic-active" : ""
+                  listening
+                    ? "voice-main-mic-active"
+                    : ""
                 }`}
-                onClick={listening ? undefined : startVoice}
+                onClick={startVoice}
                 type="button"
               >
                 <svg
@@ -264,7 +324,6 @@ function HomeHeader() {
                   />
                 </svg>
               </button>
-
             </div>
 
 
@@ -282,7 +341,7 @@ function HomeHeader() {
             </div>
 
 
-            {/* Bottom */}
+            {/* Buttons */}
             <div className="voice-footer">
 
               <button
