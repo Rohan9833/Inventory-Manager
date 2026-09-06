@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import StatCard from "../components/StatCard.dashboard";
+import StatCard from "../components/Dashboard/StatCard.dashboard";
 import { getDashboard } from "../api/dashboard.api";
-import RecentCustomers from "../components/RecentCustomers.dashboard";
-import CustomerBalance from "../components/CustomerBalance.dashboard";
+import RecentCustomers from "../components/Dashboard/RecentCustomers.dashboard";
+import CustomerBalance from "../components/Dashboard/CustomerBalance.dashboard";
 
 function Dashboard() {
   const dashboardCards = [

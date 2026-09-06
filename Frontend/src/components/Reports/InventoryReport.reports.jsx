@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getInventoryReport } from "../api/reports.api";
-import "../css/InventoryReport.css";
+import { getInventoryReport } from "../../api/reports.api";
+import "../../css/InventoryReport.css";
 
 function InventoryReport() {
   const [inventory, setInventory] = useState([]);

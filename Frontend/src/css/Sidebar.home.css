@@ -8,95 +8,9 @@
   box-sizing: border-box;
 }
 
-.home-header,
 .home-sidebar,
 .home-sidebar-overlay {
   font-family: Arial, Helvetica, sans-serif;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.home-header {
-  width: 100%;
-  min-height: 80px;
-
-  display: flex;
-  align-items: center;
-
-  padding: 1.2rem 2rem;
-
-  background: #ffffff;
-
-  position: relative;
-  z-index: 10;
-}
-
-.home-header-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-
-  min-width: 0;
-}
-
-.home-header-content {
-  min-width: 0;
-}
-
-.home-header-content h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-
-  color: #111827;
-
-  line-height: 1.25;
-}
-
-.home-header-content p {
-  margin-top: 0.35rem;
-
-  font-size: 0.9rem;
-
-  color: #6b7280;
-
-  line-height: 1.4;
-}
-
-
-/* =========================================================
-   MENU BUTTON
-========================================================= */
-
-.home-menu-btn {
-  width: 3rem;
-  height: 3rem;
-
-  border: none;
-  border-radius: 0.8rem;
-
-  background: #ffffff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1.35rem;
-
-  color: #1f2937;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.home-menu-btn:hover {
-  background: #f3f4f6;
-  transform: translateY(-1px);
 }
 
 
@@ -105,68 +19,34 @@
 ========================================================= */
 
 .home-sidebar-overlay {
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(15, 23, 42, 0.38);
-
-  z-index: 998;
-
-  backdrop-filter: blur(1px);
-
-  animation: sidebarOverlayIn 0.25s ease;
-}
-
-@keyframes sidebarOverlayIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  display: none;
 }
 
 
 /* =========================================================
    SIDEBAR
+   Desktop = ALWAYS OPEN
 ========================================================= */
 
 .home-sidebar {
   position: fixed;
-
   top: 0;
   left: 0;
-
   width: 17rem;
   height: 100vh;
-
   background: linear-gradient(
     180deg,
-    #173f88 0%,
-    #0a2252 100%
+    #0f3d2e 0%,
+    #06211a 100%
   );
-
   color: #ffffff;
-
-  transform: translateX(-105%);
-
-  transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
   z-index: 999;
-
   display: flex;
   flex-direction: column;
-
   box-shadow: 8px 0 30px rgba(0, 0, 0, 0.15);
-
   overflow: hidden;
-}
-
-.home-sidebar-open {
   transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -176,32 +56,35 @@
 
 .home-sidebar-logo {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.6rem 1.4rem 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-  padding: 2rem 1.7rem 1.5rem;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.home-sidebar-logo-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.6rem;
 }
 
 .home-sidebar-logo h2 {
-  font-family: Georgia, serif;
-
-  font-size: 1.45rem;
-
-  letter-spacing: 0.02rem;
-
+  font-size: 1.2rem;
+  font-weight: 700;
   color: #ffffff;
 }
 
 .home-sidebar-logo p {
-  margin-top: 0.35rem;
-
-  font-family: Georgia, serif;
-
+  margin-top: 0.15rem;
   font-size: 0.72rem;
-
-  letter-spacing: 0.12rem;
-
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 
@@ -211,29 +94,28 @@
 
 .home-sidebar-nav {
   flex: 1;
-
-  padding: 1.1rem 1rem;
-
+  padding: 1.1rem 0.9rem;
   overflow-y: auto;
+}
+
+.home-sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.home-sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
 }
 
 .home-sidebar-list {
   list-style: none;
-
   display: flex;
   flex-direction: column;
-
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
-
-
-/* =========================================================
-   NAV ITEM
-========================================================= */
 
 .home-sidebar-item {
   width: 100%;
-
   list-style: none;
 }
 
@@ -244,39 +126,38 @@
 
 .home-sidebar-link {
   width: 100%;
-
-  min-height: 3.15rem;
-
-  padding: 0.85rem 1.1rem;
-
+  min-height: 2.9rem;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
-
+  gap: 0.85rem;
   border-radius: 0.75rem;
-
-  color: rgba(255, 255, 255, 0.88);
-
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
-
-  font-size: 0.95rem;
-  font-weight: 600;
-
+  font-size: 0.92rem;
+  font-weight: 500;
   transition:
     background 0.2s ease,
     color 0.2s ease,
     transform 0.2s ease;
-
   cursor: pointer;
 }
 
+.home-sidebar-link-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  display: flex;
+}
 
-/* Hover */
+.home-sidebar-link-icon svg {
+  width: 100%;
+  height: 100%;
+}
 
 .home-sidebar-link:hover {
-  background: rgba(255, 255, 255, 0.09);
-
+  background: rgba(255, 255, 255, 0.07);
   color: #ffffff;
-
   transform: translateX(2px);
 }
 
@@ -286,168 +167,124 @@
 ========================================================= */
 
 .home-sidebar-link-active {
-  background: #3675ff;
-
+  background: #1f6e4f;
   color: #ffffff;
-
-  box-shadow:
-    0 5px 15px rgba(54, 117, 255, 0.25);
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(31, 110, 79, 0.35);
 }
 
 .home-sidebar-link-active:hover {
-  background: #3675ff;
-
+  background: #1f6e4f;
   transform: none;
 }
 
 
 /* =========================================================
-   FOOTER
+   CTA
 ========================================================= */
 
-.home-sidebar-footer {
-  padding: 1rem 1.1rem;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.home-sidebar-cta {
+  margin: 1rem;
+  padding: 1.2rem 1.1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
 }
 
-.home-sidebar-user {
-  display: flex;
-  align-items: center;
-
-  gap: 0.8rem;
-
-  padding: 0.5rem;
+.home-sidebar-cta-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
 }
 
-.home-sidebar-avatar {
-  width: 2.8rem;
-  height: 2.8rem;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  background: #3968ff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+.home-sidebar-cta h3 {
   font-size: 1rem;
   font-weight: 700;
-
-  box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-.home-sidebar-user-info {
-  min-width: 0;
-}
-
-.home-sidebar-user-info h4 {
-  font-size: 0.9rem;
-
+  line-height: 1.3;
   color: #ffffff;
-
-  white-space: nowrap;
 }
 
-.home-sidebar-user-info p {
-  margin-top: 0.2rem;
-
-  font-size: 0.72rem;
-
+.home-sidebar-cta p {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+  max-width: 80%;
 }
 
 
 /* =========================================================
    CLOSE BUTTON
+   Hidden on desktop
 ========================================================= */
 
 .home-sidebar-close {
-  position: absolute;
-
-  top: 1.1rem;
-  right: 1rem;
-
-  width: 2.25rem;
-  height: 2.25rem;
-
-  border: none;
-
-  border-radius: 0.65rem;
-
-  background: rgba(255, 255, 255, 0.1);
-
-  color: #ffffff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1rem;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.home-sidebar-close:hover {
-  background: rgba(255, 255, 255, 0.18);
-
-  transform: rotate(5deg);
+  display: none;
 }
 
 
 /* =========================================================
-   TABLET
+   TABLET + MOBILE
 ========================================================= */
 
 @media (max-width: 768px) {
-
-  .home-header {
-    min-height: 70px;
-
-    padding: 1rem 1.1rem;
-  }
-
-  .home-header-content h2 {
-    font-size: 1.1rem;
-  }
-
-  .home-header-content p {
-    font-size: 0.78rem;
-  }
-
-  .home-menu-btn {
-    width: 2.7rem;
-    height: 2.7rem;
-
-    font-size: 1.15rem;
-  }
-
+  /* Sidebar hidden by default */
   .home-sidebar {
     width: 16rem;
+    transform: translateX(-105%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Sidebar open */
+  .home-sidebar-open {
+    transform: translateX(0);
+  }
+
+  /* Overlay visible when sidebar is open */
+  .home-sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.38);
+    z-index: 998;
+    backdrop-filter: blur(1px);
+  }
+
+  /* Close button visible */
+  .home-sidebar-close {
+    display: flex;
+    position: absolute;
+    top: 1.1rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 0.65rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s ease;
+  }
+
+  .home-sidebar-close:hover {
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .home-sidebar-logo {
-    padding: 1.7rem 1.4rem 1.3rem;
+    padding: 1.4rem 1.1rem 1.2rem;
   }
 
   .home-sidebar-nav {
-    padding: 1rem 0.8rem;
+    padding: 1rem 0.7rem;
   }
 
   .home-sidebar-link {
-    min-height: 2.9rem;
-
-    padding: 0.75rem 1rem;
-
-    font-size: 0.88rem;
+    min-height: 2.7rem;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.86rem;
   }
 }
 
@@ -457,46 +294,16 @@
 ========================================================= */
 
 @media (max-width: 480px) {
-
-  .home-header {
-    min-height: 65px;
-
-    padding: 0.85rem 0.9rem;
-  }
-
-  .home-header-left {
-    gap: 0.65rem;
-  }
-
-  .home-menu-btn {
-    width: 2.45rem;
-    height: 2.45rem;
-
-    font-size: 1rem;
-
-    flex-shrink: 0;
-  }
-
-  .home-header-content h2 {
-    font-size: 0.92rem;
-  }
-
-  .home-header-content p {
-    font-size: 0.68rem;
-
-    max-width: 240px;
-  }
-
   .home-sidebar {
     width: 15rem;
   }
 
   .home-sidebar-logo {
-    padding: 1.5rem 1.2rem 1.2rem;
+    padding: 1.2rem 1rem 1rem;
   }
 
   .home-sidebar-logo h2 {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
   }
 
   .home-sidebar-logo p {
@@ -504,43 +311,26 @@
   }
 
   .home-sidebar-nav {
-    padding: 0.8rem 0.7rem;
+    padding: 0.8rem 0.6rem;
   }
 
   .home-sidebar-link {
-    min-height: 2.75rem;
-
-    padding: 0.7rem 0.9rem;
-
-    font-size: 0.84rem;
-
+    min-height: 2.6rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.82rem;
     border-radius: 0.65rem;
   }
 
-  .home-sidebar-footer {
-    padding: 0.8rem;
-  }
-
-  .home-sidebar-avatar {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .home-sidebar-user-info h4 {
-    font-size: 0.82rem;
-  }
-
-  .home-sidebar-user-info p {
-    font-size: 0.68rem;
+  .home-sidebar-cta {
+    margin: 0.8rem;
+    padding: 1rem;
   }
 
   .home-sidebar-close {
     width: 2.1rem;
     height: 2.1rem;
-
     top: 0.9rem;
     right: 0.8rem;
-
     font-size: 0.9rem;
   }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getCustomerReport } from "../api/reports.api";
-import "../css/CustomerReport.css";
+import { getCustomerReport } from "../../api/reports.api";
+import "../../css/CustomerReport.css";
 
 function CustomerReport() {
   const [customers, setCustomers] = useState([]);

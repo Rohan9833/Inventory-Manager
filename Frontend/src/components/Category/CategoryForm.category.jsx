@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../css/CategoryForm.css"
+import "../../css/CategoryForm.css"
 
 function CategoryForm({ editingCategory, onCreate, onUpdate }) {
   const [formData, setFormData] = useState({

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import InventoryForm from "../components/InventoryForm.inventory";
-import InventoryTable from "../components/InventoryTable.inventory";
+import InventoryForm from "../components/Inventory/InventoryForm.inventory";
+import InventoryTable from "../components/Inventory/InventoryTable.inventory";
 
 import {
     stockIn,

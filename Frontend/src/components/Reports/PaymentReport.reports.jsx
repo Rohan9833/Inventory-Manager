@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getPaymentReport } from "../api/reports.api";
-import "../css/PaymentReport.css";
+import { getPaymentReport } from "../../api/reports.api";
+import "../../css/PaymentReport.css";
 
 function PaymentReport() {
   const [payments, setPayments] = useState([]);

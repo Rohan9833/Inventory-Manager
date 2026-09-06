@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/InventoryForm.css";
+import "../../css/InventoryForm.css";
 
 function InventoryForm({ products, onStockIn, onStockOut }) {
   const [formData, setFormData] = useState({

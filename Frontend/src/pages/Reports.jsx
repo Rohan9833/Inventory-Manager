@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "../css/Reports.css";
 
-import SalesReport from "../components/SalesReport.reports";
-import ProductReport from "../components/ProductReport.reports";
-import InventoryReport from "../components/InventoryReport.reports";
-import CustomerReport from "../components/CustomerReport.reports";
-import PaymentReport from "../components/PaymentReport.reports";
+import SalesReport from "../components/Reports/SalesReport.reports";
+import ProductReport from "../components/Reports/ProductReport.reports";
+import InventoryReport from "../components/Reports/InventoryReport.reports";
+import CustomerReport from "../components/Reports/CustomerReport.reports";
+import PaymentReport from "../components/Reports/PaymentReport.reports";
 
 function Reports() {
   const [activeTab, setActiveTab] = useState("sales");

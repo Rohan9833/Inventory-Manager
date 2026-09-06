@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getProductReport } from "../api/reports.api";
-import "../css/ProductReport.css";
+import { getProductReport } from "../../api/reports.api";
+import "../../css/ProductReport.css";
 
 function ProductReport() {
   const [products, setProducts] = useState([]);

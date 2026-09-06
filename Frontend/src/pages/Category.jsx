@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-import CategoryForm from "../components/CategoryForm.category";
-import CategoryTable from "../components/CategoryTable.category";
+import CategoryForm from "../components/Category/CategoryForm.category";
+import CategoryTable from "../components/Category/CategoryTable.category";
 
 import {
   createCategory,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import CustomerForm from "../components/CustomerForm.customer";
-import CustomerTable from "../components/CustomerTable.customer";
+import CustomerForm from "../components/Customer/CustomerForm.customer";
+import CustomerTable from "../components/Customer/CustomerTable.customer";
 
 import {
   createCustomer,

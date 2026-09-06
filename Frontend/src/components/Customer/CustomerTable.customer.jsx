@@ -1,4 +1,4 @@
-import "../css/CustomerTable.css";
+import "../../css/CustomerTable.css";
 
 function CustomerTable({
   customers = [],

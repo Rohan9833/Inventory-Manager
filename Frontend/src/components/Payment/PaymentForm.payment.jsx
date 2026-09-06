@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../css/PaymentForm.css"
+import "../../css/PaymentForm.css"
 function PaymentForm({
   customers,
   editingPayment,

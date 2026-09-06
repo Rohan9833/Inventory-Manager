@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import "../css/SalesReport.css";
+import "../../css/SalesReport.css";
 
 import {
   getSalesReport,
   exportSalesReport,
-} from "../api/reports.api";
+} from "../../api/reports.api";
 
 function SalesReport() {
   const [sales, setSales] = useState([]);

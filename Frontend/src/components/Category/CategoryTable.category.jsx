@@ -1,4 +1,4 @@
-import "../css/CategoryTable.css";
+import "../../css/CategoryTable.css";
 
 function CategoryTable({ categories, loading, onEdit, onStatus }) {
   // ===========================

@@ -1,4 +1,4 @@
-import "../css/PaymentTable.css";
+import "../../css/PaymentTable.css";
 
 function PaymentTable({
   payments = [],

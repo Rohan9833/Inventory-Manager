@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import ProductForm from "../components/ProductForm.product";
-import ProductTable from "../components/ProductTable.product";
+import ProductForm from "../components/Product/ProductForm.product";
+import ProductTable from "../components/Product/ProductTable.product";
 // import "../css/product.css"
 
 import {

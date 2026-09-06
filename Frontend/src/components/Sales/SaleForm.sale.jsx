@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/SaleForm.css";
+import "../../css/SaleForm.css";
 import { Trash2 } from "lucide-react";
 
 function SaleForm({ customers, products, onCreate }) {

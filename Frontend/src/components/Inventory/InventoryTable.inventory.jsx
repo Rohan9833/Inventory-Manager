@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/InventoryTable.css";
+import "../../css/InventoryTable.css";
 
 function InventoryTable({ history = [], loading }) {
   const [visibleColumns, setVisibleColumns] = useState({

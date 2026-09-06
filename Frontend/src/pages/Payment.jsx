@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import PaymentForm from "../components/PaymentForm.payment";
-import PaymentTable from "../components/PaymentTable.payment";
+import PaymentForm from "../components/Payment/PaymentForm.payment";
+import PaymentTable from "../components/Payment/PaymentTable.payment";
 
 import {
   createPayment,

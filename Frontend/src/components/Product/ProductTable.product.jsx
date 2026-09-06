@@ -1,4 +1,4 @@
-import "../css/ProductTable.css";
+import "../../css/ProductTable.css";
 
 function ProductTable({ products, loading, onEdit, onDelete, onRestore }) {
   // ==================================

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import SaleForm from "../components/SaleForm.sale";
-import SaleTable from "../components/SaleTable.sale";
+import SaleForm from "../components/Sales/SaleForm.sale";
+import SaleTable from "../components/Sales/SaleTable.sale";
 
 import {
   createSale,
