@@ -190,3 +190,323 @@
   background: #fee2e2;
   color: #dc2626;
 }
+
+/* ===========================
+   HOME BOTTOM
+=========================== */
+
+.home-bottom-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  padding: 1rem;
+}
+
+
+/* ===========================
+   CARD
+=========================== */
+
+.home-bottom-card {
+  min-width: 0;
+
+  background: #ffffff;
+
+  border-radius: 1rem;
+
+  padding: 1rem;
+
+  box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.06);
+}
+
+
+/* ===========================
+   HEADER
+=========================== */
+
+.home-bottom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 0.8rem;
+}
+
+.home-bottom-header h3 {
+  color: #17252b;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.home-bottom-header button {
+  border: none;
+  background: transparent;
+
+  color: #2563eb;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* ===========================
+   LIST
+=========================== */
+
+.home-bottom-list {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ===========================
+   ITEM
+=========================== */
+
+.home-bottom-item {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.7rem;
+
+  padding: 0.7rem 0;
+
+  border-bottom: 1px solid #f0f1f1;
+}
+
+.home-bottom-item:last-child {
+  border-bottom: none;
+}
+
+
+/* ===========================
+   AVATAR
+=========================== */
+
+.home-bottom-avatar {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #edf5f1;
+
+  color: #267158;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+
+/* ===========================
+   INFO
+=========================== */
+
+.home-bottom-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.home-bottom-info h4 {
+  overflow: hidden;
+
+  color: #374151;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.home-bottom-info p {
+  margin-top: 0.2rem;
+
+  color: #9ca3af;
+
+  font-size: 0.62rem;
+}
+
+
+/* ===========================
+   RIGHT
+=========================== */
+
+.home-bottom-right {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 0.3rem;
+}
+
+.home-bottom-right h4 {
+  color: #273239;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+
+/* ===========================
+   BADGES
+=========================== */
+
+.home-bottom-right span {
+  padding: 0.2rem 0.45rem;
+
+  border-radius: 4px;
+
+  font-size: 0.55rem;
+  font-weight: 600;
+}
+
+.home-badge-paid {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.home-badge-pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.home-badge-overdue {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.home-badge-due {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .home-bottom-wrapper {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+
+    padding: 0.8rem;
+  }
+
+  .home-bottom-card {
+    padding: 0.8rem;
+  }
+
+  .home-bottom-header {
+    margin-bottom: 0.5rem;
+  }
+
+  .home-bottom-header h3 {
+    font-size: 0.85rem;
+  }
+
+  .home-bottom-header button {
+    font-size: 0.6rem;
+  }
+
+  .home-bottom-item {
+    gap: 0.55rem;
+    padding: 0.6rem 0;
+  }
+
+  .home-bottom-avatar {
+    width: 30px;
+    height: 30px;
+
+    font-size: 0.55rem;
+  }
+
+  .home-bottom-info h4 {
+    font-size: 0.65rem;
+  }
+
+  .home-bottom-info p {
+    font-size: 0.55rem;
+  }
+
+  .home-bottom-right h4 {
+    font-size: 0.62rem;
+  }
+
+  .home-bottom-right span {
+    font-size: 0.5rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .home-bottom-wrapper {
+    padding: 0.7rem;
+    gap: 0.6rem;
+  }
+
+  .home-bottom-card {
+    padding: 0.7rem;
+
+    border-radius: 0.85rem;
+  }
+
+  .home-bottom-header h3 {
+    font-size: 0.8rem;
+  }
+
+  .home-bottom-header button {
+    font-size: 0.55rem;
+  }
+
+  .home-bottom-item {
+    padding: 0.55rem 0;
+  }
+
+  .home-bottom-avatar {
+    width: 28px;
+    height: 28px;
+
+    font-size: 0.5rem;
+  }
+
+  .home-bottom-info h4 {
+    font-size: 0.6rem;
+  }
+
+  .home-bottom-info p {
+    font-size: 0.5rem;
+  }
+
+  .home-bottom-right h4 {
+    font-size: 0.58rem;
+  }
+
+  .home-bottom-right span {
+    padding: 0.17rem 0.35rem;
+
+    font-size: 0.46rem;
+  }
+}
