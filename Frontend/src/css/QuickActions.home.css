@@ -3,116 +3,203 @@
 =========================== */
 
 .home-actions {
+  display: none;
+
   margin: 1rem;
-  padding: 1rem;
+  padding: 1rem 1.1rem;
 
   background: #ffffff;
 
-  border-radius: 1.2rem;
+  border-radius: 1rem;
 
-  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.06);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
 }
 
 .home-actions-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
 
-  color: #111827;
+  color: #17252b;
 
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 }
+
 
 /* ===========================
    GRID
 =========================== */
 
 .home-actions-grid {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.6rem;
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 0.7rem;
 }
 
+
 /* ===========================
-   CARD
+   ACTION CARD
 =========================== */
 
 .home-action-card {
-  flex: 1;
+  width: 100%;
+  height: 92px;
 
-  min-width: 0;
+  border: 1px solid #f0f1f1;
 
-  height: 4.5rem;
+  border-radius: 12px;
 
-  border: none;
-  border-radius: 0.9rem;
-
-  color: #ffffff;
+  background: #ffffff;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
-  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.55rem;
 
   cursor: pointer;
 
-  transition: all 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .home-action-card:hover {
-  transform: translateY(-0.15rem);
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.07);
 }
 
 .home-action-card:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
+
 /* ===========================
-   ICON
+   ICON BOX
 =========================== */
 
 .home-action-icon {
+  width: 42px;
+  height: 42px;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #eef4f1;
+
+  color: #1f6e4f;
 }
 
 .home-action-icon svg {
-  width: 1.45rem;
-  height: 1.45rem;
+  width: 21px;
+  height: 21px;
 
-  stroke-width: 2.2;
+  stroke-width: 2;
 }
+
 
 /* ===========================
    TEXT
 =========================== */
 
 .home-action-card p {
-  font-size: 0.72rem;
-  font-weight: 500;
+  margin: 0;
+
+  color: #4b5563;
+
+  font-size: 0.75rem;
+  font-weight: 600;
 
   text-align: center;
-  line-height: 1.1;
+
+  line-height: 1;
 }
+
 
 /* ===========================
-   COLORS
+   DIFFERENT ICON BACKGROUNDS
 =========================== */
 
-.home-action-blue {
-  background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+.home-action-blue .home-action-icon {
+  background: #eef1f0;
+  color: #234c40;
 }
 
-.home-action-green {
-  background: linear-gradient(135deg, #4ade80 0%, #65a30d 100%);
+.home-action-green .home-action-icon {
+  background: #edf5f0;
+  color: #287256;
 }
 
-.home-action-orange {
-  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+.home-action-orange .home-action-icon {
+  background: #f5f1e9;
+  color: #806b3c;
 }
 
-.home-action-purple {
-  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+.home-action-purple .home-action-icon {
+  background: #edf2f0;
+  color: #315c4d;
+}
+
+
+/* ===========================
+   TABLET + MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+  .home-actions {
+    display: block;
+  }
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 480px) {
+  .home-actions {
+    margin: 0.7rem;
+    padding: 0.8rem;
+
+    border-radius: 0.9rem;
+  }
+
+  .home-actions-title {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .home-actions-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+  }
+
+  .home-action-card {
+    height: 76px;
+
+    border-radius: 9px;
+
+    gap: 0.4rem;
+  }
+
+  .home-action-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+  }
+
+  .home-action-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .home-action-card p {
+    font-size: 0.55rem;
+  }
 }

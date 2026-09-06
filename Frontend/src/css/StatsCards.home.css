@@ -182,3 +182,50 @@
     }
 
 }
+
+/* ===========================
+   TABLET + MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+
+  .home-stat-info h4 {
+    font-size: 0.68rem;
+  }
+
+  .home-stat-info h2 {
+    font-size: 1.05rem;
+  }
+
+  .home-stat-change {
+    font-size: 0.62rem;
+  }
+
+  .home-stat-growth small {
+    font-size: 0.58rem;
+  }
+}
+
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media (max-width: 480px) {
+
+  .home-stat-info h4 {
+    font-size: 0.6rem;
+  }
+
+  .home-stat-info h2 {
+    font-size: 0.9rem;
+  }
+
+  .home-stat-change {
+    font-size: 0.56rem;
+  }
+
+  .home-stat-growth small {
+    font-size: 0.52rem;
+  }
+}

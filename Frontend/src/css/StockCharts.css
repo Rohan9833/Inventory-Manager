@@ -1,0 +1,326 @@
+.stock-charts {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+
+  gap: 0.7rem;
+
+  padding: 0.8rem 1.2rem 0;
+}
+
+
+/* =========================================================
+   COMMON CARD
+========================================================= */
+
+.stock-movement-card,
+.inventory-status-card {
+  min-width: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   HEADERS
+========================================================= */
+
+.stock-card-header,
+.inventory-status-header {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 1rem;
+
+  border-bottom: 1px solid #f1f2f2;
+}
+
+.stock-card-header h3,
+.inventory-status-header h3 {
+  color: #17252b;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.stock-card-controls {
+  display: flex;
+  align-items: center;
+
+  gap: 0.8rem;
+
+  color: #6b7280;
+
+  font-size: 8px;
+}
+
+.stock-card-controls span:first-child {
+  color: #2d6655;
+}
+
+.stock-card-controls span:nth-child(2) {
+  color: #72b494;
+}
+
+.stock-card-controls button {
+  height: 26px;
+
+  padding: 0 0.65rem;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  color: #6b7280;
+
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.inventory-status-header button {
+  border: none;
+  background: transparent;
+
+  color: #3976d9;
+
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   STOCK CHART
+========================================================= */
+
+.stock-chart {
+  height: 145px;
+
+  position: relative;
+
+  padding: 0.5rem 1rem 0.7rem 2rem;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 28px,
+      #f1f3f3 29px
+    );
+}
+
+.chart-bars {
+  height: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+
+  padding-left: 0.8rem;
+}
+
+.chart-column {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 0.3rem;
+}
+
+.chart-bar-group {
+  height: 115px;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 4px;
+}
+
+.chart-bar {
+  width: 16px;
+
+  display: block;
+
+  border-radius: 2px 2px 0 0;
+}
+
+.chart-bar.inward {
+  background: #286a55;
+}
+
+.chart-bar.outward {
+  background: #83bea0;
+}
+
+.chart-month {
+  color: #6b7280;
+
+  font-size: 8px;
+}
+
+.chart-y-axis {
+  position: absolute;
+
+  left: 0.55rem;
+  top: 0.5rem;
+  bottom: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: #8b9499;
+
+  font-size: 7px;
+}
+
+
+/* =========================================================
+   INVENTORY STATUS
+========================================================= */
+
+.inventory-status-content {
+  min-height: 145px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 1.2rem;
+
+  padding: 0.6rem 1rem;
+}
+
+.inventory-donut {
+  width: 105px;
+  height: 105px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: conic-gradient(
+    #24745c 0 68%,
+    #f5a623 68% 86%,
+    #ef3d38 86% 92%,
+    #aab4bf 92% 100%
+  );
+}
+
+.inventory-donut::before {
+  content: "";
+
+  position: absolute;
+}
+
+.inventory-donut-inner {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+.inventory-donut-inner strong {
+  color: #263238;
+
+  font-size: 14px;
+}
+
+.inventory-donut-inner span {
+  margin-top: 2px;
+
+  color: #7b858a;
+
+  font-size: 7px;
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.inventory-legend {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.7rem;
+}
+
+.inventory-legend > div {
+  display: grid;
+  grid-template-columns: 9px 1fr auto;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  color: #687277;
+
+  font-size: 8px;
+}
+
+.inventory-legend strong {
+  color: #59636a;
+
+  font-size: 8px;
+}
+
+.legend-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+}
+
+.legend-dot.in-stock {
+  background: #24745c;
+}
+
+.legend-dot.low-stock {
+  background: #f5a623;
+}
+
+.legend-dot.out-stock {
+  background: #ef3d38;
+}
+
+.legend-dot.discontinued {
+  background: #aab4bf;
+}
+
+
+/* =========================================================
+   HIDE ON TABLET + MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .stock-charts {
+    display: none;
+  }
+}
