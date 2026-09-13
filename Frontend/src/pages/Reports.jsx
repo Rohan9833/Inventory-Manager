@@ -6,6 +6,7 @@ import ProductReport from "../components/Reports/ProductReport.reports";
 import InventoryReport from "../components/Reports/InventoryReport.reports";
 import CustomerReport from "../components/Reports/CustomerReport.reports";
 import PaymentReport from "../components/Reports/PaymentReport.reports";
+import HomeHeader from "../components/Home/HomeHeader";
 
 function Reports() {
   const [activeTab, setActiveTab] = useState("sales");
@@ -35,6 +36,7 @@ function Reports() {
 
   return (
     <div className="reports-page">
+      <HomeHeader/>
       {/* ==========================
           Header
       ========================== */}

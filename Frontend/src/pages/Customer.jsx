@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import CustomerForm from "../components/Customer/CustomerForm.customer";
 import CustomerTable from "../components/Customer/CustomerTable.customer";
+import HomeHeader from "../components/Home/HomeHeader";
 
 import {
   createCustomer,
@@ -101,6 +102,7 @@ function Customer() {
 
   return (
     <div>
+      <HomeHeader/>
       <h1>Customer Management</h1>
 
       <CustomerForm

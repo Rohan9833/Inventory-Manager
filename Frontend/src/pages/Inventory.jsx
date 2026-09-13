@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import InventoryForm from "../components/Inventory/InventoryForm.inventory";
 import InventoryTable from "../components/Inventory/InventoryTable.inventory";
+import HomeHeader from "../components/Home/HomeHeader";
 
 import {
     stockIn,
@@ -133,6 +134,7 @@ function Inventory() {
     return (
 
         <div>
+            <HomeHeader/>
 
             <h1>Inventory Management</h1>
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import ProductForm from "../components/Product/ProductForm.product";
+import HomeHeader from "../components/Home/HomeHeader";
 import ProductTable from "../components/Product/ProductTable.product";
 // import "../css/product.css"
 
@@ -141,6 +142,7 @@ function Product() {
 
   return (
     <div className="product-page">
+      <HomeHeader/>
       <h1>Product Management</h1>
 
       <ProductForm

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import SaleForm from "../components/Sales/SaleForm.sale";
 import SaleTable from "../components/Sales/SaleTable.sale";
+import HomeHeader from "../components/Home/HomeHeader";
 
 import {
   createSale,
@@ -159,6 +160,7 @@ function Sale() {
 
   return (
     <div>
+      <HomeHeader/>
 
       <h1>Sale Management</h1>
 

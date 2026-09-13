@@ -3,6 +3,7 @@ import StatCard from "../components/Dashboard/StatCard.dashboard";
 import { getDashboard } from "../api/dashboard.api";
 import RecentCustomers from "../components/Dashboard/RecentCustomers.dashboard";
 import CustomerBalance from "../components/Dashboard/CustomerBalance.dashboard";
+import HomeHeader from "../components/Home/HomeHeader";
 
 function Dashboard() {
   const dashboardCards = [
@@ -56,6 +57,7 @@ function Dashboard() {
 
   return (
     <>
+    <HomeHeader/>
       <h1>Dashboard</h1>
       {dashboardCards.map((card) => (
         <StatCard
