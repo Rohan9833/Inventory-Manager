@@ -266,7 +266,7 @@ function CategoryTable({
               MOBILE CATEGORY LIST
           =========================== */}
 
-          <div className="category-mobile-list">
+          {/* <div className="category-mobile-list">
             {filteredCategories.map((category) => {
               const productCount =
                 getProductCount(category);
@@ -318,7 +318,7 @@ function CategoryTable({
                 </div>
               );
             })}
-          </div>
+          </div> */}
 
           {/* ===========================
               FOOTER

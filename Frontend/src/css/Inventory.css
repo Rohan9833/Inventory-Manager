@@ -1,0 +1,708 @@
+/* =========================================================
+   INVENTORY PAGE
+========================================================= */
+
+.inventory-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f3fbf7 0,
+      #f7fbf9 280px,
+      #f4f8f6 100%
+    );
+
+  color: #102c27;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.inventory-page-hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 190px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      100deg,
+      #f5fcf8 0%,
+      #eaf8f1 55%,
+      #d9f1e5 100%
+    );
+
+  border-bottom: 1px solid #dcefe5;
+}
+
+.inventory-page-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 170px;
+
+  right: -100px;
+  bottom: -85px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.inventory-page-hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 25px 2rem 30px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.inventory-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 22px;
+
+  color: #3b9270;
+
+  font-size: 12px;
+}
+
+.inventory-breadcrumb-arrow {
+  color: #91afa3;
+
+  font-size: 16px;
+}
+
+.inventory-breadcrumb strong {
+  color: #526b62;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.inventory-hero-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #31926b;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.09em;
+}
+
+.inventory-hero-text h1 {
+  margin: 0;
+
+  color: #102b37;
+
+  font-size: 38px;
+  line-height: 1.1;
+
+  font-weight: 750;
+
+  letter-spacing: -0.035em;
+}
+
+.inventory-hero-text p {
+  margin: 9px 0 0;
+
+  color: #476a62;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.inventory-hero-decoration {
+  position: absolute;
+
+  right: 8%;
+  bottom: 0;
+
+  width: 430px;
+  height: 180px;
+}
+
+.inventory-warehouse {
+  position: absolute;
+
+  right: 80px;
+  bottom: 0;
+
+  width: 190px;
+  height: 125px;
+}
+
+.inventory-box {
+  position: absolute;
+
+  background: linear-gradient(
+    135deg,
+    #7bc99d,
+    #3b956c
+  );
+
+  border: 1px solid rgba(35, 112, 77, 0.12);
+
+  box-shadow:
+    inset 0 -10px 0 rgba(255, 255, 255, 0.08);
+}
+
+.inventory-box-one {
+  width: 80px;
+  height: 55px;
+
+  left: 0;
+  bottom: 0;
+}
+
+.inventory-box-two {
+  width: 70px;
+  height: 70px;
+
+  left: 55px;
+  bottom: 0;
+}
+
+.inventory-box-three {
+  width: 72px;
+  height: 58px;
+
+  right: 0;
+  bottom: 0;
+}
+
+.inventory-box-four {
+  width: 65px;
+  height: 47px;
+
+  left: 32px;
+  bottom: 55px;
+}
+
+.inventory-box-five {
+  width: 62px;
+  height: 42px;
+
+  left: 95px;
+  bottom: 58px;
+}
+
+
+/* =========================================================
+   LEAVES
+========================================================= */
+
+.inventory-leaf {
+  position: absolute;
+
+  width: 23px;
+  height: 52px;
+
+  border-radius: 100% 0 100% 0;
+
+  background: #4aa977;
+
+  transform: rotate(30deg);
+}
+
+.inventory-leaf-one {
+  right: 270px;
+  bottom: 55px;
+}
+
+.inventory-leaf-two {
+  right: 235px;
+  bottom: 22px;
+
+  transform: rotate(-30deg);
+}
+
+.inventory-leaf-three {
+  right: 195px;
+  bottom: 65px;
+
+  width: 18px;
+  height: 42px;
+
+  transform: rotate(48deg);
+}
+
+
+/* =========================================================
+   HERO QUOTE
+========================================================= */
+
+.inventory-hero-quote {
+  position: absolute;
+
+  right: 0;
+  top: 35px;
+
+  color: #2d8964;
+
+  font-family: Georgia, serif;
+
+  font-size: 20px;
+
+  line-height: 1.15;
+
+  transform: rotate(-4deg);
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.inventory-main {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 14px 1.15rem 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    350px;
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   LEFT
+========================================================= */
+
+.inventory-history-area {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.inventory-side-area {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   QUICK STATS
+========================================================= */
+
+.inventory-stats {
+  width: 100%;
+
+  padding: 17px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1ebe6;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 6px 22px rgba(16, 44, 39, 0.055);
+}
+
+.inventory-stats-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+}
+
+.inventory-stats-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.inventory-stats-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #e7f6ee;
+
+  color: #23865f;
+}
+
+.inventory-stats-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.inventory-stats-title h2 {
+  margin: 0;
+
+  color: #122b3c;
+
+  font-size: 18px;
+
+  line-height: 1.2;
+}
+
+.inventory-stats-title p {
+  margin: 3px 0 0;
+
+  color: #71837c;
+
+  font-size: 10px;
+}
+
+.inventory-stats-period {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 10px;
+
+  border: 1px solid #e1e7e5;
+
+  border-radius: 8px;
+
+  color: #314d46;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.inventory-stats-period span {
+  color: #71837c;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   STAT GRID
+========================================================= */
+
+.inventory-stat-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 8px;
+}
+
+.inventory-stat-card {
+  min-width: 0;
+
+  padding: 12px 10px;
+
+  border-radius: 10px;
+
+  border: 1px solid transparent;
+}
+
+.inventory-stat-card-icon {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 8px;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.inventory-stat-card strong {
+  display: block;
+
+  color: #112d3d;
+
+  font-size: 20px;
+
+  line-height: 1;
+}
+
+.inventory-stat-card span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #60766d;
+
+  font-size: 9px;
+}
+
+.inventory-stat-in {
+  background: #f0faf5;
+
+  border-color: #e0f1e7;
+}
+
+.inventory-stat-in .inventory-stat-card-icon {
+  background: #dff4e8;
+
+  color: #168354;
+}
+
+.inventory-stat-out {
+  background: #fff5f4;
+
+  border-color: #f6e7e5;
+}
+
+.inventory-stat-out .inventory-stat-card-icon {
+  background: #ffe0dd;
+
+  color: #e04743;
+}
+
+.inventory-stat-total {
+  background: #f2f7fb;
+
+  border-color: #e3ebf1;
+}
+
+.inventory-stat-total .inventory-stat-card-icon {
+  background: #deebf5;
+
+  color: #3576a7;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .inventory-main {
+    grid-template-columns:
+      minmax(0, 1fr)
+      330px;
+
+    gap: 16px;
+  }
+
+  .inventory-hero-decoration {
+    right: 3%;
+  }
+
+  .inventory-hero-text h1 {
+    font-size: 34px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .inventory-main {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-side-area {
+    order: -1;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      300px;
+
+    align-items: start;
+  }
+
+  .inventory-stats {
+    height: fit-content;
+  }
+
+  .inventory-hero-decoration {
+    opacity: 0.55;
+
+    right: -40px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .inventory-page-hero {
+    min-height: 170px;
+  }
+
+  .inventory-page-hero-content {
+    padding: 18px 1rem 25px;
+  }
+
+  .inventory-breadcrumb {
+    margin-bottom: 17px;
+
+    font-size: 10px;
+  }
+
+  .inventory-hero-label {
+    font-size: 9px;
+  }
+
+  .inventory-hero-text h1 {
+    font-size: 27px;
+  }
+
+  .inventory-hero-text p {
+    max-width: 340px;
+
+    font-size: 12px;
+  }
+
+  .inventory-hero-decoration {
+    right: -120px;
+
+    opacity: 0.28;
+  }
+
+  .inventory-main {
+    padding: 10px 0.7rem 22px;
+
+    gap: 14px;
+  }
+
+  .inventory-side-area {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .inventory-stats {
+    padding: 14px;
+
+    border-radius: 13px;
+  }
+
+  .inventory-stats-title h2 {
+    font-size: 16px;
+  }
+
+  .inventory-stats-period {
+    padding: 7px 8px;
+
+    font-size: 9px;
+  }
+
+  .inventory-stat-card {
+    padding: 10px 8px;
+  }
+
+  .inventory-stat-card strong {
+    font-size: 17px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .inventory-hero-text h1 {
+    font-size: 24px;
+  }
+
+  .inventory-hero-text p {
+    font-size: 11px;
+  }
+
+  .inventory-main {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .inventory-stat-grid {
+    gap: 6px;
+  }
+
+  .inventory-stat-card {
+    padding: 9px 7px;
+  }
+
+  .inventory-stat-card strong {
+    font-size: 16px;
+  }
+
+  .inventory-stat-card span {
+    font-size: 8px;
+  }
+}
