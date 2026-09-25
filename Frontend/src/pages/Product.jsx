@@ -14,7 +14,7 @@ import {
 
 import { getCategories } from "../api/category.api";
 
-import "../css/Product.css";
+import "../css/product.css";
 
 function Product() {
   const [products, setProducts] = useState([]);
