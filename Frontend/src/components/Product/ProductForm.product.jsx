@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import "../../css/ProductForm.css";
+import "../../css/productform.css";
 
 function ProductForm({
   categories = [],
