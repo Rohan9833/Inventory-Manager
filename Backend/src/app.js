@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["https://localhost:5173", "https://192.168.31.206:5173"],
+    origin: ["https://localhost:5173", "https://192.168.31.206:5173","https://palinventory.vercel.app"],
     credentials: true,
   }),
 );

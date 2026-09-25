@@ -101,7 +101,7 @@ function HomeHeader() {
     const speech = new SpeechSynthesisUtterance(speechText);
 
     speech.voice = selectedVoice;
-    speech.lang = selectedVoice?.lang || "en-IN";
+    speech.lang = selectedVoice?.lang || "en-IN"; 
 
     speech.rate = 1;
     speech.pitch = 1;
