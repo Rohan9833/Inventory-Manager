@@ -1,523 +1,731 @@
-/* =========================================
+/* =========================================================
+   INVENTORY MANAGEMENT
    PRODUCT PAGE
-========================================= */
+========================================================= */
 
-.product-page {
+.inv-product-page {
   width: 100%;
-  max-width: 1500px;
-  margin: 0 auto;
 
-  padding: 28px 30px 40px;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  background: #f3f8f4;
+
+  color: #17382d;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.inv-product-hero {
+  position: relative;
+
+  width: 100%;
+
+  height: 235px !important;
+
+  min-height: 235px !important;
+
+  max-height: 235px !important;
+
+  overflow: hidden !important;
+
+  background: #dfeee2;
 
   box-sizing: border-box;
 }
 
 
-/* =========================================
-   PAGE HEADER
-========================================= */
+/* =========================================================
+   HERO IMAGE
+========================================================= */
 
-.product-page > h1 {
-  margin: 0 0 24px;
+.inv-product-hero-image {
+  position: absolute !important;
 
-  color: #172033;
+  inset: 0 !important;
 
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.2;
+  width: 100% !important;
 
-  letter-spacing: -0.5px;
+  height: 100% !important;
+
+  max-width: none !important;
+
+  max-height: none !important;
+
+  display: block !important;
+
+  margin: 0 !important;
+
+  object-fit: cover !important;
+
+  object-position: center center !important;
+
+  border: none !important;
 }
 
 
-/* =========================================
-   FORM + TABLE SPACING
-========================================= */
+/* =========================================================
+   HERO OVERLAY
+========================================================= */
 
-.product-page > * + * {
-  margin-top: 24px;
+.inv-product-hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(240, 249, 241, 0.97) 0%,
+      rgba(240, 249, 241, 0.90) 31%,
+      rgba(240, 249, 241, 0.55) 57%,
+      rgba(240, 249, 241, 0.08) 100%
+    );
 }
 
 
-/* =========================================
-   PRODUCT FORM CARD
-========================================= */
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
-.product-page > form,
-.product-page .product-form {
+.inv-product-hero-content {
+  position: relative;
+
+  z-index: 3;
+
   width: 100%;
 
-  background: #ffffff;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-
-  padding: 24px;
+  height: 100%;
 
   box-sizing: border-box;
 
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding-left: 55px;
 }
 
 
-/* =========================================
-   FORM LABELS
-========================================= */
+.inv-product-hero-label {
+  margin-bottom: 6px;
 
-.product-page label {
-  display: block;
+  color: #39934c;
 
-  margin-bottom: 7px;
+  font-size: 10px;
 
-  color: #374151;
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+}
+
+
+.inv-product-hero-content h1 {
+  margin: 0;
+
+  color: #0a382e;
+
+  font-size: 31px;
+
+  line-height: 1.02;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+
+.inv-product-hero-content p {
+  margin: 9px 0 14px;
+
+  color: #29483e;
 
   font-size: 13px;
-  font-weight: 600;
+
+  line-height: 1.4;
 }
 
 
-/* =========================================
-   FORM INPUTS
-========================================= */
-
-.product-page input,
-.product-page select {
-  width: 100%;
-
-  min-height: 42px;
-
-  padding: 9px 12px;
-
-  box-sizing: border-box;
-
-  border: 1px solid #dfe3e8;
-  border-radius: 8px;
-
-  outline: none;
-
-  background: #ffffff;
-
-  color: #172033;
-
-  font-size: 14px;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-.product-page input::placeholder {
-  color: #9ca3af;
-}
-
-.product-page input:focus,
-.product-page select:focus {
-  border-color: #f97316;
-
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
-}
-
-
-/* =========================================
-   FORM BUTTONS
-========================================= */
-
-.product-page button {
-  min-height: 40px;
-
-  padding: 9px 16px;
-
-  border: none;
-  border-radius: 8px;
-
-  cursor: pointer;
-
-  font-size: 13px;
-  font-weight: 600;
-
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.product-page button:hover {
-  transform: translateY(-1px);
-}
-
-.product-page button:active {
-  transform: translateY(0);
-}
-
-
-/* =========================================
-   TABLE CARD
-========================================= */
-
-.product-page > .product-table,
-.product-page .product-table-container {
-  width: 100%;
-
-  background: #ffffff;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-
-  overflow: hidden;
-
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
-}
-
-
-/* =========================================
-   TABLE WRAPPER
-========================================= */
-
-.product-page .product-table-wrapper {
-  width: 100%;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-
-.product-page .product-table-wrapper::-webkit-scrollbar {
-  height: 7px;
-}
-
-.product-page .product-table-wrapper::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.product-page .product-table-wrapper::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-
-  border-radius: 20px;
-}
-
-
-/* =========================================
-   PRODUCT TABLE
-========================================= */
-
-.product-page table {
-  width: 100%;
-
-  min-width: 760px;
-
-  border-collapse: collapse;
-
-  font-size: 14px;
-}
-
-
-/* =========================================
-   TABLE HEADER
-========================================= */
-
-.product-page thead {
-  background: #f8fafc;
-}
-
-.product-page th {
-  padding: 14px 16px;
-
-  text-align: left;
-
-  color: #64748b;
-
-  font-size: 11px;
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.5px;
-
-  white-space: nowrap;
-
-  border-bottom: 1px solid #e5e7eb;
-}
-
-
-/* =========================================
-   TABLE BODY
-========================================= */
-
-.product-page td {
-  padding: 14px 16px;
-
-  color: #374151;
-
-  border-bottom: 1px solid #f1f5f9;
-
-  vertical-align: middle;
-}
-
-.product-page tbody tr {
-  transition: background 0.2s ease;
-}
-
-.product-page tbody tr:hover {
-  background: #fffaf5;
-}
-
-.product-page tbody tr:last-child td {
-  border-bottom: none;
-}
-
-
-/* =========================================
-   PRODUCT NAME
-========================================= */
-
-.product-page td:first-child {
-  color: #172033;
-
-  font-weight: 600;
-}
-
-
-/* =========================================
-   TABLE ACTION BUTTONS
-========================================= */
-
-.product-page td button {
-  min-height: 34px;
-
-  padding: 7px 11px;
-
-  margin-right: 5px;
-
-  font-size: 12px;
-}
-
-
-/* =========================================
-   LOADING / EMPTY
-========================================= */
-
-.product-page .product-table-loading,
-.product-page .product-table-empty {
+/* =========================================================
+   HERO FEATURES
+========================================================= */
+
+.inv-product-hero-features {
   display: flex;
 
   align-items: center;
-  justify-content: center;
 
-  min-height: 200px;
-
-  margin: 0;
-
-  color: #64748b;
-
-  font-size: 15px;
-  font-weight: 500;
+  gap: 18px;
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
+.inv-product-hero-feature {
+  display: flex;
 
-@media (max-width: 1000px) {
-  .product-page {
-    padding: 24px 22px 35px;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #193f34;
+
+  font-size: 10px;
+}
+
+
+.inv-product-hero-feature span {
+  width: 29px;
+
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #48a456;
+
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+
+.inv-product-hero-feature strong {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   HERO NOTE
+========================================================= */
+
+.inv-product-hero-note {
+  position: absolute;
+
+  z-index: 3;
+
+  right: 35px;
+
+  top: 55px;
+
+  color: #174b3d;
+
+  font-family:
+    "Segoe Print",
+    "Comic Sans MS",
+    cursive;
+
+  font-size: 16px;
+
+  line-height: 1.4;
+
+  transform: rotate(-3deg);
+}
+
+
+.inv-product-hero-note::after {
+  content: "";
+
+  display: block;
+
+  width: 65px;
+
+  height: 3px;
+
+  margin-top: 3px;
+
+  background: #49a454;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.inv-product-main {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 15px 18px 0;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   TABLE LEFT + FORM RIGHT
+========================================================= */
+
+.inv-product-layout {
+  width: 100%;
+
+  min-width: 0;
+
+  display: grid;
+
+  /*
+    Table gets remaining space.
+    Form gets 330px.
+  */
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    330px;
+
+  gap: 14px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.inv-product-table-area {
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.inv-product-form-area {
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   BOTTOM
+   - image is the background
+   - fades to the left
+   - no green shape
+========================================================= */
+/* =========================================================
+   BOTTOM
+   - warehouse image background
+   - fades from image on right to green/white on left
+========================================================= */
+
+.inv-product-bottom {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 185px;
+
+  margin-top: 0;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  background-color: #e1f1e4;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      #e1f1e4 0%,
+      rgba(225, 241, 228, 0.95) 18%,
+      rgba(225, 241, 228, 0.65) 40%,
+      rgba(225, 241, 228, 0.15) 65%,
+      rgba(225, 241, 228, 0) 100%
+    ),
+    url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85") !important;
+
+  background-repeat: no-repeat;
+
+  background-position: center, right center;
+
+  background-size: cover, cover;
+}
+
+/* =========================================================
+   GREEN SHAPE
+   - removed / hidden
+========================================================= */
+
+.inv-product-bottom-shape {
+  display: none !important;
+}
+
+
+/* =========================================================
+   BOTTOM INNER
+========================================================= */
+
+.inv-product-bottom-inner {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  min-height: 185px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 20px 40px;
+}
+
+
+/* =========================================================
+   BOTTOM TEXT
+========================================================= */
+
+.inv-product-bottom-text {
+  position: relative;
+
+  width: 280px;
+
+  flex-shrink: 0;
+}
+
+
+.inv-product-bottom-quote {
+  position: absolute;
+
+  left: -19px;
+
+  top: -24px;
+
+  color: #a9d5ae;
+
+  font-family: Georgia, serif;
+
+  font-size: 65px;
+
+  line-height: 1;
+}
+
+
+.inv-product-bottom-text h2 {
+  margin: 0;
+
+  color: #153c31;
+
+  font-size: 17px;
+
+  line-height: 1.35;
+
+  font-weight: 650;
+
+  /* Keep text readable over the fading image */
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.75);
+}
+
+
+.inv-product-bottom-line {
+  display: block;
+
+  width: 48px;
+
+  height: 3px;
+
+  margin-top: 10px;
+
+  background: #489e53;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   BOTTOM FEATURES
+========================================================= */
+
+.inv-product-bottom-features {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 38px;
+
+  margin-left: 15px;
+}
+
+
+.inv-product-bottom-feature {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #193d32;
+}
+
+
+.inv-product-bottom-feature span {
+  font-size: 25px;
+
+  filter: drop-shadow(0 1px 4px rgba(255, 255, 255, 0.7));
+}
+
+
+.inv-product-bottom-feature strong {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   BOTTOM IMAGE
+   - kept hidden for safety (no element uses it anymore)
+========================================================= */
+
+.inv-product-bottom-image {
+  display: none !important;
+}
+
+
+/* =========================================================
+   MEDIUM DESKTOP
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .inv-product-layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      315px;
+
+    gap: 12px;
   }
 
-  .product-page > h1 {
-    margin-bottom: 20px;
+  .inv-product-main {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 
+  .inv-product-hero-content {
+    padding-left: 40px;
+  }
+
+  .inv-product-hero-content h1 {
+    font-size: 28px;
+  }
+
+  .inv-product-bottom-inner {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .inv-product-bottom-features {
+    gap: 25px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .inv-product-layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      295px;
+
+    gap: 10px;
+  }
+
+  .inv-product-hero {
+    height: 215px !important;
+
+    min-height: 215px !important;
+
+    max-height: 215px !important;
+  }
+
+  .inv-product-hero-content {
+    padding-left: 28px;
+  }
+
+  .inv-product-hero-content h1 {
     font-size: 25px;
   }
 
-  .product-page > * + * {
-    margin-top: 20px;
+  .inv-product-hero-content p {
+    font-size: 11px;
   }
 
-  .product-page > form,
-  .product-page .product-form {
-    padding: 20px;
-  }
-
-  .product-page th {
-    padding: 12px 14px;
-  }
-
-  .product-page td {
-    padding: 12px 14px;
-  }
-}
-
-
-/* =========================================
-   SMALL TABLET
-========================================= */
-
-@media (max-width: 750px) {
-  .product-page {
-    padding: 20px 18px 30px;
-  }
-
-  .product-page > h1 {
-    font-size: 23px;
-  }
-
-  .product-page > form,
-  .product-page .product-form {
-    padding: 18px;
-    border-radius: 13px;
-  }
-
-  .product-page > .product-table,
-  .product-page .product-table-container {
-    border-radius: 13px;
-  }
-
-  .product-page input,
-  .product-page select {
-    min-height: 40px;
-
-    padding: 8px 10px;
+  .inv-product-hero-note {
+    right: 20px;
 
     font-size: 13px;
   }
 
-  .product-page button {
-    min-height: 38px;
+  .inv-product-bottom-inner {
+    padding: 20px;
+  }
 
-    padding: 8px 13px;
+  .inv-product-bottom-text {
+    width: 230px;
+  }
 
-    font-size: 12px;
+  .inv-product-bottom-text h2 {
+    font-size: 14px;
+  }
+
+  .inv-product-bottom-features {
+    gap: 18px;
   }
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
-@media (max-width: 500px) {
-  .product-page {
-    padding: 17px 14px 25px;
+@media (max-width: 700px) {
+
+  .inv-product-main {
+    padding: 12px 10px 0;
   }
 
-  .product-page > h1 {
-    margin-bottom: 16px;
+  .inv-product-layout {
+    grid-template-columns: 1fr;
 
-    font-size: 20px;
-
-    letter-spacing: -0.3px;
+    gap: 12px;
   }
 
-  .product-page > * + * {
-    margin-top: 16px;
+  .inv-product-form-area {
+    order: -1;
   }
 
+  .inv-product-hero {
+    height: 225px !important;
 
-  /* Form */
+    min-height: 225px !important;
 
-  .product-page > form,
-  .product-page .product-form {
-    padding: 15px;
-
-    border-radius: 12px;
+    max-height: 225px !important;
   }
 
-  .product-page label {
-    margin-bottom: 5px;
-
-    font-size: 12px;
+  .inv-product-hero-content {
+    padding: 20px;
   }
 
-  .product-page input,
-  .product-page select {
-    min-height: 38px;
-
-    padding: 7px 9px;
-
-    font-size: 12px;
-
-    border-radius: 7px;
+  .inv-product-hero-content h1 {
+    font-size: 24px;
   }
 
-  .product-page button {
-    min-height: 36px;
-
-    padding: 7px 11px;
-
-    border-radius: 7px;
+  .inv-product-hero-content p {
+    max-width: 280px;
 
     font-size: 11px;
   }
 
+  .inv-product-hero-features {
+    gap: 8px;
 
-  /* Table */
-
-  .product-page > .product-table,
-  .product-page .product-table-container {
-    border-radius: 12px;
+    flex-wrap: wrap;
   }
 
-  .product-page table {
-    min-width: 680px;
-
-    font-size: 12px;
+  .inv-product-hero-feature {
+    font-size: 8px;
   }
 
-  .product-page th {
-    padding: 10px 11px;
+  .inv-product-hero-feature span {
+    width: 25px;
 
-    font-size: 10px;
+    height: 25px;
+
+    font-size: 11px;
   }
 
-  .product-page td {
-    padding: 10px 11px;
-
-    font-size: 12px;
+  .inv-product-hero-note {
+    display: none;
   }
 
-  .product-page td button {
-    min-height: 30px;
+  .inv-product-bottom {
+    min-height: 220px;
 
-    padding: 6px 9px;
-
-    font-size: 10px;
+    /* keep warehouse visible on smaller screens */
+    background-position: 85% center;
   }
+
+  .inv-product-bottom-inner {
+    min-height: 220px;
+
+    padding: 28px 20px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 22px;
+  }
+
+  .inv-product-bottom-text {
+    width: 100%;
+  }
+
+  .inv-product-bottom-features {
+    width: 100%;
+
+    margin: 0;
+
+    justify-content: space-between;
+
+    gap: 10px;
+  }
+
 }
 
 
-/* =========================================
-   VERY SMALL MOBILE
-========================================= */
+/* =========================================================
+   SMALL PHONE
+========================================================= */
 
-@media (max-width: 360px) {
-  .product-page {
-    padding: 14px 11px 22px;
+@media (max-width: 400px) {
+
+  .inv-product-hero-content {
+    padding: 18px;
   }
 
-  .product-page > h1 {
-    font-size: 19px;
+  .inv-product-hero-content h1 {
+    font-size: 22px;
   }
 
-  .product-page > form,
-  .product-page .product-form {
-    padding: 13px;
+  .inv-product-bottom-text h2 {
+    font-size: 15px;
   }
 
-  .product-page input,
-  .product-page select {
-    min-height: 36px;
-
-    font-size: 11px;
-  }
-
-  .product-page button {
-    min-height: 34px;
-
-    padding: 6px 9px;
-
-    font-size: 10px;
-  }
 }

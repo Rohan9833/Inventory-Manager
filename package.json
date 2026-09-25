@@ -6,5 +6,8 @@
   "dependencies": {
     "cors": "^2.8.6",
     "react-hot-toast": "^2.6.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^2.3.0"
   }
 }

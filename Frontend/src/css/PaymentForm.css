@@ -13,13 +13,6 @@
 
   background: #ffffff;
 
-  border: 1px solid #e7e9ed;
-  border-radius: 16px;
-
-  box-shadow:
-    0 2px 6px rgba(15, 23, 42, 0.03),
-    0 8px 24px rgba(15, 23, 42, 0.04);
-
   overflow: hidden;
 }
 
@@ -30,12 +23,45 @@
 
 .payment-form-header {
   width: 100%;
-  min-width: 0;
 
   padding-bottom: 17px;
 
   border-bottom: 1px solid #edf0f2;
 }
+
+
+.payment-form-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.payment-form-heading-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #e9f7f0;
+
+  color: #087a4b;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
 
 .payment-form-title {
   margin: 0;
@@ -43,12 +69,12 @@
   color: #172033;
 
   font-size: 20px;
+
   font-weight: 700;
 
   line-height: 1.3;
-
-  letter-spacing: -0.35px;
 }
+
 
 .payment-form-subtitle {
   margin: 5px 0 0;
@@ -56,7 +82,6 @@
   color: #8b95a5;
 
   font-size: 12px;
-  font-weight: 400;
 
   line-height: 1.5;
 }
@@ -68,9 +93,9 @@
 
 .payment-form-body {
   width: 100%;
-  min-width: 0;
 
   display: flex;
+
   flex-direction: column;
 
   gap: 17px;
@@ -85,9 +110,9 @@
 
 .payment-form-field {
   width: 100%;
-  min-width: 0;
 
   display: flex;
+
   flex-direction: column;
 }
 
@@ -104,22 +129,22 @@
   color: #374151;
 
   font-size: 12px;
-  font-weight: 600;
 
-  line-height: 1.3;
+  font-weight: 600;
 }
+
 
 .payment-form-required {
   margin-left: 3px;
 
-  color: #f97316;
+  color: #087a4b;
 
   font-weight: 700;
 }
 
 
 /* =========================================================
-   INPUT / SELECT
+   INPUT / SELECT / TEXTAREA
 ========================================================= */
 
 .payment-form-input,
@@ -127,11 +152,11 @@
 .payment-form-textarea {
   width: 100%;
   max-width: 100%;
-  min-width: 0;
 
   box-sizing: border-box;
 
   border: 1px solid #dfe3e8;
+
   border-radius: 9px;
 
   outline: none;
@@ -141,6 +166,7 @@
   color: #172033;
 
   font-family: inherit;
+
   font-size: 13px;
 
   transition:
@@ -171,8 +197,6 @@
   padding: 0 12px;
 
   cursor: pointer;
-
-  appearance: auto;
 }
 
 
@@ -219,17 +243,17 @@
 .payment-form-input:focus,
 .payment-form-select:focus,
 .payment-form-textarea:focus {
-  border-color: #f97316;
+  border-color: #087a4b;
 
-  background: #fffdfb;
+  background: #fbfefc;
 
   box-shadow:
-    0 0 0 3px rgba(249, 115, 22, 0.09);
+    0 0 0 3px rgba(8, 122, 75, 0.09);
 }
 
 
 /* =========================================================
-   DISABLED SELECT
+   DISABLED
 ========================================================= */
 
 .payment-form-select:disabled {
@@ -244,20 +268,87 @@
 
 
 /* =========================================================
-   AMOUNT INPUT
+   CUSTOMER PREVIEW
+========================================================= */
+
+.payment-form-customer-preview {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  border-radius: 9px;
+
+  background: #f6faf8;
+
+  border: 1px solid #e3eee8;
+}
+
+
+.payment-form-customer-avatar {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #dff3e8;
+
+  color: #087a4b;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+
+.payment-form-customer-preview div:last-child {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+
+.payment-form-customer-preview strong {
+  color: #273142;
+
+  font-size: 11px;
+}
+
+
+.payment-form-customer-preview small {
+  color: #9aa3af;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   AMOUNT
 ========================================================= */
 
 .payment-form-input-wrapper {
   position: relative;
 
   width: 100%;
-  min-width: 0;
 }
+
 
 .payment-form-currency {
   position: absolute;
 
   left: 12px;
+
   top: 50%;
 
   transform: translateY(-50%);
@@ -265,6 +356,7 @@
   color: #6b7280;
 
   font-size: 13px;
+
   font-weight: 600;
 
   pointer-events: none;
@@ -272,52 +364,75 @@
   z-index: 1;
 }
 
+
 .payment-form-amount-input {
   padding-left: 30px;
 }
 
 
 /* =========================================================
-   PENDING BALANCE
+   BALANCE
 ========================================================= */
 
 .payment-form-balance {
   width: 100%;
-  min-width: 0;
 
   box-sizing: border-box;
 
   padding: 12px 14px;
 
-  border: 1px solid #fed7aa;
+  border: 1px solid #bce4cd;
+
   border-radius: 10px;
 
-  background: #fff7ed;
+  background: #f0faf4;
 }
+
 
 .payment-form-balance-content {
   width: 100%;
-  min-width: 0;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 12px;
 }
 
-.payment-form-balance-label {
-  color: #9a5b13;
 
-  font-size: 11px;
-  font-weight: 600;
+.payment-form-balance-content > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
 }
 
-.payment-form-balance-amount {
-  color: #ea580c;
 
-  font-size: 15px;
+.payment-form-balance-label {
+  color: #28734e;
+
+  font-size: 11px;
+
   font-weight: 700;
+}
+
+
+.payment-form-balance-content small {
+  color: #7b9b89;
+
+  font-size: 9px;
+}
+
+
+.payment-form-balance-amount {
+  color: #087a4b;
+
+  font-size: 16px;
+
+  font-weight: 800;
 
   white-space: nowrap;
 }
@@ -329,41 +444,88 @@
 
 .payment-form-footer {
   width: 100%;
-  min-width: 0;
 
   display: flex;
+
   align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 8px;
 
   margin-top: 20px;
 }
 
 
 /* =========================================================
-   BUTTON
+   RESET / CANCEL
+========================================================= */
+
+.payment-form-reset-btn {
+  min-width: 75px;
+
+  height: 41px;
+
+  padding: 0 15px;
+
+  border: 1px solid #dfe3e8;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #687589;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.payment-form-reset-btn:hover {
+  border-color: #b8c1ca;
+
+  background: #f8faf9;
+
+  color: #374151;
+}
+
+
+/* =========================================================
+   SUBMIT
 ========================================================= */
 
 .payment-form-submit-btn {
   min-width: 145px;
+
   height: 41px;
 
   padding: 0 20px;
 
   border: none;
+
   border-radius: 9px;
 
-  background: #f97316;
+  background: #087a4b;
 
   color: #ffffff;
 
   font-family: inherit;
 
   font-size: 12px;
-  font-weight: 600;
+
+  font-weight: 700;
 
   cursor: pointer;
 
   box-shadow:
-    0 4px 10px rgba(249, 115, 22, 0.18);
+    0 4px 10px rgba(8, 122, 75, 0.18);
 
   transition:
     background 0.2s ease,
@@ -371,20 +533,19 @@
     box-shadow 0.2s ease;
 }
 
+
 .payment-form-submit-btn:hover {
-  background: #ea580c;
+  background: #06623d;
 
   transform: translateY(-1px);
 
   box-shadow:
-    0 6px 14px rgba(249, 115, 22, 0.23);
+    0 6px 14px rgba(8, 122, 75, 0.23);
 }
+
 
 .payment-form-submit-btn:active {
   transform: translateY(0);
-
-  box-shadow:
-    0 3px 7px rgba(249, 115, 22, 0.18);
 }
 
 
@@ -396,16 +557,10 @@
 
   .payment-form {
     padding: 21px;
-
-    border-radius: 14px;
   }
 
   .payment-form-title {
     font-size: 19px;
-  }
-
-  .payment-form-subtitle {
-    font-size: 11px;
   }
 
   .payment-form-body {
@@ -414,26 +569,9 @@
     margin-top: 17px;
   }
 
-  .payment-form-label {
-    font-size: 11.5px;
-  }
-
   .payment-form-input,
   .payment-form-select {
     height: 40px;
-
-    padding-left: 11px;
-    padding-right: 11px;
-
-    font-size: 12px;
-  }
-
-  .payment-form-amount-input {
-    padding-left: 28px;
-  }
-
-  .payment-form-currency {
-    left: 11px;
 
     font-size: 12px;
   }
@@ -441,34 +579,9 @@
   .payment-form-textarea {
     min-height: 77px;
 
-    padding: 9px 11px;
-
     font-size: 12px;
   }
 
-  .payment-form-balance {
-    padding: 11px 13px;
-  }
-
-  .payment-form-balance-label {
-    font-size: 10.5px;
-  }
-
-  .payment-form-balance-amount {
-    font-size: 14px;
-  }
-
-  .payment-form-footer {
-    margin-top: 17px;
-  }
-
-  .payment-form-submit-btn {
-    min-width: 138px;
-
-    height: 39px;
-
-    font-size: 11.5px;
-  }
 }
 
 
@@ -479,38 +592,16 @@
 @media (max-width: 600px) {
 
   .payment-form {
-    width: 100%;
-    max-width: 100%;
-
     padding: 17px;
-
-    border-radius: 12px;
-
-    box-shadow:
-      0 2px 8px rgba(15, 23, 42, 0.04);
-  }
-
-
-  /* Header */
-
-  .payment-form-header {
-    padding-bottom: 13px;
   }
 
   .payment-form-title {
     font-size: 17px;
-
-    letter-spacing: -0.2px;
   }
 
   .payment-form-subtitle {
-    margin-top: 4px;
-
     font-size: 10px;
   }
-
-
-  /* Body */
 
   .payment-form-body {
     gap: 13px;
@@ -518,99 +609,39 @@
     margin-top: 15px;
   }
 
-
-  /* Labels */
-
-  .payment-form-label {
-    margin-bottom: 5px;
-
-    font-size: 11px;
-  }
-
-
-  /* Inputs */
-
   .payment-form-input,
   .payment-form-select {
-    width: 100%;
-    max-width: 100%;
-
     height: 38px;
 
-    padding: 0 10px;
-
     border-radius: 7px;
 
     font-size: 11.5px;
   }
-
-  .payment-form-amount-input {
-    padding-left: 27px;
-  }
-
-  .payment-form-currency {
-    left: 10px;
-
-    font-size: 11.5px;
-  }
-
-
-  /* Textarea */
 
   .payment-form-textarea {
-    width: 100%;
-    max-width: 100%;
-
     min-height: 70px;
-
-    padding: 8px 10px;
 
     border-radius: 7px;
 
     font-size: 11.5px;
   }
-
-
-  /* Balance */
-
-  .payment-form-balance {
-    padding: 10px 11px;
-
-    border-radius: 8px;
-  }
-
-  .payment-form-balance-content {
-    gap: 8px;
-  }
-
-  .payment-form-balance-label {
-    font-size: 10px;
-  }
-
-  .payment-form-balance-amount {
-    font-size: 13px;
-  }
-
-
-  /* Footer */
 
   .payment-form-footer {
     margin-top: 15px;
   }
 
-
-  /* Button */
-
   .payment-form-submit-btn {
-    width: 100%;
+    flex: 1;
+
     min-width: 0;
 
     height: 38px;
-
-    border-radius: 7px;
-
-    font-size: 11.5px;
   }
+
+  .payment-form-reset-btn {
+    height: 38px;
+  }
+
 }
 
 
@@ -628,95 +659,26 @@
     font-size: 16px;
   }
 
-  .payment-form-subtitle {
-    font-size: 9.5px;
-  }
-
   .payment-form-body {
     gap: 12px;
-
-    margin-top: 14px;
-  }
-
-  .payment-form-label {
-    font-size: 10.5px;
   }
 
   .payment-form-input,
   .payment-form-select {
     height: 36px;
-
-    padding: 0 9px;
-
-    font-size: 11px;
-  }
-
-  .payment-form-amount-input {
-    padding-left: 25px;
-  }
-
-  .payment-form-currency {
-    left: 9px;
 
     font-size: 11px;
   }
 
   .payment-form-textarea {
     min-height: 65px;
-
-    padding: 8px 9px;
-
-    font-size: 11px;
   }
 
-  .payment-form-balance {
-    padding: 9px 10px;
-  }
-
-  .payment-form-balance-label {
-    font-size: 9.5px;
-  }
-
-  .payment-form-balance-amount {
-    font-size: 12.5px;
-  }
-
-  .payment-form-submit-btn {
+  .payment-form-submit-btn,
+  .payment-form-reset-btn {
     height: 36px;
 
     font-size: 11px;
   }
-}
 
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 340px) {
-
-  .payment-form {
-    padding: 13px;
-  }
-
-  .payment-form-title {
-    font-size: 15px;
-  }
-
-  .payment-form-subtitle {
-    font-size: 9px;
-  }
-
-  .payment-form-input,
-  .payment-form-select {
-    height: 35px;
-  }
-
-  .payment-form-textarea {
-    min-height: 62px;
-  }
-
-  .payment-form-submit-btn {
-    height: 35px;
-  }
 }

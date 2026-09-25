@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import "../../css/PaymentForm.css"
+
+import "../../css/PaymentForm.css";
+
 function PaymentForm({
-  customers,
+  customers = [],
   editingPayment,
   onCreate,
   onUpdate,
+  onCancel,
 }) {
   const [formData, setFormData] = useState({
     customer: "",
@@ -20,20 +23,32 @@ function PaymentForm({
   useEffect(() => {
     if (editingPayment) {
       setFormData({
-        customer: editingPayment.customer?._id || "",
-        amount: editingPayment.amount,
-        paymentMethod: editingPayment.paymentMethod,
-        note: editingPayment.note || "",
+        customer:
+          editingPayment.customer?._id || "",
+        amount:
+          editingPayment.amount || "",
+        paymentMethod:
+          editingPayment.paymentMethod || "CASH",
+        note:
+          editingPayment.note || "",
       });
     } else {
-      setFormData({
-        customer: "",
-        amount: "",
-        paymentMethod: "CASH",
-        note: "",
-      });
+      resetForm();
     }
   }, [editingPayment]);
+
+  // ==========================
+  // Reset
+  // ==========================
+
+  const resetForm = () => {
+    setFormData({
+      customer: "",
+      amount: "",
+      paymentMethod: "CASH",
+      note: "",
+    });
+  };
 
   // ==========================
   // Change Handler
@@ -53,7 +68,8 @@ function PaymentForm({
   // ==========================
 
   const selectedCustomer = customers.find(
-    (customer) => customer._id === formData.customer
+    (customer) =>
+      customer._id === formData.customer
   );
 
   // ==========================
@@ -64,75 +80,101 @@ function PaymentForm({
     e.preventDefault();
 
     if (!formData.customer) {
-      return alert("Please select customer.");
+      alert("Please select customer.");
+      return;
     }
 
-    if (!formData.amount || Number(formData.amount) <= 0) {
-      return alert("Please enter valid amount.");
+    if (
+      !formData.amount ||
+      Number(formData.amount) <= 0
+    ) {
+      alert("Please enter a valid amount.");
+      return;
     }
 
     if (
       selectedCustomer &&
-      Number(formData.amount) > selectedCustomer.balance
+      Number(formData.amount) >
+        Number(selectedCustomer.balance || 0)
     ) {
-      return alert(
+      alert(
         "Payment cannot be greater than pending balance."
       );
+      return;
     }
 
     const payload = {
       customer: formData.customer,
       amount: Number(formData.amount),
-      paymentMethod: formData.paymentMethod,
-      note: formData.note,
+      paymentMethod:
+        formData.paymentMethod,
+      note: formData.note.trim(),
     };
 
     if (editingPayment) {
-      await onUpdate(editingPayment._id, payload);
+      await onUpdate(
+        editingPayment._id,
+        payload
+      );
     } else {
       await onCreate(payload);
     }
 
-    setFormData({
-      customer: "",
-      amount: "",
-      paymentMethod: "CASH",
-      note: "",
-    });
+    resetForm();
   };
+
+  // ==========================
+  // Render
+  // ==========================
 
   return (
     <form
       className="payment-form"
       onSubmit={handleSubmit}
     >
-      {/* ==========================
-          Header
-      ========================== */}
+
+      {/* =========================
+          HEADER
+      ========================= */}
 
       <div className="payment-form-header">
-        <h2 className="payment-form-title">
-          {editingPayment
-            ? "Update Payment"
-            : "Create Payment"}
-        </h2>
 
-        <p className="payment-form-subtitle">
-          {editingPayment
-            ? "Update payment information"
-            : "Record a new customer payment"}
-        </p>
+        <div className="payment-form-heading">
+
+          <div className="payment-form-heading-icon">
+            ₹
+          </div>
+
+          <div>
+
+            <h2 className="payment-form-title">
+              {editingPayment
+                ? "Update Payment"
+                : "Record Payment"}
+            </h2>
+
+            <p className="payment-form-subtitle">
+              {editingPayment
+                ? "Update payment information"
+                : "Record a new customer payment"}
+            </p>
+
+          </div>
+
+        </div>
+
       </div>
 
-      {/* ==========================
-          Form Body
-      ========================== */}
+      {/* =========================
+          FORM BODY
+      ========================= */}
 
       <div className="payment-form-body">
 
         {/* Customer */}
 
         <div className="payment-form-field">
+
           <label
             className="payment-form-label"
             htmlFor="payment-customer"
@@ -164,27 +206,70 @@ function PaymentForm({
               </option>
             ))}
           </select>
+
         </div>
+
+        {/* Customer Preview */}
+
+        {selectedCustomer && (
+          <div className="payment-form-customer-preview">
+
+            <div className="payment-form-customer-avatar">
+              {selectedCustomer.name
+                ?.charAt(0)
+                ?.toUpperCase() || "?"}
+            </div>
+
+            <div>
+
+              <strong>
+                {selectedCustomer.name}
+              </strong>
+
+              <small>
+                Customer
+              </small>
+
+            </div>
+
+          </div>
+        )}
 
         {/* Pending Balance */}
 
         {selectedCustomer && (
           <div className="payment-form-balance">
+
             <div className="payment-form-balance-content">
-              <span className="payment-form-balance-label">
-                Pending Balance
-              </span>
+
+              <div>
+
+                <span className="payment-form-balance-label">
+                  Pending Balance
+                </span>
+
+                <small>
+                  Outstanding amount
+                </small>
+
+              </div>
 
               <strong className="payment-form-balance-amount">
-                ₹{selectedCustomer.balance}
+                ₹
+                {Number(
+                  selectedCustomer.balance || 0
+                ).toLocaleString("en-IN")}
               </strong>
+
             </div>
+
           </div>
         )}
 
         {/* Amount */}
 
         <div className="payment-form-field">
+
           <label
             className="payment-form-label"
             htmlFor="payment-amount"
@@ -196,6 +281,7 @@ function PaymentForm({
           </label>
 
           <div className="payment-form-input-wrapper">
+
             <span className="payment-form-currency">
               ₹
             </span>
@@ -210,12 +296,15 @@ function PaymentForm({
               onChange={handleChange}
               placeholder="Enter payment amount"
             />
+
           </div>
+
         </div>
 
         {/* Payment Method */}
 
         <div className="payment-form-field">
+
           <label
             className="payment-form-label"
             htmlFor="payment-method"
@@ -234,7 +323,7 @@ function PaymentForm({
             onChange={handleChange}
           >
             <option value="CASH">
-              CASH
+              Cash
             </option>
 
             <option value="UPI">
@@ -242,18 +331,20 @@ function PaymentForm({
             </option>
 
             <option value="CARD">
-              CARD
+              Card
             </option>
 
             <option value="BANK">
-              BANK
+              Bank Transfer
             </option>
           </select>
+
         </div>
 
         {/* Note */}
 
         <div className="payment-form-field">
+
           <label
             className="payment-form-label"
             htmlFor="payment-note"
@@ -270,23 +361,54 @@ function PaymentForm({
             onChange={handleChange}
             placeholder="Add a note about this payment..."
           />
+
         </div>
+
       </div>
 
-      {/* ==========================
-          Footer
-      ========================== */}
+      {/* =========================
+          FOOTER
+      ========================= */}
 
       <div className="payment-form-footer">
+
+        {editingPayment && (
+          <button
+            type="button"
+            className="payment-form-reset-btn"
+            onClick={() => {
+              resetForm();
+
+              if (onCancel) {
+                onCancel();
+              }
+            }}
+          >
+            Cancel
+          </button>
+        )}
+
+        {!editingPayment && (
+          <button
+            type="button"
+            className="payment-form-reset-btn"
+            onClick={resetForm}
+          >
+            Reset
+          </button>
+        )}
+
         <button
           type="submit"
           className="payment-form-submit-btn"
         >
           {editingPayment
             ? "Update Payment"
-            : "Create Payment"}
+            : "Record Payment"}
         </button>
+
       </div>
+
     </form>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getInventoryReport } from "../../api/reports.api";
 import "../../css/InventoryReport.css";
+
+import { getInventoryReport } from "../../api/reports.api";
 
 function InventoryReport() {
   const [inventory, setInventory] = useState([]);
@@ -15,10 +16,6 @@ function InventoryReport() {
   });
 
   const [loading, setLoading] = useState(true);
-
-  // ==========================
-  // Fetch Report
-  // ==========================
 
   const fetchReport = async () => {
     try {
@@ -41,12 +38,14 @@ function InventoryReport() {
 
   return (
     <div className="inventory-report">
-      {/* ==========================
-          Header
-      ========================== */}
 
       <div className="inventory-report-header">
+
         <div>
+          <span className="inventory-report-kicker">
+            INVENTORY ANALYTICS
+          </span>
+
           <h2 className="inventory-report-title">
             Inventory Report
           </h2>
@@ -55,152 +54,187 @@ function InventoryReport() {
             Track your stock movements and inventory transactions
           </p>
         </div>
+
       </div>
 
-      {/* ==========================
-          Filters
-      ========================== */}
+
+      {/* Filters */}
 
       <div className="inventory-report-filter-section">
-        {/* Search */}
 
-        <div className="inventory-report-filter-group">
-          <label
-            className="inventory-report-filter-label"
-            htmlFor="inventory-report-search"
-          >
-            Search
-          </label>
+        <div className="inventory-report-filter-heading">
 
-          <input
-            id="inventory-report-search"
-            className="inventory-report-input"
-            type="text"
-            placeholder="Search Product"
-            value={filters.search}
-            onChange={(e) =>
-              setFilters((prev) => ({
-                ...prev,
-                search: e.target.value,
-                page: 1,
-              }))
-            }
-          />
+          <div className="inventory-report-filter-icon">
+            ◫
+          </div>
+
+          <div>
+            <h3>Filter Inventory</h3>
+            <span>
+              Customize your inventory history
+            </span>
+          </div>
+
         </div>
 
-        {/* Type */}
 
-        <div className="inventory-report-filter-group">
-          <label
-            className="inventory-report-filter-label"
-            htmlFor="inventory-report-type"
-          >
-            Transaction Type
-          </label>
+        <div className="inventory-report-filter-grid">
 
-          <select
-            id="inventory-report-type"
-            className="inventory-report-select"
-            value={filters.type}
-            onChange={(e) =>
-              setFilters((prev) => ({
-                ...prev,
-                type: e.target.value,
-                page: 1,
-              }))
-            }
-          >
-            <option value="">All</option>
+          <div className="inventory-report-filter-group">
 
-            <option value="IN">
-              Stock In
-            </option>
+            <label>
+              Search Product
+            </label>
 
-            <option value="OUT">
-              Stock Out
-            </option>
-          </select>
+            <input
+              className="inventory-report-input"
+              type="text"
+              placeholder="Search Product"
+              value={filters.search}
+              onChange={(e) =>
+                setFilters((prev) => ({
+                  ...prev,
+                  search: e.target.value,
+                  page: 1,
+                }))
+              }
+            />
+
+          </div>
+
+
+          <div className="inventory-report-filter-group">
+
+            <label>
+              Transaction Type
+            </label>
+
+            <select
+              className="inventory-report-select"
+              value={filters.type}
+              onChange={(e) =>
+                setFilters((prev) => ({
+                  ...prev,
+                  type: e.target.value,
+                  page: 1,
+                }))
+              }
+            >
+              <option value="">All</option>
+              <option value="IN">Stock In</option>
+              <option value="OUT">Stock Out</option>
+            </select>
+
+          </div>
+
+
+          <div className="inventory-report-filter-group">
+
+            <label>
+              Sort By
+            </label>
+
+            <select
+              className="inventory-report-select"
+              value={filters.sort}
+              onChange={(e) =>
+                setFilters((prev) => ({
+                  ...prev,
+                  sort: e.target.value,
+                  page: 1,
+                }))
+              }
+            >
+              <option value="">
+                Newest
+              </option>
+
+              <option value="oldest">
+                Oldest
+              </option>
+
+              <option value="quantity_asc">
+                Quantity ↑
+              </option>
+
+              <option value="quantity_desc">
+                Quantity ↓
+              </option>
+
+            </select>
+
+          </div>
+
         </div>
 
-        {/* Sort */}
-
-        <div className="inventory-report-filter-group">
-          <label
-            className="inventory-report-filter-label"
-            htmlFor="inventory-report-sort"
-          >
-            Sort By
-          </label>
-
-          <select
-            id="inventory-report-sort"
-            className="inventory-report-select"
-            value={filters.sort}
-            onChange={(e) =>
-              setFilters((prev) => ({
-                ...prev,
-                sort: e.target.value,
-              }))
-            }
-          >
-            <option value="">
-              Newest
-            </option>
-
-            <option value="oldest">
-              Oldest
-            </option>
-
-            <option value="quantity_asc">
-              Quantity ↑
-            </option>
-
-            <option value="quantity_desc">
-              Quantity ↓
-            </option>
-          </select>
-        </div>
       </div>
 
-      {/* ==========================
-          Table Section
-      ========================== */}
+
+      {/* Table */}
 
       <div className="inventory-report-table-section">
-        <div className="inventory-report-table-header">
-          <div>
-            <h3>Inventory History</h3>
 
-            <p>
-              Recent stock in and stock out transactions
-            </p>
+        <div className="inventory-report-table-header">
+
+          <div className="inventory-report-table-title">
+
+            <span>
+              ◫
+            </span>
+
+            <div>
+
+              <h3>
+                Inventory History
+              </h3>
+
+              <p>
+                Recent stock in and stock out transactions
+              </p>
+
+            </div>
+
           </div>
+
+          <span className="inventory-report-count">
+            {inventory.length} Records
+          </span>
+
         </div>
 
-        {/* ==========================
-            Loading
-        ========================== */}
 
         {loading ? (
+
           <div className="inventory-report-state">
-            <h3>Loading...</h3>
+
+            <div className="inventory-report-loader"></div>
+
+            <h3>
+              Loading...
+            </h3>
+
           </div>
+
         ) : inventory.length === 0 ? (
+
           <div className="inventory-report-state">
-            <h3>No Inventory Records Found</h3>
+
+            <h3>
+              No Inventory Records Found
+            </h3>
 
             <p>
               No inventory transactions match your filters.
             </p>
+
           </div>
+
         ) : (
-          /* ==========================
-             IMPORTANT:
-             ONLY TABLE SCROLLS
-          ========================== */
 
           <div className="inventory-report-table-wrapper">
+
             <table className="inventory-report-table">
+
               <thead>
                 <tr>
                   <th>Product</th>
@@ -212,29 +246,32 @@ function InventoryReport() {
               </thead>
 
               <tbody>
+
                 {inventory.map((item) => (
+
                   <tr key={item._id}>
-                    {/* Product */}
 
                     <td className="inventory-report-product">
                       {item.product?.name || "-"}
                     </td>
 
-                    {/* Type */}
-
                     <td>
-                      {item.type === "IN" ? (
-                        <span className="inventory-report-type inventory-report-type-in">
-                          Stock In
-                        </span>
-                      ) : (
-                        <span className="inventory-report-type inventory-report-type-out">
-                          Stock Out
-                        </span>
-                      )}
-                    </td>
 
-                    {/* Quantity */}
+                      {item.type === "IN" ? (
+
+                        <span className="inventory-report-type inventory-report-type-in">
+                          + Stock In
+                        </span>
+
+                      ) : (
+
+                        <span className="inventory-report-type inventory-report-type-out">
+                          − Stock Out
+                        </span>
+
+                      )}
+
+                    </td>
 
                     <td>
                       <span className="inventory-report-quantity">
@@ -242,67 +279,80 @@ function InventoryReport() {
                       </span>
                     </td>
 
-                    {/* Reason */}
-
                     <td className="inventory-report-reason">
                       {item.reason || "-"}
                     </td>
-
-                    {/* Date */}
 
                     <td>
                       {new Date(
                         item.createdAt
                       ).toLocaleDateString()}
                     </td>
+
                   </tr>
+
                 ))}
+
               </tbody>
+
             </table>
+
           </div>
+
         )}
+
+
+        {!loading && inventory.length > 0 && (
+
+          <div className="inventory-report-pagination">
+
+            <button
+              disabled={
+                !pagination.currentPage ||
+                pagination.currentPage === 1
+              }
+              onClick={() =>
+                setFilters((prev) => ({
+                  ...prev,
+                  page: prev.page - 1,
+                }))
+              }
+            >
+              ← Previous
+            </button>
+
+            <span>
+              Page{" "}
+              <strong>
+                {pagination.currentPage || 1}
+              </strong>{" "}
+              of{" "}
+              <strong>
+                {pagination.totalPages || 1}
+              </strong>
+            </span>
+
+            <button
+              disabled={
+                !pagination.totalPages ||
+                pagination.currentPage >= pagination.totalPages
+              }
+              onClick={() =>
+                setFilters((prev) => ({
+                  ...prev,
+                  page: prev.page + 1,
+                }))
+              }
+            >
+              Next →
+            </button>
+
+          </div>
+
+        )}
+
       </div>
 
-      {/* ==========================
-          Pagination
-      ========================== */}
-
-      <div className="inventory-report-pagination">
-        <button
-          className="inventory-report-pagination-btn"
-          disabled={pagination.currentPage === 1}
-          onClick={() =>
-            setFilters((prev) => ({
-              ...prev,
-              page: prev.page - 1,
-            }))
-          }
-        >
-          Previous
-        </button>
-
-        <span className="inventory-report-pagination-info">
-          Page {pagination.currentPage || 1} of{" "}
-          {pagination.totalPages || 1}
-        </span>
-
-        <button
-          className="inventory-report-pagination-btn"
-          disabled={
-            pagination.currentPage ===
-              pagination.totalPages ||
-            !pagination.totalPages
-          }
-          onClick={() =>
-            setFilters((prev) => ({
-              ...prev,
-              page: prev.page + 1,
-            }))
-          }
-        >
-          Next
-        </button>
-      </div>
     </div>
   );
 }

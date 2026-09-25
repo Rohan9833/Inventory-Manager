@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import "../../css/productform.css"
+
+import "../../css/ProductForm.css";
+
 function ProductForm({
-  categories,
+  categories = [],
   editingProduct,
   onCreate,
   onUpdate,
@@ -14,27 +16,35 @@ function ProductForm({
     quantity: "",
   });
 
-  // =====================================
-  // Edit Mode
-  // =====================================
+  // =========================================================
+  // EDIT MODE
+  // =========================================================
 
   useEffect(() => {
     if (editingProduct) {
       setFormData({
-        name: editingProduct.name,
-        category: editingProduct.category.name,
-        costPrice: editingProduct.costPrice,
-        sellingPrice: editingProduct.sellingPrice,
-        quantity: editingProduct.quantity,
+        name: editingProduct.name || "",
+
+        category:
+          editingProduct.category?.name || "",
+
+        costPrice:
+          editingProduct.costPrice ?? "",
+
+        sellingPrice:
+          editingProduct.sellingPrice ?? "",
+
+        quantity:
+          editingProduct.quantity ?? "",
       });
     } else {
       resetForm();
     }
   }, [editingProduct]);
 
-  // =====================================
-  // Reset Form
-  // =====================================
+  // =========================================================
+  // RESET
+  // =========================================================
 
   const resetForm = () => {
     setFormData({
@@ -46,12 +56,15 @@ function ProductForm({
     });
   };
 
-  // =====================================
-  // Handle Change
-  // =====================================
+  // =========================================================
+  // CHANGE
+  // =========================================================
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value,
+    } = e.target;
 
     setFormData((prev) => ({
       ...prev,
@@ -59,9 +72,9 @@ function ProductForm({
     }));
   };
 
-  // =====================================
-  // Submit
-  // =====================================
+  // =========================================================
+  // SUBMIT
+  // =========================================================
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,30 +86,50 @@ function ProductForm({
       formData.sellingPrice === "" ||
       formData.quantity === ""
     ) {
-      return alert("Please fill all required fields.");
+      return alert(
+        "Please fill all required fields."
+      );
     }
 
     if (Number(formData.costPrice) < 0) {
-      return alert("Cost price cannot be negative.");
+      return alert(
+        "Cost price cannot be negative."
+      );
     }
 
     if (Number(formData.sellingPrice) < 0) {
-      return alert("Selling price cannot be negative.");
+      return alert(
+        "Selling price cannot be negative."
+      );
     }
 
     if (Number(formData.quantity) < 0) {
-      return alert("Quantity cannot be negative.");
+      return alert(
+        "Quantity cannot be negative."
+      );
     }
 
     const payload = {
       ...formData,
-      costPrice: Number(formData.costPrice),
-      sellingPrice: Number(formData.sellingPrice),
-      quantity: Number(formData.quantity),
+
+      costPrice: Number(
+        formData.costPrice
+      ),
+
+      sellingPrice: Number(
+        formData.sellingPrice
+      ),
+
+      quantity: Number(
+        formData.quantity
+      ),
     };
 
     if (editingProduct) {
-      await onUpdate(editingProduct._id, payload);
+      await onUpdate(
+        editingProduct._id,
+        payload
+      );
     } else {
       await onCreate(payload);
     }
@@ -105,92 +138,185 @@ function ProductForm({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>
-        {editingProduct ? "Update Product" : "Create Product"}
-      </h2>
+    <form
+      className="inv-product-form"
+      onSubmit={handleSubmit}
+    >
 
-      {/* Product Name */}
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
 
-      <div>
-        <label>Product Name</label>
+      <div className="inv-product-form-heading">
+
+        <div className="inv-product-form-icon">
+          +
+        </div>
+
+        <div>
+
+          <h2>
+            {editingProduct
+              ? "Update Product"
+              : "Add Product"}
+          </h2>
+
+          <p>
+            {editingProduct
+              ? "Update product details"
+              : "Create a new product"}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      {/* =====================================================
+          PRODUCT NAME
+      ===================================================== */}
+
+      <div className="inv-product-form-field">
+
+        <label>
+          Product Name
+          <span>*</span>
+        </label>
 
         <input
           type="text"
           name="name"
-          placeholder="Enter Product Name"
+          placeholder="Enter product name"
           value={formData.name}
           onChange={handleChange}
         />
+
       </div>
 
-      {/* Category */}
 
-      <div>
-        <label>Category</label>
+      {/* =====================================================
+          CATEGORY
+      ===================================================== */}
+
+      <div className="inv-product-form-field">
+
+        <label>
+          Category
+          <span>*</span>
+        </label>
 
         <select
           name="category"
           value={formData.category}
           onChange={handleChange}
         >
-          <option value="">Select Category</option>
+
+          <option value="">
+            Select category
+          </option>
 
           {categories.map((category) => (
+
             <option
               key={category._id}
               value={category.name}
             >
               {category.name}
             </option>
+
           ))}
+
         </select>
+
       </div>
 
-      {/* Cost Price */}
 
-      <div>
-        <label>Cost Price</label>
+      {/* =====================================================
+          PRICE ROW
+      ===================================================== */}
 
-        <input
-          type="number"
-          name="costPrice"
-          value={formData.costPrice}
-          onChange={handleChange}
-        />
+      <div className="inv-product-form-price-grid">
+
+        <div className="inv-product-form-field">
+
+          <label>
+            Cost Price (₹)
+            <span>*</span>
+          </label>
+
+          <input
+            type="number"
+            name="costPrice"
+            placeholder="Enter cost price"
+            value={formData.costPrice}
+            onChange={handleChange}
+            min="0"
+          />
+
+        </div>
+
+
+        <div className="inv-product-form-field">
+
+          <label>
+            Selling Price (₹)
+            <span>*</span>
+          </label>
+
+          <input
+            type="number"
+            name="sellingPrice"
+            placeholder="Enter selling price"
+            value={formData.sellingPrice}
+            onChange={handleChange}
+            min="0"
+          />
+
+        </div>
+
       </div>
 
-      {/* Selling Price */}
 
-      <div>
-        <label>Selling Price</label>
+      {/* =====================================================
+          QUANTITY
+      ===================================================== */}
 
-        <input
-          type="number"
-          name="sellingPrice"
-          value={formData.sellingPrice}
-          onChange={handleChange}
-        />
-      </div>
+      <div className="inv-product-form-field">
 
-      {/* Quantity */}
-
-      <div>
-        <label>Quantity</label>
+        <label>
+          Quantity
+          <span>*</span>
+        </label>
 
         <input
           type="number"
           name="quantity"
+          placeholder="Enter quantity"
           value={formData.quantity}
           onChange={handleChange}
+          min="0"
         />
+
       </div>
 
-      <button type="submit">
+
+      {/* =====================================================
+          SUBMIT
+      ===================================================== */}
+
+      <button
+        type="submit"
+        className="inv-product-form-submit"
+      >
+
+        <span>▣</span>
+
         {editingProduct
           ? "Update Product"
-          : "Create Product"}
+          : "Save Product"}
+
       </button>
+
     </form>
   );
 }

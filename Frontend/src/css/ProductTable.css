@@ -1,557 +1,892 @@
-/* =========================================
+/* =========================================================
+   INVENTORY MANAGEMENT
    PRODUCT TABLE
-========================================= */
+========================================================= */
 
-.product-table-container {
+.inv-product-table {
   width: 100%;
-  margin-top: 24px;
+
+  min-width: 0;
+
+  box-sizing: border-box;
 
   background: #ffffff;
 
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
+  border: 1px solid #dfe9e2;
+
+  border-radius: 14px;
 
   overflow: hidden;
 
-  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
+  box-shadow:
+    0 4px 18px rgba(20, 70, 40, 0.055);
 }
 
 
-/* =========================================
+/* =========================================================
    HEADER
-========================================= */
+========================================================= */
 
-.product-table-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.inv-product-table-header {
+  width: 100%;
 
-  padding: 20px 24px;
+  box-sizing: border-box;
 
-  border-bottom: 1px solid #eef0f3;
+  padding: 17px 17px 12px;
+
+  border-bottom: 1px solid #edf2ee;
 }
 
-.product-table-header h2 {
+
+.inv-product-table-header h2 {
   margin: 0;
 
-  color: #172033;
+  color: #173a30;
 
-  font-size: 19px;
+  font-size: 18px;
+
+  line-height: 1.2;
+
+  font-weight: 750;
+}
+
+
+.inv-product-table-header p {
+  margin: 4px 0 0;
+
+  color: #89968f;
+
+  font-size: 10px;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.inv-product-table-toolbar {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    150px
+    70px;
+
+  gap: 7px;
+
+  padding: 10px 12px;
+
+  border-bottom: 1px solid #edf2ee;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.inv-product-table-search {
+  position: relative;
+
+  min-width: 0;
+}
+
+
+.inv-product-table-search span {
+  position: absolute;
+
+  left: 9px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #8c9992;
+
+  font-size: 15px;
+
+  line-height: 1;
+}
+
+
+.inv-product-table-search input {
+  display: block;
+
+  width: 100% !important;
+
+  height: 34px !important;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding: 0 8px 0 27px;
+
+  border: 1px solid #dbe5de;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #30463d;
+
+  font-family: inherit;
+
+  font-size: 10px;
+}
+
+
+.inv-product-table-search input::placeholder {
+  color: #9da8a3;
+}
+
+
+.inv-product-table-search input:focus {
+  border-color: #4ba457;
+
+  box-shadow:
+    0 0 0 3px rgba(75, 164, 87, 0.08);
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.inv-product-table-filter {
+  width: 100% !important;
+
+  height: 34px !important;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding: 0 7px;
+
+  border: 1px solid #dbe5de;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #43544c;
+
+  font-family: inherit;
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+.inv-product-table-refresh {
+  width: 100%;
+
+  height: 34px;
+
+  padding: 0 5px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #4ba457;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 9px;
+
   font-weight: 700;
 
-  letter-spacing: -0.3px;
-}
+  white-space: nowrap;
 
-.product-table-header p {
-  margin: 5px 0 0;
-
-  color: #94a3b8;
-
-  font-size: 12px;
+  cursor: pointer;
 }
 
 
-/* =========================================
+.inv-product-table-refresh:hover {
+  background: #3e914a;
+}
+
+
+/* =========================================================
    TABLE WRAPPER
-========================================= */
+========================================================= */
 
-.product-table-wrapper {
+/*
+   IMPORTANT:
+
+   There is intentionally NO overflow-x:auto here.
+
+   The table must fit completely inside the card.
+*/
+
+.inv-product-table-wrapper {
   width: 100%;
 
-  overflow-x: auto;
+  min-width: 0;
 
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-
-.product-table-wrapper::-webkit-scrollbar {
-  height: 6px;
-}
-
-.product-table-wrapper::-webkit-scrollbar-track {
-  background: #f8fafc;
-}
-
-.product-table-wrapper::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 10px;
+  overflow: hidden;
 }
 
 
-/* =========================================
+/* =========================================================
    TABLE
-========================================= */
+========================================================= */
 
-.product-table {
-  width: 100%;
+.inv-product-table table {
+  width: 100% !important;
 
-  min-width: 850px;
+  min-width: 0 !important;
+
+  max-width: 100% !important;
+
+  table-layout: fixed;
 
   border-collapse: collapse;
 
-  table-layout: auto;
+  border-spacing: 0;
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* =========================================================
+   COLUMN WIDTHS
+========================================================= */
 
-.product-table thead {
-  background: #f8fafc;
+.inv-product-col-number {
+  width: 5%;
 }
 
-.product-table th {
-  height: 45px;
 
-  padding: 0 16px;
+.inv-product-col-name {
+  width: 20%;
+}
 
-  color: #64748b;
+
+.inv-product-col-category {
+  width: 13%;
+}
+
+
+.inv-product-col-cost {
+  width: 12%;
+}
+
+
+.inv-product-col-selling {
+  width: 13%;
+}
+
+
+.inv-product-col-quantity {
+  width: 10%;
+}
+
+
+.inv-product-col-status {
+  width: 12%;
+}
+
+
+.inv-product-col-actions {
+  width: 15%;
+}
+
+
+/* =========================================================
+   HEADER CELLS
+========================================================= */
+
+.inv-product-table th {
+  height: 39px;
+
+  box-sizing: border-box;
+
+  padding: 0 7px;
+
+  background: #f1f6f2;
+
+  color: #56665e;
 
   text-align: left;
 
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 8px;
 
-  text-transform: uppercase;
+  line-height: 1;
 
-  letter-spacing: 0.4px;
+  font-weight: 750;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  border-bottom: 1px solid #dfe8e1;
+}
+
+
+/* =========================================================
+   BODY CELLS
+========================================================= */
+
+.inv-product-table td {
+  height: 44px;
+
+  box-sizing: border-box;
+
+  padding: 0 7px;
+
+  color: #58665f;
+
+  font-size: 9px;
+
+  line-height: 1.2;
 
   white-space: nowrap;
 
-  border-bottom: 1px solid #e5e7eb;
-}
+  overflow: hidden;
 
+  text-overflow: ellipsis;
 
-/* =========================================
-   BODY
-========================================= */
-
-.product-table tbody tr {
-  background: #ffffff;
-
-  transition: background 0.2s ease;
-}
-
-.product-table tbody tr:hover {
-  background: #fffaf5;
-}
-
-.product-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-
-/* =========================================
-   CELLS
-========================================= */
-
-.product-table td {
-  height: 52px;
-
-  padding: 0 16px;
-
-  color: #475569;
-
-  font-size: 13px;
-
-  border-bottom: 1px solid #f1f5f9;
-
-  white-space: nowrap;
+  border-bottom: 1px solid #edf1ee;
 
   vertical-align: middle;
 }
 
 
-/* =========================================
+.inv-product-table tbody tr {
+  background: #ffffff;
+
+  transition:
+    background 0.15s ease;
+}
+
+
+.inv-product-table tbody tr:hover {
+  background: #f7fbf8;
+}
+
+
+.inv-product-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
    NUMBER
-========================================= */
+========================================================= */
 
-.product-table th:first-child,
-.product-table td:first-child {
-  width: 45px;
-
-  color: #94a3b8;
+.inv-product-table-number {
+  color: #98a39e !important;
 
   text-align: center;
+
+  font-size: 8px !important;
 }
 
 
-/* =========================================
-   PRODUCT NAME
-========================================= */
+/* =========================================================
+   NAME
+========================================================= */
 
-.product-table .product-name {
-  color: #172033;
+.inv-product-table-name {
+  color: #183a30 !important;
 
-  font-weight: 600;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
 }
 
 
-/* =========================================
+/* =========================================================
    CATEGORY
-========================================= */
+========================================================= */
 
-.product-table td:nth-child(3) {
-  color: #64748b;
+.inv-product-table-category {
+  color: #65736c !important;
 }
 
 
-/* =========================================
-   PRICES
-========================================= */
+/* =========================================================
+   PRICE
+========================================================= */
 
-.product-table td:nth-child(4),
-.product-table td:nth-child(5) {
-  color: #334155;
+.inv-product-table-price {
+  color: #3e5148 !important;
 
-  font-weight: 600;
+  font-weight: 650;
 
   font-variant-numeric: tabular-nums;
 }
 
 
-/* =========================================
+/* =========================================================
    QUANTITY
-========================================= */
+========================================================= */
 
-.product-table td:nth-child(6) {
-  color: #334155;
+.inv-product-table-quantity {
+  color: #3e5148 !important;
 
-  font-weight: 600;
+  font-weight: 650;
+
+  font-variant-numeric: tabular-nums;
 }
 
 
-/* =========================================
+/* =========================================================
    STATUS
-========================================= */
+========================================================= */
 
-.product-status {
+.inv-product-status {
   display: inline-flex;
 
   align-items: center;
-  gap: 6px;
 
-  padding: 5px 9px;
+  justify-content: center;
 
-  border-radius: 999px;
+  gap: 4px;
 
-  font-size: 11px;
-  font-weight: 600;
+  max-width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 4px 6px;
+
+  border-radius: 20px;
+
+  font-size: 7px;
 
   line-height: 1;
+
+  font-weight: 700;
+
+  white-space: nowrap;
 }
 
-.status-dot {
-  width: 7px;
-  height: 7px;
+
+.inv-product-status-dot {
+  width: 5px;
+  height: 5px;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
 }
 
 
-/* Active */
+.inv-product-status-active {
+  color: #27833b;
 
-.product-status.active {
-  color: #15803d;
-
-  background: #f0fdf4;
-}
-
-.product-status.active .status-dot {
-  background: #22c55e;
-
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
+  background: #edf9ef;
 }
 
 
-/* Deleted */
-
-.product-status.deleted {
-  color: #dc2626;
-
-  background: #fef2f2;
+.inv-product-status-active
+.inv-product-status-dot {
+  background: #35b64b;
 }
 
-.product-status.deleted .status-dot {
+
+.inv-product-status-deleted {
+  color: #d93636;
+
+  background: #fff0f0;
+}
+
+
+.inv-product-status-deleted
+.inv-product-status-dot {
   background: #ef4444;
-
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
 }
 
 
-/* =========================================
+/* =========================================================
    ACTIONS
-========================================= */
+========================================================= */
 
-.product-actions {
-  min-width: 155px;
+.inv-product-table-actions {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+
+  overflow: visible !important;
 }
 
-.product-actions button {
-  height: 31px;
 
-  padding: 0 10px;
+.inv-product-table-actions button {
+  height: 26px;
 
-  margin-right: 6px;
+  padding: 0 6px;
 
-  border-radius: 7px;
+  margin-right: 3px;
+
+  border-radius: 5px;
 
   font-family: inherit;
 
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 7px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
 
   cursor: pointer;
 
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
+    background 0.15s ease,
     transform 0.15s ease;
 }
 
-.product-actions button:hover {
+
+.inv-product-table-actions button:hover {
   transform: translateY(-1px);
 }
 
 
-/* Edit */
+/* =========================================================
+   EDIT
+========================================================= */
 
-.product-edit-btn {
-  background: #fff7ed;
+.inv-product-edit-btn {
+  background: #eff9f1;
 
-  border: 1px solid #fed7aa;
+  border: 1px solid #ccebd1;
 
-  color: #ea580c;
-}
-
-.product-edit-btn:hover {
-  background: #ffedd5;
-
-  border-color: #fdba74;
+  color: #27823a;
 }
 
 
-/* Delete */
-
-.product-delete-btn {
-  background: #fef2f2;
-
-  border: 1px solid #fecaca;
-
-  color: #dc2626;
-}
-
-.product-delete-btn:hover {
-  background: #fee2e2;
-
-  border-color: #fca5a5;
+.inv-product-edit-btn:hover {
+  background: #dff3e2;
 }
 
 
-/* Restore */
+/* =========================================================
+   DELETE
+========================================================= */
 
-.product-restore-btn {
-  background: #f0fdf4;
+.inv-product-delete-btn {
+  background: #fff1f1;
 
-  border: 1px solid #bbf7d0;
+  border: 1px solid #ffd1d1;
 
-  color: #16a34a;
-}
-
-.product-restore-btn:hover {
-  background: #dcfce7;
-
-  border-color: #86efac;
+  color: #d93636;
 }
 
 
-/* =========================================
-   LOADING / EMPTY
-========================================= */
+.inv-product-delete-btn:hover {
+  background: #ffe4e4;
+}
 
-.product-table-state {
+
+/* =========================================================
+   RESTORE
+========================================================= */
+
+.inv-product-restore-btn {
+  background: #eff9f1;
+
+  border: 1px solid #ccebd1;
+
+  color: #27823a;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.inv-product-table-footer {
+  width: 100%;
+
+  box-sizing: border-box;
+
   display: flex;
 
   align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  padding: 9px 12px;
+
+  color: #89968f;
+
+  font-size: 8px;
+}
+
+
+.inv-product-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  flex-shrink: 0;
+}
+
+
+.inv-product-pagination button {
+  width: 25px;
+  height: 25px;
+
+  padding: 0;
+
+  border: 1px solid #e0e7e2;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  color: #68766f;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+
+.inv-product-pagination button:disabled {
+  opacity: 0.45;
+
+  cursor: default;
+}
+
+
+.inv-product-pagination-current {
+  background: #4ba457 !important;
+
+  border-color: #4ba457 !important;
+
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.inv-product-table-empty {
+  min-height: 190px;
+
+  display: flex;
+
+  align-items: center;
+
   justify-content: center;
 
-  min-height: 180px;
+  color: #718079;
 
-  margin: 24px 0;
-
-  color: #64748b;
-
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 13px;
 }
 
 
-/* =========================================
+/* =========================================================
+   LOADING
+========================================================= */
+
+.inv-product-table-state {
+  width: 100%;
+
+  min-height: 190px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #718079;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   MEDIUM DESKTOP
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .inv-product-table-toolbar {
+    grid-template-columns:
+      minmax(0, 1fr)
+      125px
+      62px;
+  }
+
+  .inv-product-table th {
+    padding: 0 5px;
+
+    font-size: 7.5px;
+  }
+
+  .inv-product-table td {
+    padding: 0 5px;
+
+    font-size: 8.5px;
+  }
+
+  .inv-product-table-actions button {
+    padding: 0 5px;
+
+    margin-right: 2px;
+
+    font-size: 6.5px;
+  }
+
+}
+
+
+/* =========================================================
    TABLET
-========================================= */
+========================================================= */
 
-@media (max-width: 800px) {
-  .product-table-container {
-    border-radius: 14px;
+@media (max-width: 850px) {
+
+  .inv-product-table-toolbar {
+    grid-template-columns:
+      minmax(0, 1fr)
+      115px
+      60px;
   }
 
-  .product-table-header {
-    padding: 17px 18px;
+  .inv-product-table-header {
+    padding: 15px 13px 11px;
   }
 
-  .product-table-header h2 {
-    font-size: 18px;
-  }
-
-  .product-table-header p {
-    font-size: 11px;
-  }
-
-  .product-table th {
-    height: 42px;
-
-    padding: 0 13px;
-
-    font-size: 10px;
-  }
-
-  .product-table td {
-    height: 48px;
-
-    padding: 0 13px;
-
-    font-size: 12px;
-  }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-  .product-table-container {
-    margin-top: 18px;
-
-    border-radius: 12px;
-  }
-
-  .product-table-header {
-    padding: 14px 15px;
-  }
-
-  .product-table-header h2 {
+  .inv-product-table-header h2 {
     font-size: 16px;
   }
 
-  .product-table-header p {
-    margin-top: 3px;
-
-    font-size: 10px;
-  }
-
-  /*
-     Don't squeeze all 8 columns.
-     Keep a comfortable table width and
-     allow horizontal scrolling.
-  */
-
-  .product-table {
-    min-width: 760px;
-  }
-
-  .product-table th {
-    height: 40px;
-
-    padding: 0 11px;
-
+  .inv-product-table-header p {
     font-size: 9px;
   }
 
-  .product-table td {
-    height: 45px;
+  .inv-product-table th {
+    height: 36px;
 
-    padding: 0 11px;
+    padding: 0 4px;
 
-    font-size: 11px;
+    font-size: 7px;
   }
 
-  .product-status {
-    padding: 4px 7px;
+  .inv-product-table td {
+    height: 41px;
 
-    font-size: 9px;
+    padding: 0 4px;
+
+    font-size: 7.8px;
   }
 
-  .status-dot {
-    width: 6px;
-    height: 6px;
+  .inv-product-status {
+    padding: 3px 4px;
+
+    gap: 3px;
+
+    font-size: 6.5px;
   }
 
-  .product-actions {
-    min-width: 135px;
+  .inv-product-status-dot {
+    width: 4px;
+    height: 4px;
   }
 
-  .product-actions button {
-    height: 28px;
+  .inv-product-table-actions button {
+    height: 23px;
 
-    padding: 0 8px;
+    padding: 0 4px;
 
-    margin-right: 4px;
-
-    font-size: 9px;
+    font-size: 6px;
   }
+
 }
 
 
-/* =========================================
-   SMALL PHONE
-========================================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-@media (max-width: 400px) {
-  .product-table-header {
-    padding: 13px 14px;
+@media (max-width: 700px) {
+
+  .inv-product-table-toolbar {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 7px;
   }
 
-  .product-table-header h2 {
-    font-size: 15px;
+  .inv-product-table-search {
+    grid-column: 1 / -1;
   }
 
-  .product-table-header p {
-    font-size: 9px;
+  .inv-product-table-refresh {
+    width: 100%;
   }
 
-  .product-table {
-    min-width: 740px;
+  .inv-product-table th {
+    font-size: 6.5px;
   }
 
-  .product-table th {
-    height: 38px;
-
-    padding: 0 10px;
-
-    font-size: 8.5px;
+  .inv-product-table td {
+    font-size: 7px;
   }
 
-  .product-table td {
-    height: 43px;
+  .inv-product-table-actions button {
+    height: 22px;
 
-    padding: 0 10px;
+    padding: 0 3px;
 
-    font-size: 10.5px;
+    font-size: 5.5px;
   }
 
-  .product-status {
-    padding: 4px 6px;
+}
 
-    font-size: 8.5px;
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .inv-product-table th {
+    padding: 0 3px;
+
+    font-size: 6px;
   }
 
-  .product-actions button {
-    height: 27px;
+  .inv-product-table td {
+    padding: 0 3px;
 
-    padding: 0 7px;
-
-    font-size: 8.5px;
+    font-size: 6.5px;
   }
+
+  .inv-product-status {
+    padding: 3px;
+
+    font-size: 5.5px;
+  }
+
+  .inv-product-table-actions button {
+    padding: 0 2px;
+
+    font-size: 5px;
+  }
+
 }

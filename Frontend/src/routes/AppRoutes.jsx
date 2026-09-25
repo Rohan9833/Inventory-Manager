@@ -16,7 +16,6 @@ import Home from "../pages/Home"
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
 
       <Route element={<ProctedRoute/>}>
         <Route path="/dashboard" element={<Dashboard />} />

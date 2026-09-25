@@ -1,14 +1,34 @@
 import AppRoutes from "./routes/AppRoutes";
+import { Routes, Route, useLocation } from "react-router-dom";
 import BottomNavigation from "./components/BottomNavigation";
 import Sidebar from "./components/Home/Sidebar.home";
-import Topbar from "./components/Home/HomeHeader"
-import "./App.css"; 
+import Login from "./pages/Login";
+import "./App.css";
 
 function App() {
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === "/";
+
+  // ==============================
+  // LOGIN PAGE
+  // ==============================
+  if (isLoginPage) {
+    return (
+      <div className="login-app-container">
+        <Routes>
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </div>
+    );
+  }
+
+  // ==============================
+  // MAIN APPLICATION
+  // ==============================
   return (
     <div className="app-container">
       <Sidebar />
-      {/* <Topbar/> */}
 
       <div className="app-main-content">
         <AppRoutes />

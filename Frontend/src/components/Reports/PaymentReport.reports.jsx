@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getPaymentReport } from "../../api/reports.api";
 import "../../css/PaymentReport.css";
+
+import { getPaymentReport } from "../../api/reports.api";
 
 function PaymentReport() {
   const [payments, setPayments] = useState([]);
@@ -16,10 +17,6 @@ function PaymentReport() {
   });
 
   const [loading, setLoading] = useState(true);
-
-  // ==========================
-  // Fetch Report
-  // ==========================
 
   const fetchReport = async () => {
     try {
@@ -40,64 +37,6 @@ function PaymentReport() {
   useEffect(() => {
     fetchReport();
   }, [filters]);
-
-  // ==========================
-  // Search
-  // ==========================
-
-  const handleSearch = (e) => {
-    setFilters((prev) => ({
-      ...prev,
-      search: e.target.value,
-      page: 1,
-    }));
-  };
-
-  // ==========================
-  // Payment Method
-  // ==========================
-
-  const handlePaymentMethod = (e) => {
-    setFilters((prev) => ({
-      ...prev,
-      paymentMethod: e.target.value,
-      page: 1,
-    }));
-  };
-
-  // ==========================
-  // Sort
-  // ==========================
-
-  const handleSort = (e) => {
-    setFilters((prev) => ({
-      ...prev,
-      sort: e.target.value,
-      page: 1,
-    }));
-  };
-
-  // ==========================
-  // Pagination
-  // ==========================
-
-  const handlePrevious = () => {
-    setFilters((prev) => ({
-      ...prev,
-      page: prev.page - 1,
-    }));
-  };
-
-  const handleNext = () => {
-    setFilters((prev) => ({
-      ...prev,
-      page: prev.page + 1,
-    }));
-  };
-
-  // ==========================
-  // Payment Badge
-  // ==========================
 
   const getPaymentMethodClass = (method) => {
     switch (method?.toUpperCase()) {
@@ -121,23 +60,28 @@ function PaymentReport() {
   return (
     <div className="payment-report">
 
-      {/* ==========================
-          Header
-      ========================== */}
-
       <div className="payment-report-header">
+
         <div>
-          <h2>Payment Report</h2>
+
+          <span className="payment-report-kicker">
+            PAYMENT ANALYTICS
+          </span>
+
+          <h2>
+            Payment Report
+          </h2>
 
           <p>
             Track customer payments and payment activity
           </p>
+
         </div>
+
       </div>
 
-      {/* ==========================
-          Summary
-      ========================== */}
+
+      {/* Summary */}
 
       <div className="payment-report-summary">
 
@@ -147,7 +91,12 @@ function PaymentReport() {
           <strong>
             {summary.totalPayments ?? 0}
           </strong>
+
+          <small>
+            Recorded transactions
+          </small>
         </div>
+
 
         <div className="payment-report-card">
           <span>Total Amount</span>
@@ -155,7 +104,12 @@ function PaymentReport() {
           <strong>
             ₹{summary.totalAmount ?? 0}
           </strong>
+
+          <small>
+            Money received
+          </small>
         </div>
+
 
         <div className="payment-report-card">
           <span>Average Payment</span>
@@ -163,7 +117,12 @@ function PaymentReport() {
           <strong>
             ₹{summary.averagePayment ?? 0}
           </strong>
+
+          <small>
+            Average transaction
+          </small>
         </div>
+
 
         <div className="payment-report-card">
           <span>Highest Payment</span>
@@ -171,7 +130,12 @@ function PaymentReport() {
           <strong>
             ₹{summary.highestPayment ?? 0}
           </strong>
+
+          <small>
+            Largest transaction
+          </small>
         </div>
+
 
         <div className="payment-report-card">
           <span>Lowest Payment</span>
@@ -179,85 +143,144 @@ function PaymentReport() {
           <strong>
             ₹{summary.lowestPayment ?? 0}
           </strong>
+
+          <small>
+            Smallest transaction
+          </small>
         </div>
 
       </div>
 
-      {/* ==========================
-          Filters
-      ========================== */}
+
+      {/* Filters */}
 
       <div className="payment-report-filter-box">
 
-        <div className="payment-report-search">
+        <div className="payment-report-filter-heading">
 
-          <span>⌕</span>
+          <div className="payment-report-filter-icon">
+            ₹
+          </div>
 
-          <input
-            type="text"
-            placeholder="Search customer..."
-            value={filters.search}
-            onChange={handleSearch}
-          />
+          <div>
+            <h3>
+              Filter Payments
+            </h3>
+
+            <span>
+              Search and organize payment activity
+            </span>
+          </div>
 
         </div>
 
-        <select
-          value={filters.paymentMethod}
-          onChange={handlePaymentMethod}
-          className="payment-report-select"
-        >
-          <option value="">
-            All Methods
-          </option>
 
-          <option value="CASH">
-            Cash
-          </option>
+        <div className="payment-report-filter-grid">
 
-          <option value="UPI">
-            UPI
-          </option>
+          <div className="payment-report-search">
 
-          <option value="CARD">
-            Card
-          </option>
+            <span>⌕</span>
 
-          <option value="BANK">
-            Bank
-          </option>
-        </select>
+            <input
+              type="text"
+              placeholder="Search customer..."
+              value={filters.search}
+              onChange={(e) =>
+                setFilters((prev) => ({
+                  ...prev,
+                  search: e.target.value,
+                  page: 1,
+                }))
+              }
+            />
 
-        <select
-          value={filters.sort}
-          onChange={handleSort}
-          className="payment-report-select"
-        >
-          <option value="">
-            Newest
-          </option>
+          </div>
 
-          <option value="oldest">
-            Oldest
-          </option>
-        </select>
+
+          <select
+            value={filters.paymentMethod}
+            onChange={(e) =>
+              setFilters((prev) => ({
+                ...prev,
+                paymentMethod: e.target.value,
+                page: 1,
+              }))
+            }
+            className="payment-report-select"
+          >
+            <option value="">
+              All Methods
+            </option>
+
+            <option value="CASH">
+              Cash
+            </option>
+
+            <option value="UPI">
+              UPI
+            </option>
+
+            <option value="CARD">
+              Card
+            </option>
+
+            <option value="BANK">
+              Bank
+            </option>
+
+          </select>
+
+
+          <select
+            value={filters.sort}
+            onChange={(e) =>
+              setFilters((prev) => ({
+                ...prev,
+                sort: e.target.value,
+                page: 1,
+              }))
+            }
+            className="payment-report-select"
+          >
+            <option value="">
+              Newest
+            </option>
+
+            <option value="oldest">
+              Oldest
+            </option>
+
+          </select>
+
+        </div>
 
       </div>
 
-      {/* ==========================
-          Table Section
-      ========================== */}
+
+      {/* Table */}
 
       <div className="payment-report-table-section">
 
         <div className="payment-report-table-header">
 
-          <div>
-            <h3>Payment History</h3>
+          <div className="payment-report-table-title">
 
-            <p>
-              All recorded customer payments
-            </p>
+            <span>
+              ₹
+            </span>
+
+            <div>
+
+              <h3>
+                Payment History
+              </h3>
+
+              <p>
+                All recorded customer payments
+              </p>
+
+            </div>
+
           </div>
 
           <span className="payment-report-count">
@@ -266,29 +289,41 @@ function PaymentReport() {
 
         </div>
 
-        {/* IMPORTANT:
-            Only this container scrolls
-        */}
 
         <div className="payment-report-table-wrapper">
 
           {loading ? (
+
             <div className="payment-report-loading">
-              <h3>Loading payments...</h3>
+
+              <div className="payment-report-loader"></div>
+
+              <span>
+                Loading payments...
+              </span>
+
             </div>
+
           ) : payments.length === 0 ? (
+
             <div className="payment-report-empty">
+
               <div className="payment-report-empty-icon">
                 ₹
               </div>
 
-              <h3>No Payments Found</h3>
+              <h3>
+                No Payments Found
+              </h3>
 
               <p>
                 There are no payments matching your filters.
               </p>
+
             </div>
+
           ) : (
+
             <table className="payment-report-table">
 
               <thead>
@@ -304,9 +339,11 @@ function PaymentReport() {
               <tbody>
 
                 {payments.map((payment) => (
+
                   <tr key={payment._id}>
 
                     <td>
+
                       <div className="payment-report-customer">
 
                         <div className="payment-report-avatar">
@@ -316,6 +353,7 @@ function PaymentReport() {
                         </div>
 
                         <div>
+
                           <strong>
                             {payment.customer?.name || "-"}
                           </strong>
@@ -323,10 +361,13 @@ function PaymentReport() {
                           <span>
                             {payment.customer?.phone || ""}
                           </span>
+
                         </div>
 
                       </div>
+
                     </td>
+
 
                     <td>
                       <strong className="payment-report-amount">
@@ -334,7 +375,9 @@ function PaymentReport() {
                       </strong>
                     </td>
 
+
                     <td>
+
                       <span
                         className={`payment-report-method ${getPaymentMethodClass(
                           payment.paymentMethod
@@ -342,7 +385,9 @@ function PaymentReport() {
                       >
                         {payment.paymentMethod}
                       </span>
+
                     </td>
+
 
                     <td>
                       <span className="payment-report-note">
@@ -350,53 +395,63 @@ function PaymentReport() {
                       </span>
                     </td>
 
+
                     <td>
+
                       <span className="payment-report-date">
                         {new Date(
                           payment.createdAt
                         ).toLocaleDateString()}
                       </span>
+
                     </td>
 
                   </tr>
+
                 ))}
 
               </tbody>
 
             </table>
+
           )}
 
         </div>
 
-        {/* ==========================
-            Pagination
-        ========================== */}
 
         {!loading && payments.length > 0 && (
+
           <div className="payment-report-pagination">
 
             <button
               disabled={
-                pagination.page === 1 ||
-                filters.page === 1
+                !pagination.page ||
+                pagination.page === 1
               }
-              onClick={handlePrevious}
+              onClick={() =>
+                setFilters((prev) => ({
+                  ...prev,
+                  page: prev.page - 1,
+                }))
+              }
             >
               ← Previous
             </button>
 
             <div className="payment-report-page-info">
-              <span>Page</span>
+
+              Page{" "}
 
               <strong>
                 {pagination.page || filters.page}
               </strong>
 
-              <span>of</span>
+              {" "}of{" "}
 
               <strong>
                 {pagination.totalPages || 1}
               </strong>
+
             </div>
 
             <button
@@ -404,12 +459,18 @@ function PaymentReport() {
                 (pagination.page || filters.page) >=
                 (pagination.totalPages || 1)
               }
-              onClick={handleNext}
+              onClick={() =>
+                setFilters((prev) => ({
+                  ...prev,
+                  page: prev.page + 1,
+                }))
+              }
             >
               Next →
             </button>
 
           </div>
+
         )}
 
       </div>

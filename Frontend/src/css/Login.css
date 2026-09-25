@@ -1,0 +1,798 @@
+* {
+  box-sizing: border-box;
+}
+
+.inventro-login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 0.92fr;
+  background: #f5fbf7;
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  color: #102033;
+  overflow: hidden;
+}
+
+/* =========================
+   LEFT VISUAL
+========================= */
+
+.inventro-login-visual {
+  position: relative;
+  min-height: 100vh;
+  padding: 42px 7%;
+  overflow: hidden;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(245, 253, 248, 0.98) 0%,
+      rgba(245, 253, 248, 0.9) 30%,
+      rgba(245, 253, 248, 0.4) 55%,
+      rgba(245, 253, 248, 0.08) 100%
+    ),
+    url("https://cdn.prod.website-files.com/67c1b3716c1fc283345ccee5/68361af42cccee46d274e650_Frame%2057%20%2815%29.webp");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.inventro-visual-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(255, 255, 255, 0.95),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(245, 253, 248, 0.25),
+      rgba(12, 91, 61, 0.12)
+    );
+
+  pointer-events: none;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.inventro-brand {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.inventro-brand-left {
+  margin-bottom: 75px;
+}
+
+.inventro-brand-icon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.inventro-brand-icon span:first-child {
+  position: absolute;
+  width: 25px;
+  height: 38px;
+  background: #14965f;
+  border-radius: 100% 0 100% 0;
+  transform: rotate(-35deg);
+  left: 4px;
+  top: 1px;
+}
+
+.inventro-brand-icon span:last-child {
+  position: absolute;
+  width: 22px;
+  height: 32px;
+  background: #1da76b;
+  border-radius: 0 100% 0 100%;
+  transform: rotate(35deg);
+  left: 20px;
+  top: 13px;
+}
+
+.inventro-brand h2,
+.inventro-mobile-brand h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.inventro-brand p,
+.inventro-mobile-brand p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #526477;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.inventro-visual-content {
+  position: relative;
+  z-index: 2;
+  max-width: 570px;
+}
+
+.inventro-small-label {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #16855a;
+}
+
+.inventro-visual-content h1 {
+  margin: 0;
+
+  font-size: clamp(42px, 4.1vw, 67px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  font-weight: 800;
+}
+
+.inventro-visual-content h1 span {
+  color: #16865a;
+}
+
+.inventro-visual-description {
+  max-width: 480px;
+  margin: 24px 0 0;
+
+  font-size: 17px;
+  line-height: 1.65;
+  color: #58697b;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.inventro-feature-list {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.inventro-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.inventro-feature-icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(209, 241, 224, 0.85);
+  color: #16865a;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.inventro-feature-item h3 {
+  margin: 0 0 4px;
+
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.inventro-feature-item p {
+  margin: 0;
+
+  font-size: 14px;
+  color: #607084;
+}
+
+/* =========================
+   BOTTOM QUOTE
+========================= */
+
+.inventro-bottom-quote {
+  position: absolute;
+  z-index: 3;
+  left: 7%;
+  bottom: 38px;
+
+  font-size: 25px;
+  line-height: 1.05;
+  font-style: italic;
+  color: white;
+  font-family: Georgia, serif;
+}
+
+.inventro-bottom-quote strong {
+  font-weight: 500;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.inventro-login-panel {
+  position: relative;
+
+  min-height: 100vh;
+  padding: 45px 6%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(221, 244, 231, 0.85),
+      transparent 30%
+    ),
+    #f7fcf9;
+}
+
+/* =========================
+   SLOGAN
+========================= */
+
+.inventro-top-slogan {
+  position: absolute;
+  top: 34px;
+  right: 6%;
+
+  display: flex;
+  flex-direction: column;
+
+  color: #126d4c;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  line-height: 0.9;
+  font-style: italic;
+}
+
+.inventro-top-slogan span:nth-child(2) {
+  margin-left: 16px;
+}
+
+.inventro-top-slogan span:nth-child(3) {
+  margin-left: 8px;
+}
+
+/* =========================
+   LOGIN CARD
+========================= */
+
+.inventro-login-card {
+  width: 100%;
+  max-width: 520px;
+
+  padding: 46px 48px;
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 30px 80px rgba(25, 76, 54, 0.1),
+    0 8px 25px rgba(25, 76, 54, 0.06);
+}
+
+/* =========================
+   MOBILE BRAND
+========================= */
+
+.inventro-mobile-brand {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-bottom: 30px;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.inventro-login-heading {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.inventro-login-heading h1 {
+  margin: 0;
+
+  font-size: 32px;
+  letter-spacing: -1px;
+  font-weight: 800;
+}
+
+.inventro-login-heading p {
+  margin: 9px 0 0;
+
+  color: #68778a;
+  font-size: 15px;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.inventro-login-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  margin-bottom: 22px;
+  padding: 13px 15px;
+
+  border: 1px solid #f2b8b8;
+  border-radius: 12px;
+
+  background: #fff4f4;
+  color: #a52b2b;
+}
+
+.inventro-error-icon {
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #d94848;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.inventro-login-error strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+.inventro-login-error p {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.inventro-login-success {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 22px;
+  padding: 13px 15px;
+
+  border-radius: 12px;
+
+  background: #ecfaf2;
+  border: 1px solid #b9e6cb;
+
+  color: #137447;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.inventro-login-success span {
+  font-size: 18px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.inventro-form-group {
+  margin-bottom: 20px;
+}
+
+.inventro-form-group label {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #26364a;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.inventro-input-wrapper {
+  position: relative;
+}
+
+.inventro-input-wrapper input {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 48px;
+
+  border: 1px solid #d9e1e8;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  outline: none;
+
+  color: #17283a;
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.inventro-input-wrapper input::placeholder {
+  color: #9aa7b7;
+}
+
+.inventro-input-wrapper input:focus {
+  border-color: #159160;
+
+  box-shadow:
+    0 0 0 4px rgba(21, 145, 96, 0.09);
+}
+
+.inventro-input-icon {
+  position: absolute;
+  z-index: 2;
+
+  left: 17px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #637386;
+  font-size: 18px;
+}
+
+.inventro-password-toggle {
+  position: absolute;
+  z-index: 2;
+
+  right: 14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+
+  color: #56677a;
+  font-size: 18px;
+}
+
+/* =========================
+   OPTIONS
+========================= */
+
+.inventro-login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 5px 0 25px;
+}
+
+.inventro-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #4c5c70;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.inventro-remember input {
+  display: none;
+}
+
+.inventro-checkmark {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #cbd5de;
+  border-radius: 5px;
+
+  color: white;
+  background: #16865a;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.inventro-remember input:not(:checked) + .inventro-checkmark {
+  background: white;
+  color: transparent;
+}
+
+.inventro-forgot-button {
+  border: 0;
+  padding: 0;
+
+  background: transparent;
+
+  color: #11774f;
+  font-size: 14px;
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+.inventro-forgot-button:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.inventro-login-button {
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: #148659;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(20, 134, 89, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.inventro-login-button:hover:not(:disabled) {
+  background: #10764e;
+  transform: translateY(-1px);
+}
+
+.inventro-login-button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.inventro-login-button span {
+  font-size: 21px;
+}
+
+/* =========================
+   SPINNER
+========================= */
+
+.inventro-spinner {
+  width: 17px;
+  height: 17px;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: inventro-spin 0.7s linear infinite;
+}
+
+@keyframes inventro-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.inventro-login-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin: 29px 0;
+}
+
+.inventro-login-divider span {
+  flex: 1;
+  height: 1px;
+  background: #e0e6eb;
+}
+
+.inventro-login-divider p {
+  margin: 0;
+
+  color: #8591a0;
+  font-size: 13px;
+}
+
+/* =========================
+   ADMIN TEXT
+========================= */
+
+.inventro-admin-text {
+  margin: 0;
+
+  text-align: center;
+
+  color: #718095;
+  font-size: 13px;
+}
+
+.inventro-admin-text span {
+  margin-left: 4px;
+  color: #11774f;
+  font-weight: 650;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.inventro-login-footer {
+  position: absolute;
+  bottom: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #607184;
+  font-size: 12px;
+}
+
+.inventro-login-footer span {
+  color: #159160;
+}
+
+.inventro-login-footer b {
+  color: #b5c0c9;
+  font-weight: 400;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1050px) {
+  .inventro-login-page {
+    grid-template-columns: 0.9fr 1fr;
+  }
+
+  .inventro-login-visual {
+    padding: 38px 6%;
+  }
+
+  .inventro-visual-content h1 {
+    font-size: 48px;
+  }
+
+  .inventro-login-card {
+    max-width: 480px;
+    padding: 40px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+  .inventro-login-page {
+    display: block;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .inventro-login-visual {
+    display: none;
+  }
+
+  .inventro-login-panel {
+    min-height: 100vh;
+    padding: 35px 20px 80px;
+    align-items: flex-start;
+  }
+
+  .inventro-top-slogan {
+    display: none;
+  }
+
+  .inventro-login-card {
+    margin-top: 30px;
+    max-width: 520px;
+
+    padding: 32px 25px;
+
+    border-radius: 22px;
+  }
+
+  .inventro-mobile-brand {
+    display: flex;
+  }
+
+  .inventro-login-heading h1 {
+    font-size: 29px;
+  }
+
+  .inventro-login-footer {
+    bottom: 20px;
+    font-size: 10px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 450px) {
+  .inventro-login-panel {
+    padding: 20px 14px 70px;
+  }
+
+  .inventro-login-card {
+    padding: 27px 19px;
+  }
+
+  .inventro-login-options {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .inventro-forgot-button {
+    font-size: 13px;
+  }
+
+  .inventro-admin-text {
+    line-height: 1.7;
+  }
+}

@@ -1,176 +1,263 @@
-/* ==============================
-   CUSTOMER REPORT
-============================== */
-
 .customer-report {
   width: 100%;
-  max-width: 100%;
-  padding: 1.5rem;
-  box-sizing: border-box;
+  min-width: 0;
+
+  padding: 0.5rem;
+
+  color: #19372d;
 }
 
-/* ==============================
-   HEADER
-============================== */
 
 .customer-report-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
+
+
+.customer-report-kicker {
+  color: #16834f;
+
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+}
+
 
 .customer-report-title {
-  margin: 0;
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #172033;
+  margin: 0.25rem 0 0;
+
+  color: #18372d;
+
+  font-size: 1.65rem;
+  font-weight: 800;
 }
+
 
 .customer-report-subtitle {
-  margin: 0.4rem 0 0;
-  color: #7a8495;
-  font-size: 0.9rem;
+  margin: 0.25rem 0 0;
+
+  color: #7c9188;
+
+  font-size: 0.76rem;
 }
 
-/* ==============================
-   FILTERS
-============================== */
+
+/* FILTER */
 
 .customer-report-filters {
-  width: 100%;
-  display: grid;
-  grid-template-columns:
-    minmax(180px, 1.5fr)
-    minmax(160px, 1fr)
-    minmax(160px, 1fr);
+  margin-bottom: 1rem;
 
-  gap: 1rem;
+  padding: 1rem;
 
-  padding: 1.1rem;
+  border: 1px solid #dfebe4;
 
-  margin-bottom: 1.25rem;
+  border-radius: 0.85rem;
 
   background: #ffffff;
 
-  border: 1px solid #e7ebf2;
-  border-radius: 0.9rem;
-
-  box-shadow: 0 4px 18px rgba(20, 32, 55, 0.04);
-
-  box-sizing: border-box;
+  box-shadow:
+    0 7px 20px rgba(24, 70, 48, 0.05);
 }
 
-.customer-report-filter-group {
+
+.customer-report-filter-heading {
   display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
+  align-items: center;
 
-  min-width: 0;
+  gap: 0.6rem;
+
+  margin-bottom: 0.85rem;
 }
+
+
+.customer-report-filter-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.55rem;
+
+  background: #e5f4eb;
+
+  color: #087746;
+}
+
+
+.customer-report-filter-heading h3 {
+  margin: 0;
+
+  font-size: 0.88rem;
+}
+
+
+.customer-report-filter-heading span {
+  display: block;
+
+  margin-top: 0.15rem;
+
+  color: #8b9d95;
+
+  font-size: 0.62rem;
+}
+
+
+.customer-report-filter-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.5fr 1fr 1fr;
+
+  gap: 0.8rem;
+}
+
 
 .customer-report-filter-group label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #596579;
+  display: block;
+
+  margin-bottom: 0.35rem;
+
+  color: #53685e;
+
+  font-size: 0.64rem;
+  font-weight: 700;
 }
+
 
 .customer-report-filter-group input,
 .customer-report-filter-group select {
   width: 100%;
-  height: 2.65rem;
+  height: 39px;
 
-  padding: 0 0.8rem;
+  padding: 0 0.7rem;
 
-  border: 1px solid #dfe4ec;
-  border-radius: 0.6rem;
+  box-sizing: border-box;
+
+  border: 1px solid #dce7e1;
+
+  border-radius: 0.55rem;
 
   background: #ffffff;
 
-  color: #252d3a;
+  color: #30483e;
 
-  font-size: 0.85rem;
+  font-size: 0.7rem;
 
   outline: none;
-
-  transition: 0.2s;
-
-  box-sizing: border-box;
 }
+
 
 .customer-report-filter-group input:focus,
 .customer-report-filter-group select:focus {
-  border-color: #3968ff;
+  border-color: #15915a;
 
-  box-shadow: 0 0 0 3px rgba(57, 104, 255, 0.1);
+  box-shadow:
+    0 0 0 3px rgba(21, 145, 90, 0.08);
 }
 
-/* ==============================
-   TABLE CARD
-============================== */
+
+/* TABLE */
 
 .customer-report-card {
   width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid #dfeae4;
+
+  border-radius: 0.85rem;
 
   background: #ffffff;
 
-  border: 1px solid #e7ebf2;
-
-  border-radius: 0.9rem;
-
-  box-shadow: 0 4px 18px rgba(20, 32, 55, 0.04);
-
-  overflow: hidden;
+  box-shadow:
+    0 7px 22px rgba(24, 70, 48, 0.05);
 }
 
-/* ==============================
-   TABLE HEADER
-============================== */
 
 .customer-report-table-header {
+  min-height: 65px;
+
+  padding: 0.75rem 1rem;
+
   display: flex;
+  align-items: center;
   justify-content: space-between;
+
+  border-bottom: 1px solid #edf2ef;
+}
+
+
+.customer-report-table-title {
+  display: flex;
   align-items: center;
 
-  padding: 1.1rem 1.2rem;
-
-  border-bottom: 1px solid #edf0f5;
+  gap: 0.6rem;
 }
+
+
+.customer-report-table-title > span {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.55rem;
+
+  background: #e6f5ec;
+
+  color: #087746;
+}
+
 
 .customer-report-table-header h3 {
   margin: 0;
 
-  font-size: 1rem;
-  font-weight: 700;
+  color: #19372d;
 
-  color: #172033;
+  font-size: 0.9rem;
 }
+
 
 .customer-report-table-header p {
-  margin: 0.25rem 0 0;
+  margin: 0.15rem 0 0;
 
-  font-size: 0.75rem;
+  color: #899b94;
 
-  color: #8a93a3;
+  font-size: 0.62rem;
 }
 
-/* ==============================
-   TABLE WRAPPER
-   IMPORTANT:
-   ONLY THIS ELEMENT SCROLLS
-============================== */
+
+.customer-report-count {
+  padding: 0.35rem 0.65rem;
+
+  border-radius: 999px;
+
+  background: #e7f5ed;
+
+  color: #087746;
+
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+
+/* TABLE SCROLL ONLY */
 
 .customer-report-table-wrapper {
   width: 100%;
-
   max-width: 100%;
 
   overflow-x: auto;
   overflow-y: hidden;
 
-  overscroll-behavior-x: contain;
-
   -webkit-overflow-scrolling: touch;
 }
 
-/* Prevent page from becoming wider */
 
 .customer-report-table {
   width: 100%;
@@ -178,340 +265,234 @@
   min-width: 760px;
 
   border-collapse: collapse;
-
-  table-layout: auto;
 }
 
-/* ==============================
-   TABLE HEAD
-============================== */
 
 .customer-report-table thead {
-  background: #f7f9fc;
+  background: #f5faf7;
 }
 
+
 .customer-report-table th {
-  padding: 0.85rem 1rem;
+  padding: 0.75rem 0.9rem;
+
+  color: #71847c;
+
+  font-size: 0.61rem;
+  font-weight: 800;
 
   text-align: left;
 
-  font-size: 0.72rem;
-
-  font-weight: 700;
-
-  color: #687386;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.03em;
-
   white-space: nowrap;
 
-  border-bottom: 1px solid #e9edf3;
+  border-bottom: 1px solid #e5eee9;
 }
 
-/* ==============================
-   TABLE BODY
-============================== */
 
 .customer-report-table td {
-  padding: 0.9rem 1rem;
+  padding: 0.78rem 0.9rem;
 
-  font-size: 0.82rem;
+  color: #53665e;
 
-  color: #4c5667;
+  font-size: 0.7rem;
 
   white-space: nowrap;
 
-  border-bottom: 1px solid #f0f2f6;
+  border-bottom: 1px solid #edf2ef;
 }
 
-.customer-report-table tbody tr {
-  transition: 0.2s;
-}
 
 .customer-report-table tbody tr:hover {
-  background: #f9fbff;
+  background: #f7fbf9;
 }
 
-.customer-report-table tbody tr:last-child td {
-  border-bottom: none;
-}
 
-/* ==============================
-   CUSTOMER NAME
-============================== */
+/* CUSTOMER */
 
 .customer-report-name {
-  color: #202938;
+  display: flex;
+  align-items: center;
 
-  font-weight: 600;
+  gap: 0.55rem;
 }
 
-/* ==============================
-   BALANCE
-============================== */
+
+.customer-report-avatar {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #e4f3ea;
+
+  color: #087746;
+
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+
+.customer-report-name strong {
+  color: #263f35;
+
+  font-size: 0.7rem;
+}
+
 
 .customer-report-balance {
   display: inline-flex;
 
   align-items: center;
 
-  padding: 0.35rem 0.6rem;
+  padding: 0.3rem 0.55rem;
 
-  border-radius: 0.45rem;
+  border-radius: 999px;
 
-  font-size: 0.75rem;
+  font-size: 0.58rem;
 
-  font-weight: 700;
+  font-weight: 800;
 }
+
 
 .customer-report-balance.pending {
-  color: #b45309;
-
-  background: #fff7e6;
+  background: #fff0d5;
+  color: #a36a00;
 }
+
 
 .customer-report-balance.clear {
-  color: #15803d;
-
-  background: #ecfdf3;
+  background: #def4e6;
+  color: #087746;
 }
 
-/* ==============================
-   EMPTY / LOADING
-============================== */
+
+/* STATES */
 
 .customer-report-state {
-  min-height: 220px;
+  min-height: 210px;
 
   display: flex;
-
   flex-direction: column;
 
+  align-items: center;
   justify-content: center;
 
-  align-items: center;
-
   text-align: center;
-
-  padding: 2rem;
 }
+
 
 .customer-report-state h3 {
-  margin: 0;
+  margin: 0.5rem 0 0;
 
-  font-size: 1rem;
-
-  color: #3a4352;
+  font-size: 0.85rem;
 }
+
 
 .customer-report-state p {
-  margin: 0.4rem 0 0;
+  margin: 0.3rem 0 0;
 
-  font-size: 0.8rem;
+  color: #899b94;
 
-  color: #8a93a3;
+  font-size: 0.68rem;
 }
 
-/* ==============================
-   PAGINATION
-============================== */
+
+.customer-report-loader {
+  width: 25px;
+  height: 25px;
+
+  border: 3px solid #dfebe4;
+
+  border-top-color: #087746;
+
+  border-radius: 50%;
+
+  animation:
+    customer-report-spin 0.8s linear infinite;
+}
+
+
+@keyframes customer-report-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* PAGINATION */
 
 .customer-report-pagination {
-  display: flex;
+  min-height: 50px;
 
+  padding: 0.55rem 1rem;
+
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 
-  align-items: center;
+  color: #899b94;
 
-  gap: 1rem;
+  font-size: 0.63rem;
 
-  padding: 1rem 1.2rem;
-
-  border-top: 1px solid #edf0f5;
+  border-top: 1px solid #edf2ef;
 }
 
-.customer-report-page-btn {
-  min-width: 6.5rem;
 
-  height: 2.35rem;
+.customer-report-pagination button {
+  height: 31px;
 
-  padding: 0 0.8rem;
+  padding: 0 0.7rem;
 
-  border: 1px solid #dfe4ec;
+  border: 1px solid #dbe7e1;
 
-  border-radius: 0.55rem;
+  border-radius: 0.5rem;
 
   background: #ffffff;
 
-  color: #3e4858;
+  color: #52665c;
 
-  font-size: 0.78rem;
-
-  font-weight: 600;
+  font-size: 0.62rem;
+  font-weight: 700;
 
   cursor: pointer;
-
-  transition: 0.2s;
 }
 
-.customer-report-page-btn:hover:not(:disabled) {
-  border-color: #3968ff;
 
-  color: #3968ff;
+.customer-report-pagination button:hover:not(:disabled) {
+  background: #e7f5ed;
 
-  background: #f5f7ff;
+  border-color: #087746;
+
+  color: #087746;
 }
 
-.customer-report-page-btn:disabled {
-  opacity: 0.45;
+
+.customer-report-pagination button:disabled {
+  opacity: 0.4;
 
   cursor: not-allowed;
 }
 
-.customer-report-page-info {
-  color: #737d8d;
 
-  font-size: 0.78rem;
+@media (max-width: 700px) {
 
-  white-space: nowrap;
-}
-
-.customer-report-page-info strong {
-  color: #273142;
-}
-
-/* ==============================
-   TABLET
-============================== */
-
-@media (max-width: 900px) {
-  .customer-report {
-    padding: 1.1rem;
-  }
-
-  .customer-report-filters {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .customer-report-filter-group:first-child {
-    grid-column: 1 / -1;
-  }
-}
-
-/* ==============================
-   MOBILE
-============================== */
-
-@media (max-width: 600px) {
-  .customer-report {
-    padding: 0.8rem;
-
-    width: 100%;
-  }
-
-  .customer-report-title {
-    font-size: 1.3rem;
-  }
-
-  .customer-report-subtitle {
-    font-size: 0.76rem;
-
-    line-height: 1.4;
-  }
-
-  .customer-report-filters {
+  .customer-report-filter-grid {
     grid-template-columns: 1fr;
-
-    gap: 0.75rem;
-
-    padding: 0.85rem;
-
-    border-radius: 0.75rem;
   }
 
-  .customer-report-filter-group:first-child {
-    grid-column: auto;
-  }
-
-  .customer-report-filter-group input,
-  .customer-report-filter-group select {
-    height: 2.45rem;
-
-    font-size: 0.8rem;
-  }
-
-  .customer-report-table-header {
-    padding: 0.9rem;
-  }
-
-  .customer-report-table-header h3 {
-    font-size: 0.9rem;
-  }
-
-  .customer-report-table-header p {
-    font-size: 0.7rem;
-  }
-
-  .customer-report-table th {
-    padding: 0.7rem 0.8rem;
-
-    font-size: 0.68rem;
-  }
-
-  .customer-report-table td {
-    padding: 0.75rem 0.8rem;
-
-    font-size: 0.76rem;
-  }
-
-  .customer-report-pagination {
-    padding: 0.8rem;
-
-    gap: 0.5rem;
-  }
-
-  .customer-report-page-btn {
-    min-width: auto;
-
-    height: 2.15rem;
-
-    padding: 0 0.65rem;
-
-    font-size: 0.7rem;
-  }
-
-  .customer-report-page-info {
-    font-size: 0.7rem;
-  }
 }
 
-/* ==============================
-   SMALL MOBILE
-============================== */
 
-@media (max-width: 400px) {
-  .customer-report {
-    padding: 0.65rem;
-  }
+@media (max-width: 480px) {
 
   .customer-report-title {
-    font-size: 1.15rem;
+    font-size: 1.35rem;
   }
 
-  .customer-report-table {
-    min-width: 700px;
-  }
-
-  .customer-report-table th,
-  .customer-report-table td {
-    padding: 0.65rem 0.7rem;
-  }
-
-  .customer-report-page-btn {
-    padding: 0 0.5rem;
-
-    font-size: 0.65rem;
-  }
 }

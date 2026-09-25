@@ -7,7 +7,7 @@ function BottomNavigation() {
   const location = useLocation();
 
   return (
-    <><br/><br/><br/>
+    <>
       <nav className="home-bottom-nav">
         <button
           className={`home-nav-item ${

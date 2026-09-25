@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+
 const User = require("../models/user.model");
 const generateToken = require("../utils/generateToken.utils");
 
@@ -12,7 +13,7 @@ const loginUser = async (loginData) => {
 
   // Find user
   const user = await User.findOne({
-    email: email.toLowerCase(),
+    email: email.toLowerCase().trim(),
   });
 
   if (!user) {
@@ -29,10 +30,10 @@ const loginUser = async (loginData) => {
     throw new Error("Invalid Email or Password");
   }
 
-  // Generate Token
+  // Generate token
   const token = generateToken(user._id);
 
-  // Remove password
+  // Remove password from response
   const userData = user.toObject();
   delete userData.password;
 
@@ -44,4 +45,4 @@ const loginUser = async (loginData) => {
 
 module.exports = {
   loginUser,
-};  
+};

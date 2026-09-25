@@ -1,94 +1,230 @@
-/* ================================
-   SALE TABLE
-================================ */
+/* =========================================================
+   SALE TABLE CONTAINER
+========================================================= */
 
 .sale-table-container {
   width: 100%;
+
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+
+  border: 1px solid #e2ebe7;
+
+  border-radius: 14px;
+
+  overflow: visible;
+
+  box-shadow:
+    0 5px 18px rgba(19, 55, 43, 0.045);
 }
 
 
-/* ================================
-   TOP SECTION
-================================ */
+/* =========================================================
+   TOP
+========================================================= */
 
 .sale-table-top {
+  position: relative;
+
   display: flex;
+
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 30px;
-  padding: 24px;
-  border-bottom: 1px solid #e5e7eb;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 16px 18px;
+
+  border-bottom: 1px solid #e7eeeb;
 }
 
 
-/* ================================
+/* =========================================================
    TITLE
-================================ */
+========================================================= */
 
 .sale-table-title {
-  min-width: 220px;
+  min-width: 180px;
 }
 
 .sale-table-title h2 {
   margin: 0;
-  font-size: 22px;
+
+  font-size: 16px;
+
   font-weight: 700;
-  color: #172033;
-  letter-spacing: -0.3px;
+
+  color: #17352b;
 }
 
 .sale-table-title p {
-  margin: 6px 0 0;
-  font-size: 14px;
-  color: #6b7280;
+  margin: 4px 0 0;
+
+  font-size: 10px;
+
+  color: #84948e;
 }
 
 
-/* ================================
-   COLUMN SELECTOR
-================================ */
+/* =========================================================
+   COLUMN AREA
+========================================================= */
 
-.sale-table-column-selector {
-  min-width: 420px;
-  max-width: 560px;
-}
+.sale-table-column-area {
+  position: relative;
 
-.sale-table-column-selector h4 {
-  margin: 0 0 12px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #374151;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.sale-table-checkbox-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(100px, 1fr));
-  gap: 8px 12px;
-}
-
-.sale-table-checkbox-item {
   display: flex;
+
+  justify-content: flex-end;
+}
+
+
+/* =========================================================
+   COLUMN BUTTON
+========================================================= */
+
+.sale-column-toggle-btn {
+  height: 34px;
+
+  display: flex;
+
   align-items: center;
-  gap: 8px;
 
-  padding: 7px 9px;
+  gap: 7px;
 
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  padding: 0 11px;
+
+  border: 1px solid #cfe1d9;
+
+  border-radius: 7px;
+
+  background: #f7fbf9;
+
+  color: #27634e;
+
+  font-size: 10px;
+
+  font-weight: 700;
 
   cursor: pointer;
 
-  font-size: 13px;
-  color: #4b5563;
+  transition: 0.2s ease;
+}
 
-  background: #fafafa;
+.sale-column-toggle-btn:hover {
+  background: #edf8f2;
+
+  border-color: #a9cfbd;
+
+  color: #087b4e;
+}
+
+.sale-column-toggle-btn svg {
+  flex-shrink: 0;
+}
+
+.sale-column-arrow-open {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   COLUMN SELECTOR
+========================================================= */
+
+.sale-table-column-selector {
+  position: absolute;
+
+  z-index: 100;
+
+  top: calc(100% + 8px);
+
+  right: 0;
+
+  width: 390px;
+
+  padding: 15px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce7e2;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 15px 35px rgba(20, 55, 43, 0.15);
+}
+
+
+/* =========================================================
+   SELECTOR HEADER
+========================================================= */
+
+.sale-column-selector-header {
+  margin-bottom: 12px;
+}
+
+.sale-column-selector-header h4 {
+  margin: 0;
+
+  font-size: 12px;
+
+  color: #263e35;
+}
+
+.sale-column-selector-header span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #8a9993;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   CHECKBOX GRID
+========================================================= */
+
+.sale-table-checkbox-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 7px;
+}
+
+
+/* =========================================================
+   CHECKBOX ITEM
+========================================================= */
+
+.sale-table-checkbox-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  min-height: 31px;
+
+  padding: 0 8px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e3ebe7;
+
+  border-radius: 6px;
+
+  background: #fafcfb;
+
+  color: #64766f;
+
+  font-size: 9px;
+
+  cursor: pointer;
 
   transition:
     background 0.2s ease,
@@ -97,17 +233,21 @@
 }
 
 .sale-table-checkbox-item:hover {
-  background: #fff7ed;
-  border-color: #fdba74;
-  color: #ea580c;
+  background: #f1faf5;
+
+  border-color: #a9d2be;
+
+  color: #087b4e;
 }
 
 .sale-table-checkbox-item input {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+
+  height: 14px;
+
   margin: 0;
 
-  accent-color: #f97316;
+  accent-color: #087b4e;
 
   cursor: pointer;
 }
@@ -117,21 +257,41 @@
 }
 
 
-/* ================================
+/* =========================================================
+   SELECTED COLUMN
+========================================================= */
+
+.sale-column-checked {
+  background: #eef9f3;
+
+  border-color: #b7dcca;
+
+  color: #087b4e;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
    TABLE WRAPPER
-================================ */
+========================================================= */
 
 .sale-table-wrapper {
   width: 100%;
+
   overflow-x: auto;
-  overflow-y: hidden;
+
+  overflow-y: visible;
 
   scrollbar-width: thin;
-  scrollbar-color: #d1d5db transparent;
+
+  scrollbar-color:
+    #cbd8d2
+    transparent;
 }
 
 .sale-table-wrapper::-webkit-scrollbar {
-  height: 7px;
+  height: 6px;
 }
 
 .sale-table-wrapper::-webkit-scrollbar-track {
@@ -139,347 +299,501 @@
 }
 
 .sale-table-wrapper::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: #cbd8d2;
+
   border-radius: 20px;
 }
 
 
-/* ================================
+/* =========================================================
    TABLE
-================================ */
+========================================================= */
 
 .sale-table {
   width: 100%;
-  min-width: 850px;
+
+  min-width: 950px;
 
   border-collapse: collapse;
 
-  font-size: 14px;
+  font-size: 10px;
 }
 
 
-/* ================================
-   TABLE HEADER
-================================ */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .sale-table thead {
-  background: #f8fafc;
+  background: #f3f8f6;
 }
 
 .sale-table th {
-  padding: 14px 18px;
+  height: 36px;
+
+  padding: 0 11px;
 
   text-align: left;
 
-  font-size: 12px;
-  font-weight: 700;
-
-  color: #64748b;
-
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-
   white-space: nowrap;
 
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #dfe9e5;
+
+  color: #526a61;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+.sale-number-column {
+  width: 35px;
 }
 
 
-/* ================================
-   TABLE BODY
-================================ */
+/* =========================================================
+   BODY
+========================================================= */
 
 .sale-table tbody tr {
-  transition: background 0.2s ease;
+  transition: background 0.15s ease;
 }
 
 .sale-table tbody tr:hover {
-  background: #fffaf5;
+  background: #f8fcfa;
 }
 
 .sale-table tbody tr:not(:last-child) {
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid #edf2ef;
 }
 
 .sale-table-cell {
-  padding: 16px 18px;
+  height: 48px;
 
-  color: #374151;
+  padding: 0 11px;
 
   vertical-align: middle;
 
   white-space: nowrap;
-}
 
+  color: #475d54;
 
-/* ================================
-   CUSTOMER
-================================ */
-
-.sale-table tbody td:first-child {
-  font-weight: 600;
-  color: #172033;
-}
-
-
-/* ================================
-   PRODUCTS
-================================ */
-
-.sale-table-products {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-
-  min-width: 150px;
-  max-width: 260px;
-}
-
-.sale-table-product-item {
-  display: block;
-
-  padding: 4px 8px;
-
-  background: #f8fafc;
-
-  border-radius: 6px;
-
-  font-size: 13px;
-  color: #475569;
-
-  white-space: normal;
-  line-height: 1.4;
-}
-
-
-/* ================================
-   MONEY VALUES
-================================ */
-
-.sale-table-cell {
   font-variant-numeric: tabular-nums;
 }
 
 
-/* ================================
-   STATUS
-================================ */
+/* =========================================================
+   NUMBER
+========================================================= */
 
-.sale-table-status {
-  display: inline-flex;
+.sale-number-cell {
+  padding: 0 11px;
+
+  color: #71847c;
+
+  font-size: 9px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CUSTOMER
+========================================================= */
+
+.sale-customer-cell {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.sale-customer-avatar {
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
   align-items: center;
   justify-content: center;
 
-  min-width: 75px;
+  border-radius: 50%;
 
-  padding: 5px 10px;
+  background: #dff3e8;
+
+  color: #087b4e;
+
+  font-size: 8px;
+
+  font-weight: 700;
+}
+
+.sale-customer-cell span {
+  color: #263e35;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.sale-table-products {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  min-width: 130px;
+
+  max-width: 220px;
+}
+
+.sale-table-product-item {
+  padding: 3px 7px;
+
+  border-radius: 5px;
+
+  background: #f5f8f7;
+
+  color: #596d65;
+
+  font-size: 9px;
+
+  white-space: normal;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   MONEY
+========================================================= */
+
+.sale-money-cell {
+  color: #253d34;
+
+  font-weight: 700;
+}
+
+.sale-paid-value {
+  color: #087b4e;
+
+  font-size: 10px;
+}
+
+.sale-due-value {
+  color: #ef4444;
+
+  font-size: 10px;
+}
+
+.sale-no-due-value {
+  color: #087b4e;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.sale-table-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  min-width: 62px;
+
+  padding: 5px 8px;
 
   border-radius: 999px;
 
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 8px;
 
-  letter-spacing: 0.4px;
+  font-weight: 700;
+}
+
+.sale-status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
 }
 
 
 /* PAID */
 
 .sale-table-status-paid {
-  color: #15803d;
-  background: #dcfce7;
+  background: #dcf5e7;
+
+  color: #087b4e;
+}
+
+.sale-table-status-paid .sale-status-dot {
+  background: #14945b;
 }
 
 
 /* PARTIAL */
 
 .sale-table-status-partial {
-  color: #c2410c;
-  background: #ffedd5;
+  background: #fff0d8;
+
+  color: #c9760b;
+}
+
+.sale-table-status-partial .sale-status-dot {
+  background: #f59e0b;
 }
 
 
 /* UNPAID */
 
 .sale-table-status-unpaid {
+  background: #ffe4e4;
+
   color: #dc2626;
-  background: #fee2e2;
+}
+
+.sale-table-status-unpaid .sale-status-dot {
+  background: #ef4444;
 }
 
 
-/* ================================
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.sale-table-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+.sale-table-actions button {
+  width: 29px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dce6e2;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #50665d;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.sale-table-actions button:hover {
+  border-color: #a6cdb9;
+
+  background: #f1faf5;
+
+  color: #087b4e;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.sale-table-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 11px 14px;
+
+  border-top: 1px solid #edf2ef;
+
+  color: #788982;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.sale-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+}
+
+.sale-pagination button {
+  min-width: 27px;
+
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 7px;
+
+  border: 1px solid transparent;
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #53685f;
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+.sale-pagination button:hover {
+  background: #edf7f2;
+
+  color: #087b4e;
+}
+
+.sale-pagination button.active {
+  background: #087b4e;
+
+  color: white;
+
+  font-weight: 700;
+}
+
+.sale-pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
    LOADING
-================================ */
+========================================================= */
 
 .sale-table-loading {
+  min-height: 180px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  min-height: 220px;
-  margin: 0;
+  color: #6e8179;
 
-  color: #64748b;
-
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 12px;
 }
 
 
-/* ================================
+/* =========================================================
    EMPTY
-================================ */
+========================================================= */
 
 .sale-table-empty {
+  min-height: 180px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  min-height: 220px;
-  margin: 0;
+  color: #6e8179;
 
-  color: #64748b;
-
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 12px;
 }
 
 
-/* ================================
+/* =========================================================
    TABLET
-================================ */
+========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
+
   .sale-table-top {
-    flex-direction: column;
-    gap: 20px;
+    align-items: flex-start;
   }
 
   .sale-table-column-selector {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
+    width: 360px;
   }
 
-  .sale-table-checkbox-grid {
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
-  }
 }
 
 
-/* ================================
-   SMALL TABLET
-================================ */
-
-@media (max-width: 700px) {
-  .sale-table-top {
-    padding: 18px;
-  }
-
-  .sale-table-title h2 {
-    font-size: 20px;
-  }
-
-  .sale-table-checkbox-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .sale-table th {
-    padding: 12px 14px;
-  }
-
-  .sale-table-cell {
-    padding: 14px;
-  }
-}
-
-
-/* ================================
+/* =========================================================
    MOBILE
-================================ */
+========================================================= */
 
-@media (max-width: 500px) {
-  .sale-table-container {
-    border-radius: 12px;
-  }
+@media (max-width: 600px) {
 
   .sale-table-top {
-    padding: 16px;
+    padding: 13px;
 
-    gap: 18px;
+    align-items: center;
   }
 
   .sale-table-title h2 {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .sale-table-title p {
-    font-size: 13px;
+    font-size: 9px;
   }
 
-  .sale-table-column-selector h4 {
-    font-size: 12px;
+  .sale-table-column-selector {
+    width: calc(100vw - 50px);
+
+    max-width: 350px;
   }
 
   .sale-table-checkbox-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 7px;
-  }
-
-  .sale-table-checkbox-item {
-    padding: 7px;
-    font-size: 12px;
-  }
-
-  .sale-table-checkbox-item input {
-    width: 14px;
-    height: 14px;
-  }
-
-  .sale-table-wrapper {
-    overflow-x: auto;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 
   .sale-table {
-    min-width: 750px;
+    min-width: 900px;
   }
 
-  .sale-table th {
-    padding: 11px 12px;
-    font-size: 11px;
+  .sale-table-footer {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 9px;
   }
 
-  .sale-table-cell {
-    padding: 12px;
-    font-size: 13px;
-  }
+  .sale-pagination {
+    width: 100%;
 
-  .sale-table-product-item {
-    font-size: 12px;
-  }
-
-  .sale-table-status {
-    min-width: 65px;
-    padding: 4px 8px;
-    font-size: 10px;
-  }
-}
-
-
-/* ================================
-   VERY SMALL MOBILE
-================================ */
-
-@media (max-width: 360px) {
-  .sale-table-top {
-    padding: 14px;
-  }
-
-  .sale-table-checkbox-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .sale-table-checkbox-item {
-    font-size: 11px;
+    justify-content: center;
   }
 }
