@@ -5,7 +5,7 @@ import QuickActions from "../components/Home/QuickActions.home";
 import HomeBottom from "../components/Home/HomeBottom.home";
 import HomeHeader from "../components/Home/HomeHeader";
 import HomeHero from "../components/Home/HomeHero";
-import StockCharts from "../components/home/HomeStockCharts";
+import StockCharts from "../components/Home/HomeStockCharts";
 
 import "../css/Home.home.css";
 
